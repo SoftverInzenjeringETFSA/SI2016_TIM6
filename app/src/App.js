@@ -2,12 +2,34 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import LoginPage from './LoginPage';
-import './LoginPage.css';
+import Main from './Main';
+import Obavjestenja from './Obavjestenja';
+import Predmeti from './Predmeti';
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
+
 
 class App extends Component {
   render() {
-
     return (
+      <Router>
+        <div>
+          <Route exact path="/" component={LoginPage}/>
+          <Route path="/obavjestenja" component={Main}/>
+          <Route path="/ispiti" component={Main}/>
+          <Route path="/profil" component={Main}/>
+          <Route path="/predmeti" component={Main}/>
+
+        </div>
+
+      </Router>
+    );
+
+/*    return (
       <div>
       <div className="background">
         <div className="layer">
@@ -15,7 +37,7 @@ class App extends Component {
       </div>
       <LoginPage /> </div>
 
-    );
+    );*/
 
 /*    return (
       <div className="App">
