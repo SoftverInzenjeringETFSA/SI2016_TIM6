@@ -16,7 +16,6 @@ class LoginPage extends Component {
           </div>
         </div>
 
-
         <div className="LoginPage container-fluid">
           <div className="row long30">
             <div className="naslov">
@@ -40,7 +39,7 @@ class LoginPage extends Component {
 
                 <div className="form-group">
                   <div className="col-sm-12">
-                    <input type="text" className="form-control" placeholder="Prezime"/>
+                    <input type="password" className="form-control" placeholder="Password"/>
                   </div>
                 </div>
       

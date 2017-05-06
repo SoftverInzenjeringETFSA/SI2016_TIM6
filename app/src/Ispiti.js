@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
-import './Main.css';
+import './Ispiti.css';
 
 
-class Main extends Component {
+class Ispiti extends Component {
   render() {
     return (
-      <p>Ispiti</p>
+    	<div>
+			<h1 className="main-naslov">Ispiti</h1>
+			<h2 className="ispiti-podnaslov">Objavljeni termini ispita:</h2>
+			<table className="table table-striped">
+				<tbody>
+  				<tr><th>Predmet</th><th>Termin</th><th></th></tr>
+  				<tr><td>Matematika</td><td>12.5. 15:30</td><td>Popunjen</td></tr>
+  				<tr><td>Matematika</td><td>12.5. 15:30</td><td>Popunjen</td></tr>
+  				<tr><td>Matematika</td><td>12.5. 15:30</td><td>Popunjen</td></tr>
+  				<tr><td>Matematika</td><td>12.5. 15:30</td><td>Popunjen</td></tr>
+				</tbody>
+			</table>
+		</div>
     );
   }
 }
 
-export default Main;
+export default Ispiti;

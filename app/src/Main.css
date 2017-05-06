@@ -67,6 +67,10 @@
     background-color: #126796;
   }
 
+  .main-naslov{
+    margin-top: 15px;
+  }
+
 
 }
 
@@ -118,5 +122,19 @@
 .main-naslov{
   color: #444444;
   font-family: 'Roboto', sans-serif;  
+  margin-left: 10px;
+}
 
+.sadrzaj{
+  background-color: white;
+  height: calc(100vh - 52px);
+  overflow-y: auto;
+}
+
+.sve{
+  background-color: #6387a8;
+}
+
+.sidebar{
+  padding-right: 0px;
 }

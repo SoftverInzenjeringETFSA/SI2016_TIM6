@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import './Main.css';
+import './Predmeti.css';
 
 
-class Main extends Component {
+class Predmeti extends Component {
   render() {
     return (
-      <p>Predmeti</p>
+		<h1 className="main-naslov">Predmeti</h1>
     );
   }
 }
 
-export default Main;
+export default Predmeti;
