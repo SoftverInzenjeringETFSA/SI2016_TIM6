@@ -105,3 +105,18 @@
 .nav-pills>li>a{
   border-radius: 0px;
 }
+
+
+.navbar a{
+  font-family: 'Roboto', sans-serif;  
+}
+
+.link{
+  font-family: 'Open Sans', sans-serif;  
+}
+
+.main-naslov{
+  color: #444444;
+  font-family: 'Roboto', sans-serif;  
+
+}

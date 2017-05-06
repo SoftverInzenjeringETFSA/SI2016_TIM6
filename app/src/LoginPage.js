@@ -3,6 +3,11 @@ import './LoginPage.css';
 
 
 class LoginPage extends Component {
+  constructor(props){
+    super(props);
+    this.state = {};
+  }
+
   render() {
     return (
       <div>
@@ -25,7 +30,7 @@ class LoginPage extends Component {
             </div>
             <div className="col-sm-3">
 
-              <form className="form-horizontal">
+              <form className="form-horizontal" onSubmit={() => this.props.onLoginSubmit()}>
                 <div className="form-group">
                   
                   <div className="col-sm-12">

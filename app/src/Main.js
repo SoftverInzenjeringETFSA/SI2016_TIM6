@@ -12,8 +12,18 @@ import {
   NavLink
 } from 'react-router-dom';
 
+
 class Main extends Component {
+  constructor(){
+    super();
+    this.state = {obavijesti: ["abc", "def"]};
+  }
+
+
+
   render() {
+    const novaObavjestenja = () => <Obavjestenja obavijesti={this.state.obavijesti}/>
+
     return (
         <div className="sve">
         <nav className="navbar navbar-default">
@@ -45,7 +55,7 @@ class Main extends Component {
           </div>
 
           <div className="col-md-9 sadrzaj">
-            <Route path="/obavjestenja" component={Obavjestenja}/>
+            <Route path="/obavjestenja" component={novaObavjestenja}/>
             <Route path="/ispiti" component={Ispiti}/>
             <Route path="/profil" component={Profil}/>
             <Route path="/predmeti" component={Predmeti}/>
@@ -55,6 +65,9 @@ class Main extends Component {
         </div>
     );
   }
+
+
 }
+
 
 export default Main;
