@@ -11,15 +11,9 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
-        <div className="background">
-          <div className="layer">
-          </div>
-        </div>
-
-
         <div className="LoginPage container-fluid">
           <div className="row long30">
-            <div className="naslov">
+            <div className="naslov text-center">
               <h1>Univerzitet u Sarajevu</h1>
               <h2>Studentski portal</h2>
             </div>
