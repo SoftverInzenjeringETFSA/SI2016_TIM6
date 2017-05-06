@@ -1,23 +1,12 @@
-.background{
-    /*margin: 0px 0px 0px 0px;
-    padding: 0px 0px 0px 0px;
-	height: 100%; */
-    
-	background-image: url('./img/background2.jpg');
-	/*background-size: 100% 100%;*/
-	
-	  /*-webkit-background-origin: padding-box;
-	  background-origin: padding-box;
-	  -webkit-background-clip: border-box;
-	  background-clip: border-box;
-	  -webkit-background-size: auto auto, cover, auto auto, auto auto;
-	  background-size: auto auto, cover, auto auto, auto auto;
-	  background-attachment:fixed; */
-	 
-	  height: 100%; width: 100%;  
-	  position: fixed; top: 0px; left: 0px; 
-    z-index: -150;
-
+body {   
+	background-image: url('./img/background.jpg');
+	background-position: center center;
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	height: 100%;
 }
 
 
