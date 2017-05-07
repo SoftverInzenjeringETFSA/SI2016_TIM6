@@ -1,0 +1,52 @@
+body {   
+	background-image: url('../img/background.jpg');
+	background-position: center center;
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	height: 100vh;
+
+	position: relative;
+}
+
+h1, h2 {
+	font-family: 'Open Sans', sans-serif;	
+	color: #f5f5f5;
+}
+
+strong {
+	letter-spacing: 1px;
+}
+
+.v-center {
+	margin-top: 12.5%;
+}
+
+input[type="submit"] {
+	float: right;
+	padding: .5em 2em;
+}
+
+.naslov{
+	padding-bottom: 2em;
+}
+
+.dno {
+	margin-bottom: 2em;
+}
+
+.footer-wrapper {
+	margin: 0;
+	padding: 0;
+	display: inline;
+}
+
+.footer-wrapper span:first-child {
+	float: left;
+}
+
+.footer-wrapper span:last-child {
+	float: right;
+}

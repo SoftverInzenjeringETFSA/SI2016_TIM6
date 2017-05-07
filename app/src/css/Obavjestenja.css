@@ -1,0 +1,11 @@
+.list-group-item:nth-child(even) {
+	background-color: #f5f5f5;
+}
+
+.list-group-item-heading {
+	padding: .5em 10px;
+}
+
+.list-group-item-text {
+	padding: .5em 10px;
+}
