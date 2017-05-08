@@ -1,0 +1,7 @@
+.click-cursor{
+	cursor: pointer;
+}
+
+.sem-toggle, .sem-toggle:hover, .sem-toggle:focus{
+	text-decoration: none;
+}
