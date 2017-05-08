@@ -39,10 +39,14 @@
 }
 
 .link, .link:hover {
-  font-family: 'Open Sans', sans-serif;  
+  /*font-family: 'Roboto', sans-serif;  */
+  font-family: 'Open Sans', sans-serif;
   color: #f5f5f5;
   text-decoration: none !important;
-  text-align: center;
+}
+
+.nav-title{
+  font-weight: 100;
 }
 
 /* ---------------------------------------------------------*/
@@ -63,17 +67,17 @@
 .main-naslov {
   margin: 0;
   padding: 1em 0;
-  color: black;
-  text-align: center;
+  color: #3a3a3a;
   font-family: 'Roboto', sans-serif;
 }
 
 .podnaslov {
   margin: 0;
-  padding: 0.5em 0;
+  padding: 0.1em 0 1em 0;
   text-align: left;
-  color: black;
+  color: #4c4c4c;
   font-family: 'Roboto', sans-serif;
+  font-size: 24px;
 }
 
 @media (min-width: 768px){

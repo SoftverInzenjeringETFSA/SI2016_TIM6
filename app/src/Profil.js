@@ -63,26 +63,26 @@ class Profil extends Component {
 
     return (
     	<div>
-			<h1 className="main-naslov">Pregled studentskog profila:</h1>
+			<h1 className="main-naslov">Pregled studentskog profila</h1>
 	      	
 	      	<form className="form-horizontal profil-forma center-block" onSubmit={() => this.props.onProfileSubmit(this.state)}>
 
 			  <div className="form-group">
-			    <label for="inputIme1" className="col-sm-2 control-label">Ime:</label>
+			    <label htmlFor="inputIme1" className="col-sm-2 control-label">Ime:</label>
 			    <div className="col-sm-9">
 			      <input type="text" className="form-control" id="inputIme1" placeholder="Ime" onChange={this.onChangeIme} value={this.props.user.ime} />
 			    </div>
 			  </div>
 
 			  <div className="form-group">
-			    <label for="inputPrezime1" className="col-sm-2 control-label">Prezime:</label>
+			    <label htmlFor="inputPrezime1" className="col-sm-2 control-label">Prezime:</label>
 			    <div className="col-sm-9">
 			      <input type="text" className="form-control" id="inputPassword3" placeholder="Prezime" onChange={this.onChangePrezime} value={this.props.user.prezime} />
 			    </div>
 			  </div>
 
 			  <div className="form-group">
-			    <label for="jmbg1" className="col-sm-2 control-label">JMBG:</label>
+			    <label htmlFor="jmbg1" className="col-sm-2 control-label">JMBG:</label>
 			    <div className="col-sm-9">
 			      <input type="text" className="form-control" id="jmbg1"  placeholder="JMBG" onChange={this.onChangeJMBG} value={this.props.user.jmbg} />
 			    </div>
@@ -102,28 +102,28 @@ class Profil extends Component {
 			  </div>
 
 			  <div className="form-group">
-			    <label for="adresa1" className="col-sm-2 control-label">Adresa (ulica i broj):</label>
+			    <label htmlFor="adresa1" className="col-sm-2 control-label">Adresa (ulica i broj):</label>
 			    <div className="col-sm-9">
 			      <input type="text" className="form-control" id="adresa1" placeholder="Ulica i broj" onChange={this.onChangeAdresa} value={this.props.user.adresa} />
 			    </div>
 			  </div>
 
 			  <div className="form-group">
-			    <label for="mjesto1" className="col-sm-2 control-label">Mjesto:</label>
+			    <label htmlFor="mjesto1" className="col-sm-2 control-label">Mjesto:</label>
 			    <div className="col-sm-9">
 			      <input type="text" className="form-control" id="mjesto1" placeholder="Mjesto" onChange={this.onChangeMjesto} value={this.props.user.mjesto} />
 			    </div>
 			  </div>
 
 			  <div className="form-group">
-			    <label for="telefon1" className="col-sm-2 control-label">Telefon:</label>
+			    <label htmlFor="telefon1" className="col-sm-2 control-label">Telefon:</label>
 			    <div className="col-sm-9">
 			      <input type="tel" className="form-control" id="telefon1" placeholder="Telefon" onChange={this.onChangeTelefon} value={this.props.user.telefon} />
 			    </div>
 			  </div>
 
 	  		  <div className="form-group">
-			    <label for="email1" className="col-sm-2 control-label">Email:</label>
+			    <label htmlFor="email1" className="col-sm-2 control-label">Email:</label>
 			    <div className="col-sm-9">
 			      <input type="email" className="form-control" id="email1" placeholder="Email" onChange={this.onChangeEmail} value={this.props.user.email} />
 			    </div>

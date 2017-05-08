@@ -46,15 +46,16 @@ class App extends Component {
 
   render() {
     const noviLoginPage = () => <LoginPage onLoginSubmit={() => this.login()}/>
+    const noviMainPage = () => <Main onLogout={() => this.logout()}/>
 
     return (
       <Router>
         <div>
           {this.state.ulogovan? <Redirect from="/" to="obavjestenja" /> : <Route exact path="/" component={noviLoginPage} /> }
-          <PrivateRoute path="/obavjestenja" component={Main} ulogovanost={this.state.ulogovan} />
-          <PrivateRoute path="/ispiti" component={Main} ulogovanost={this.state.ulogovan}/>
-          <PrivateRoute path="/profil" component={Main} ulogovanost={this.state.ulogovan}/>
-          <PrivateRoute path="/predmeti" component={Main} ulogovanost={this.state.ulogovan}/>
+          <PrivateRoute path="/obavjestenja" component={noviMainPage} ulogovanost={this.state.ulogovan} />
+          <PrivateRoute path="/ispiti" component={noviMainPage} ulogovanost={this.state.ulogovan}/>
+          <PrivateRoute path="/profil" component={noviMainPage} ulogovanost={this.state.ulogovan}/>
+          <PrivateRoute path="/predmeti" component={noviMainPage} ulogovanost={this.state.ulogovan}/>
         </div>
 
       </Router>);

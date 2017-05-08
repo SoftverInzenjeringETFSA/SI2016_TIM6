@@ -27,7 +27,7 @@ class Obavjestenja extends Component {
 
 		return (
 		<div>
-			<h1 className="main-naslov">Obavještenja:</h1>
+			<h1 className="main-naslov">Obavještenja</h1>
 			<div className="list-group">
 				{obavijesti}
 			</div>

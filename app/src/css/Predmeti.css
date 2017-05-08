@@ -4,4 +4,22 @@
 
 .sem-toggle, .sem-toggle:hover, .sem-toggle:focus{
 	text-decoration: none;
+    display: inline-block;
+    width: 100%;
+}
+
+.predmet-item:nth-child(even){
+	background-color: #fff;
+}
+
+.predmeti-accordion-body{
+	padding: 0;
+}
+
+.predmeti-accordion-list{
+	margin-bottom: 0;
+}
+
+.accordion-sem-heading{
+	background-color: #eaeaea !important;
 }

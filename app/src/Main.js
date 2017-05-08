@@ -19,27 +19,27 @@ import {
 const navigationItems = [
   <NavLink className="link" to="/obavjestenja" activeClassName="active">
     <SidebarItem>
-      Obavještenja
+      <span className="nav-title">Obavještenja</span>
     </SidebarItem>
   </NavLink>,
   <NavLink className="link" to="/predmeti" activeClassName="active">
     <SidebarItem>
-      Predmeti
+      <span className="nav-title">Predmeti</span>
     </SidebarItem>
   </NavLink>,
   <NavLink className="link" to="/ispiti" activeClassName="active">
     <SidebarItem>
-      Termini ispita
+      <span className="nav-title">Termini ispita</span>
     </SidebarItem>
   </NavLink>,
   <NavLink className="link" to="/profil" activeClassName="active">
     <SidebarItem>
-      Profil
+      <span className="nav-title">Profil</span>
     </SidebarItem>
   </NavLink>,
   <NavLink className="link" to="/" activeClassName="active">
     <SidebarItem>
-      Odjava
+      <span className="nav-title">Odjava</span>
     </SidebarItem>
   </NavLink>,
 ];

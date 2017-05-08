@@ -43,7 +43,7 @@ class LoginPage extends Component {
 
           <div className="navbar-fixed-bottom dno row">
             <div className="hidden-xs col-sm-10 col-sm-offset-1">
-              <h1 className="footer-wrapper">
+              <h1 className="row footer-wrapper">
                 <span><strong>ISSS</strong></span><span>Univerzitet u Sarajevu</span>
               </h1>
             </div>

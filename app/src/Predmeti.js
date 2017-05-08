@@ -46,22 +46,22 @@ class Predmeti extends Component {
 		const listaSemestara = this.state.semestri.map((i, index) => {
 
 			const listaPredmeta = i.predmeti.map(j => {
-				  return <span key={j.id} className="list-group-item click-cursor" onClick={() => this.izborPredmeta(j)}>{j.naziv}</span>
+				  return <span key={j.id} className="list-group-item predmet-item click-cursor" onClick={() => this.izborPredmeta(j)}>{j.naziv}</span>
 				  }
 				);
 
 			return (
 				<div key={i.semestar}>
 				  <div className="panel panel-default">
-				    <div className="panel-heading">
+				    <div className="panel-heading accordion-sem-heading">
 				      <h4 className="panel-title">
 				        <a data-toggle="collapse" data-parent="#accordion" className="sem-toggle" href={"#collapse" + index}>
 				        {i.semestar + ". semestar"}</a>
 				      </h4>
 				    </div>
 				    <div id={"collapse" + index} className={this.props.user.semestar === i.semestar ? "panel-collapse collapse in" : "panel-collapse collapse"}>
-				      <div className="panel-body">
-						<div className="list-group">
+				      <div className="panel-body predmeti-accordion-body">
+						<div className="list-group predmeti-accordion-list">
 							{listaPredmeta}
 						</div>
 				      </div>
@@ -73,7 +73,7 @@ class Predmeti extends Component {
 
 		return (
 			<div>
-				<h1 className="main-naslov">Pregled predmeta:</h1>
+				<h1 className="main-naslov">Pregled predmeta</h1>
 				<div className="row">
 					<div className="panel-group col-md-3" id="accordion">
 						{listaSemestara}
