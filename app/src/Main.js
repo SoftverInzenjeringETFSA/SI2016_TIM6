@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './css/Main.css';
+import { Sidebar, SidebarItem } from 'react-responsive-sidebar';
 
 import Obavjestenja from './Obavjestenja';
 import Ispiti from './Ispiti';
@@ -12,6 +13,36 @@ import {
   Link,
   NavLink
 } from 'react-router-dom';
+
+
+// Sidebar Navigation Items
+const navigationItems = [
+  <NavLink className="link" to="/obavjestenja" activeClassName="active">
+    <SidebarItem>
+      Obavještenja
+    </SidebarItem>
+  </NavLink>,
+  <NavLink className="link" to="/predmeti" activeClassName="active">
+    <SidebarItem>
+      Predmeti
+    </SidebarItem>
+  </NavLink>,
+  <NavLink className="link" to="/ispiti" activeClassName="active">
+    <SidebarItem>
+      Termini ispita
+    </SidebarItem>
+  </NavLink>,
+  <NavLink className="link" to="/profil" activeClassName="active">
+    <SidebarItem>
+      Profil
+    </SidebarItem>
+  </NavLink>,
+  <NavLink className="link" to="/" activeClassName="active">
+    <SidebarItem>
+      Odjava
+    </SidebarItem>
+  </NavLink>,
+];
 
 
 class Main extends Component {
@@ -92,48 +123,42 @@ class Main extends Component {
     const novaPredmeti = () => <Predmeti user={this.state.user}/>
 
     return (
-        <div className="content-container">
-
-          <nav className="navbar navbar-default navbar-fixed-top topbar navigation-color">
-            <div className="container-fluid">
-              <div className="navbar-header">
-                <a className="navbar-brand logo"><strong>ISSS</strong>&nbsp;Studentska stranica</a>
+        <div className="body">
+          <nav className="navbar navbar-default" role="navigation">
+              <div className="main-navigation-container">
+                <div className="navbar-header">
+                  <a className="navbar-brand logo white-text">
+                    <strong>ISSS</strong>&nbsp;<span className="hidden-xs">Studentska stranica</span>
+                  </a>
+                </div>
+                <div className="collapse navbar-collapse">
+                  <p className="navbar-text navbar-right white-text">
+                    Dobrodošli,&nbsp;
+                    <NavLink className="navbar-link white-text" to="/profil">{this.state.user.ime}!</NavLink>
+                  </p>
+                </div>
               </div>
-              <div className="collapse navbar-collapse">
-                <p className="navbar-text navbar-right">
-                  Dobrodošli,&nbsp;
-                  <a href="#" className="navbar-link">{this.state.user.ime}!</a>
-                </p>
-              </div>
-            </div>
           </nav>
 
-          <Router className="container-fluid">        
-            <div className="row">
-              <div className="col-md-2 sidebar navigation-color">
-                <ul className="nav nav-pills nav-stacked">
-                  <li role="presentation"><NavLink className="link" to="/predmeti" activeClassName="active">Predmeti</NavLink></li>
-                  <li role="presentation"><NavLink className="link" to="/obavjestenja" activeClassName="active">Obavještenja</NavLink></li>
-                  <li role="presentation"><NavLink className="link" to="/ispiti" activeClassName="active">Ispiti</NavLink></li>
-                  <li role="presentation"><NavLink className="link" to="/profil" activeClassName="active">Profil</NavLink></li>
-                  <li role="presentation"><a href="/" className="link">Odjava</a></li>
-                </ul>
-              </div>
+          <Router>
+            <div id="main-content-wrapper">
+              <Sidebar content={navigationItems}
+                color="#f5f5f5"
+                background="#347598" 
+                width="200">
 
-              <div className="col-md-10 col-md-offset-10 content background-color">
-                <Route path="/obavjestenja" component={novaObavjestenja}/>
-                <Route path="/ispiti" component={novaIspiti}/>
-                <Route path="/profil" component={novaProfilStranica}/>
-                <Route path="/predmeti" component={novaPredmeti}/>
-              </div>
+                <div id="inner-content-wrapper">
+                  <Route path="/obavjestenja" component={novaObavjestenja}/>
+                  <Route path="/ispiti" component={novaIspiti}/>
+                  <Route path="/profil" component={novaProfilStranica}/>
+                  <Route path="/predmeti" component={novaPredmeti}/>
+                </div>
+              </Sidebar>
             </div>
           </Router>
         </div>
     );
   }
-
-
 }
-
 
 export default Main;

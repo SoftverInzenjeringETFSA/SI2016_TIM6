@@ -1,5 +1,9 @@
 .list-group-item:nth-child(even) {
-	background-color: #f5f5f5;
+	background-color: #ededed;
+}
+
+.list-group-item:hover {
+	background-color: rgba(129, 193, 239, 0.4) !important;
 }
 
 .list-group-item-heading {

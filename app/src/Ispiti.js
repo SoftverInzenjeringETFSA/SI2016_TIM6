@@ -22,7 +22,7 @@ class Ispiti extends Component {
       {this.props.ispiti.length > 0
         ? <div>
   			<h1 className="main-naslov">Termini ispita:</h1>
-  			<h2 className="ispiti-podnaslov">Objavljeni termini ispita:</h2>
+  			<h2 className="podnaslov">Objavljeni termini ispita:</h2>
   			<table className="table table-striped">
   				<tbody>
     				<tr><th>Predmet</th><th>Datum</th><th>Termin</th><th></th></tr>
@@ -34,7 +34,7 @@ class Ispiti extends Component {
       }
 
       {this.props.prijavljeniIspiti.length > 0
-       ? <div><h2 className="ispiti-podnaslov">Prijavljeni ispiti:</h2>
+       ? <div><h2 className="podnaslov">Termini na koje ste prijavljeni:</h2>
           <table className="table table-striped">
             <tbody>
               <tr><th>Predmet</th><th>Datum</th><th>Termin</th><th></th></tr>
@@ -45,6 +45,7 @@ class Ispiti extends Component {
           :<h3>Niste prijavili nijedan ispit.</h3>
       }
 
+      <h2 className="podnaslov">Historija prijavljenih ispita:</h2>
 		</div>
     );
   }

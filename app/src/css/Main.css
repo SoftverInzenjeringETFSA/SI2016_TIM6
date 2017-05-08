@@ -1,167 +1,83 @@
-.navigation-color {
-  background-color: #347598;
+.body {
+  width: 100%;
+  height: 100vh;
+  background-color: #ededed;
+  overflow-y: hidden;
 }
 
-.background-color {
-  background-color: #ededed !important;
-}
-
-body {
-  font-family: 'Roboto', sans-serif !important;
-  overflow-x: hidden;
+.white-text {
+  color: #f5f5f5 !important;
 }
 
 .logo {
   font-size: 2em;
-  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
 }
 
-.topbar {
-  padding: .5em 0;
+#main-content-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
-.topbar .navbar-link {
-  padding-right: 15px;
+#inner-content-wrapper {
+  margin: 0;
+  padding: 1em;
+  padding-bottom: 5em;
 }
 
-.sidebar {
-  padding: 0;
-  position: fixed;
-  height: calc(100vh - 4.65em) !important;
-  min-width: 16.6667%;
-  top: 4.65em;
-  left: 0;
-  display: block;
+/* ---------------------------------------------------------*/
+/*                       Navigation                         */
+/* ---------------------------------------------------------*/ 
+.navbar{
+  border-radius: 0px;
+  margin-bottom: 0px;
+}
+
+.navbar-right {
+  margin-right: 0;
+}
+
+.link, .link:hover {
+  font-family: 'Open Sans', sans-serif;  
+  color: #f5f5f5;
+  text-decoration: none !important;
   text-align: center;
 }
 
-.content {
-  top: 4.65em;
-  min-height: calc(100vh - 4.65em) !important;
-  margin-left: calc(16.6667% + 9px);
-  padding-right: -15px;
+/* ---------------------------------------------------------*/
+/*                     Color Settings                       */
+/* ---------------------------------------------------------*/ 
+.active{
+  color: #f5f5f5 !important;
 }
 
 .navbar-default {
   background-color: #347598;
   border-color: #126796;
 }
-.navbar-default .navbar-brand {
-  color: #ecf0f1;
-}
-.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-brand:focus {
-  color: #fdfdfd;
-}
-.navbar-default .navbar-text {
-  color: #ecf0f1;
-}
-.navbar-default .navbar-nav > li > a {
-  color: #ecf0f1;
-}
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
-  color: #fdfdfd;
-}
-.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:hover,
-.navbar-default .navbar-nav > .active > a:focus {
-  color: #fdfdfd;
-  background-color: #126796;
-}
-.navbar-default .navbar-nav > .open > a,
-.navbar-default .navbar-nav > .open > a:hover,
-.navbar-default .navbar-nav > .open > a:focus {
-  color: #fdfdfd;
-  background-color: #126796;
-}
-.navbar-default .navbar-toggle {
-  border-color: #126796;
-}
-.navbar-default .navbar-toggle:hover,
-.navbar-default .navbar-toggle:focus {
-  background-color: #126796;
-}
-.navbar-default .navbar-toggle .icon-bar {
-  background-color: #ecf0f1;
-}
-.navbar-default .navbar-collapse,
-.navbar-default .navbar-form {
-  border-color: #ecf0f1;
-}
-.navbar-default .navbar-link {
-  color: #ecf0f1;
-}
-.navbar-default .navbar-link:hover {
-  color: #fdfdfd;
-}
 
-.content-container{
-  height: 100%;
+/* ---------------------------------------------------------*/
+/*                     Content Subpages                     */
+/* ---------------------------------------------------------*/ 
+.main-naslov {
   margin: 0;
-  padding: 0;
+  padding: 1em 0;
+  color: black;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
 }
 
-.link{
-  font-family: 'Open Sans', sans-serif;  
-  background-color: #347598;
-  color: white;
-}
-
-.active{
-  color: white;
-  background-color: #126796;
-}
-
-.active:hover{
-  color: green;
-}
-
-.nav-stacked>li+li{
-  margin-top: 0px;
-}
-
-.nav-pills>li>a{
-  border-radius: 0px;
-}
-
-.navbar a{
-  font-family: 'Roboto', sans-serif;  
-}
-
-@media (max-width: 767px) {
-  .navbar{
-    border-radius: 0px;
-    margin-bottom: 0px;
-  }
-
-  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-    color: #ecf0f1;
-  }
-  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
-  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #fdfdfd;
-  }
-  .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
-  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
-  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
-    color: #fdfdfd;
-    background-color: #126796;
-  }
+.podnaslov {
+  margin: 0;
+  padding: 0.5em 0;
+  text-align: left;
+  color: black;
+  font-family: 'Roboto', sans-serif;
 }
 
 @media (min-width: 768px){
   .content{
     padding-right: 30px;
   }
-}
-
-/* ----------------------------------------------------- */
-/*                   Obavjestenja.css                    */
-/* ----------------------------------------------------- */
-.main-naslov {
-  color: black;
-  padding-top: .3em;
-  padding-bottom: .5em;
-  font-family: 'Roboto', sans-serif;  
 }
