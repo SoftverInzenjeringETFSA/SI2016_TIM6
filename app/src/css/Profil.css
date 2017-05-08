@@ -1,0 +1,24 @@
+.profil-form-group{
+	margin-top: 7px;
+	margin-bottom: 7px;
+
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+
+.profil-naslov{
+	padding-bottom: 0.8em;
+}
+
+.error-row{
+	color: red;
+	padding-left: 10px;
+}
+
+.status-profil-error{
+	color: red;
+}
+
+.status-profil-uspjeh{
+	color: green;
+}

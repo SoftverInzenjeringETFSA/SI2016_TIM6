@@ -19,16 +19,16 @@ class Predmeti extends Component {
 			semestri: [{
 				semestar: 1,
 				predmeti: [
-				{id: 1, naziv: "Matematika", ocjena: 8, profesor: "Huse Fatkić"},
-				{id: 2, naziv: "LAG", ocjena: 8, profesor: "Almasa Odžak"},
-				{id: 3, naziv: "OS", ocjena: 8, profesor: "Samir Ribić"}]
+				{id: 1, naziv: "Matematika", ocjena: 6, profesor: "Huse Fatkić"},
+				{id: 2, naziv: "Linearna algebra", ocjena: 9, profesor: "Almasa Odžak"},
+				{id: 3, naziv: "Operativni sistemi", ocjena: 7, profesor: "Samir Ribić"}]
 			},
 			{
 				semestar: 2,
 				predmeti: [
-				{id: 4, naziv: "IM2", ocjena: 8, profesor: "Huse Fatkić"},
-				{id: 5, naziv: "Elektrotehnika", ocjena: 8, profesor: "Džemo Džemić"},
-				{id: 6, naziv: "Fizika", ocjena: 8, profesor: "Suljo Suljić"}]
+				{id: 4, naziv: "Matematika 2", ocjena: 9, profesor: "Huse Fatkić"},
+				{id: 5, naziv: "Elektrotehnika", ocjena: null, profesor: "Džemo Džemić"},
+				{id: 6, naziv: "Fizika", ocjena: 10, profesor: "Suljo Suljić"}]
 			},
 			
 			]});

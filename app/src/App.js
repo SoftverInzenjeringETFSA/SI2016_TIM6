@@ -4,8 +4,6 @@ import './css/App.css';
 import Main from './Main';
 
 import LoginPage from './LoginPage';
-import Obavjestenja from './Obavjestenja';
-import Predmeti from './Predmeti';
 
 import {
   BrowserRouter as Router,
@@ -30,23 +28,43 @@ const PrivateRoute = ({ component: Component, ulogovanost, ...rest }) => (
 class App extends Component {
   constructor(){
     super();
-    this.state = {ulogovan: false};
+    this.state = {ulogovan: false,
+                  user: {}
+                };
 
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
+    this.onProfileSubmit = this.onProfileSubmit.bind(this);
   }
 
   logout(){
-    this.setState({ulogovan: false});
+    this.setState({ulogovan: false, user: {}});
   }
 
   login(){
-    this.setState({ulogovan: true});
+    this.setState({ulogovan: true,
+          user: {
+          ime: "Mujo", 
+          prezime: "Mujić", 
+          jmbg: "1234567890123", 
+          spol: "m", 
+          adresa: "Alije Izetbegovica 91", 
+          mjesto: "Zenica", 
+          telefon: "061123456", 
+          email: "mmujic@outlook.com",
+          semestar: 2
+        }
+    });
+  }
+
+  onProfileSubmit(nextProfileState){
+    this.setState(nextProfileState);
+    return true;
   }
 
   render() {
     const noviLoginPage = () => <LoginPage onLoginSubmit={() => this.login()}/>
-    const noviMainPage = () => <Main onLogout={() => this.logout()}/>
+    const noviMainPage = () => <Main onLogout={() => this.logout()} user={this.state.user} onProfileSubmit={this.onProfileSubmit}/>
 
     return (
       <Router>
@@ -63,45 +81,3 @@ class App extends Component {
   }
 
 export default App;
-
-
-/*class App extends Component {
-  render() {
-
-    return (
-      <Router>
-        <div>
-          <Route exact path="/" component={LoginPage}/>
-          <Route path="/obavjestenja" component={Main}/>
-          <Route path="/ispiti" component={Main}/>
-          <Route path="/profil" component={Main}/>
-          <Route path="/predmeti" component={Main}/>
-        </div>
-
-      </Router>);
-    }*/
-
-/*    return (
-      <div>
-      <div className="background">
-        <div className="layer">
-        </div>
-      </div>
-      <LoginPage /> </div>
-
-    );*/
-
-/*    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );*/
- 
- // }
-//}
