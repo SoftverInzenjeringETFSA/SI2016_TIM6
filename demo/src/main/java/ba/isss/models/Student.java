@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -31,21 +32,10 @@ public class Student implements Serializable {
     private Date datumRodjenja;
     private String mjestoRodjenja;
     private Integer semestar;
-    private Integer odsjekId;
     
-    /*
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idkorisnika")
-    private Nezaposleni nezaposleni;
-    
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idkorisnika")
-    private Admin admin;
-    
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idkorisnika")
-    private Poslodavci poslodavac;
-   */
+	@ManyToOne(targetEntity=Predmet.class)
+    @JoinColumn(name="odsjek_id")
+    private Odsjek odsjek;
     
     public Student() {
     	
@@ -117,17 +107,17 @@ public class Student implements Serializable {
 	public void setSemestar(Integer semestar) {
 		this.semestar = semestar;
 	}
-
-	public Integer getOdsjekId() {
-		return odsjekId;
-	}
-
-	public void setOdsjekId(Integer odsjekId) {
-		this.odsjekId = odsjekId;
-	}
 	
 	@Override
     public String toString() {
         return String.format("Korisnik[id=%d, password='%s', email='%s']", id, password, email);
     }
+
+	public Odsjek getOdsjek() {
+		return odsjek;
+	}
+
+	public void setOdsjek(Odsjek odsjek) {
+		this.odsjek = odsjek;
+	}
 }
