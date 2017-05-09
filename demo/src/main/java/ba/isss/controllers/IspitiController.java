@@ -13,7 +13,6 @@ public class IspitiController {
 
     @RequestMapping("/greeting")
     public Ispit greeting(@RequestParam(value="name", defaultValue="World") String name) {
-        return new Ispit(1,
-                            String.format(template, name));
+        return new Ispit(1, String.format(template, name));
     }
 }
