@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2017 at 12:58 PM
+-- Generation Time: May 09, 2017 at 05:44 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -382,6 +382,12 @@ ALTER TABLE `predmet`
 ALTER TABLE `prijava`
   ADD CONSTRAINT `prijava_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`),
   ADD CONSTRAINT `prijava_ibfk_2` FOREIGN KEY (`ispit_id`) REFERENCES `ispit` (`id`);
+
+--
+-- Constraints for table `student`
+--
+ALTER TABLE `student`
+  ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`odsjek_id`) REFERENCES `odsjek` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
