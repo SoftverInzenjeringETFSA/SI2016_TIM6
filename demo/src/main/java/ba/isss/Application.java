@@ -1,12 +1,12 @@
-package com.example;
+package ba.isss;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class IsssApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(IsssApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 }
