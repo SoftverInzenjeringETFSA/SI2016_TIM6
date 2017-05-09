@@ -1,9 +1,12 @@
 package ba.isss.repositories;
 
-import org.springframework.data.repository.PagingAndSortingRepository;
-
 import ba.isss.models.Student;
+import org.springframework.data.repository.Repository;
 
-public interface StudentRepository extends PagingAndSortingRepository<Student, Long> {
-
+// Public interface
+public interface StudentRepository extends Repository<Student, Integer> {
+	Student findOne(Integer primaryKey);
+	Iterable<Student> findAll();
+	Integer count();
+	boolean exists(Integer primaryKey);
 }

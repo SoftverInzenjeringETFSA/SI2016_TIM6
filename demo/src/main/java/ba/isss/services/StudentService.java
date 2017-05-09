@@ -16,12 +16,12 @@ public class StudentService {
     @Autowired
     StudentRepository repository;
      
-    public void save(Student s) {
-        repository.save(s);
-    }
-     
     public Iterable<Student> findAllStudent() {
         return repository.findAll();
     }
+    
+    public Student findOne(Integer id) {
+    	return repository.findOne(id);
+	}
 
 }
