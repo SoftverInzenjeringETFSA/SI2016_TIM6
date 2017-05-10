@@ -47,27 +47,12 @@ class App extends Component {
 
   login(){
 
-    /*this.request = makeCancelable(fetch(`${PATH_BASE}${PATH_STUDENT}${PATH_STUDENT_FIND}?${PARAM_STUDENT_STUDENT}1`));
+    this.request = makeCancelable(fetch(`${PATH_BASE}${PATH_STUDENT}${PATH_STUDENT_FIND}?${PARAM_STUDENT_STUDENT}1`));
     
     console.log("rekv: " + `${PATH_BASE}${PATH_STUDENT}${PATH_STUDENT_FIND}?${PARAM_STUDENT_STUDENT}1`);
 
     this.request.promise.then(response => response.json())
-                        .then(result => this.setState({user: result, ulogovan: true}));*/
-
-    this.setState({ulogovan: true,
-          user: {
-          id: 1,
-          ime: "Mujo", 
-          prezime: "Mujić", 
-          jmbg: "1234567890123", 
-          spol: "m", 
-          adresa: "Alije Izetbegovica 91", 
-          mjesto: "Zenica", 
-          telefon: "061123456", 
-          email: "mmujic@outlook.com",
-          semestar: 2
-        }
-    });
+                        .then(result => this.setState({user: result, ulogovan: true}));
   }
 
   onProfileSubmit(nextProfileState){
