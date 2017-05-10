@@ -15,18 +15,11 @@ public class StudentController {
 
 	@Autowired
     private StudentService studentService;
-	
- 
-    @RequestMapping(path="/findall")
-    public Iterable<Student> findAll() {
-    	return studentService.findAllStudent();
-    }
     
-    @RequestMapping(value="/find")
+    @RequestMapping(value="/get")
     @ResponseBody
     public Student findOne(@RequestParam("id") Integer id) {
     	return studentService.findOne(id);
     }
-
- 
+    
 }

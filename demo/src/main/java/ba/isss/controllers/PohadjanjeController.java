@@ -23,13 +23,6 @@ public class PohadjanjeController {
 	@Autowired
     private PredmetService predmetService;
 	
- /*
-    @RequestMapping(path="/findall")
-    public Iterable<Pohadjanje> findAll() {
-    	return studentService.findAll();
-    }
-*/
-	
     @RequestMapping(value="/find")
     @ResponseBody
     public Iterable<PredmetSemestarDto> findAllByStudent(@RequestParam("id") Integer id) {
