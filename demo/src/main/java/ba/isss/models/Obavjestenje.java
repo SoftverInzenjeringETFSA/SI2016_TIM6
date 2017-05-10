@@ -1,43 +1,63 @@
 package ba.isss.models;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+
+
 @Entity
-@Table(name="pohadjanje")
-public class Pohadjanje {
-	public Pohadjanje() {
+@Table(name="obavjestenja")
+public class Obavjestenje {
+    public Obavjestenje() {
     	
     }
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	
-	private Integer ocjena;
+	private String naslov;
+	private String tekst;
+	private Timestamp vrijeme;
 	
 	@ManyToOne(targetEntity=Predmet.class)
     @JoinColumn(name="predmet_id")
     private Predmet predmet;
-	
-	@ManyToOne(targetEntity=Student.class)
-    @JoinColumn(name="student_id")
-    private Student student;
 
-	public Integer getOcjena() {
-		return ocjena;
+	public String getNaslov() {
+		return naslov;
 	}
 
-	public void setOcjena(Integer ocjena) {
-		this.ocjena = ocjena;
+	public void setNaslov(String naslov) {
+		this.naslov = naslov;
 	}
 
+	public String getTekst() {
+		return tekst;
+	}
+
+	public void setTekst(String tekst) {
+		this.tekst = tekst;
+	}
+
+	public Timestamp getVrijeme() {
+		return vrijeme;
+	}
+
+	public void setVrijeme(Timestamp vrijeme) {
+		this.vrijeme = vrijeme;
+	}
 
     public Predmet getPredmet(){
     	return predmet;
@@ -47,11 +67,4 @@ public class Pohadjanje {
 		this.predmet = predmet;
 	}
 	
-	public Student getStudent(){
-    	return student;
-    }
-    
-	public void setStudent(Student student) {
-		this.student = student;
-	}
 }
