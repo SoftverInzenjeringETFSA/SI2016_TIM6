@@ -33,7 +33,7 @@ public class Student implements Serializable {
     private String mjestoRodjenja;
     private Integer semestar;
     
-	@ManyToOne(targetEntity=Predmet.class)
+	@ManyToOne(targetEntity=Odsjek.class)
     @JoinColumn(name="odsjek_id")
     private Odsjek odsjek;
     
