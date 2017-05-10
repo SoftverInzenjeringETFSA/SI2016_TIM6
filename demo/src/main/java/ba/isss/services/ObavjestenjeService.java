@@ -19,4 +19,6 @@ public class ObavjestenjeService {
 	    public Obavjestenje findOne(Integer id) {
 	    	return repository.findOne(id);
 		}
+	    
+	    
 }
