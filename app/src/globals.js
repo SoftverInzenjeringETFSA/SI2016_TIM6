@@ -1,0 +1,22 @@
+const PATH_BASE = 'http://localhost:8080';
+
+const PATH_OBAVJESTENJA = '/obavjestenja';
+const PATH_OBAVJESTENJA_FIND = '/find';
+const PARAM_OBAVJESTENJA_STUDENT = 'student_id=';
+
+const PATH_PREDMETI = '/pohadjanje';
+const PATH_PREDMETI_FIND = '/find';
+const PARAM_PREDMETI_STUDENT = 'id=';
+
+export {
+	PATH_BASE,
+
+	PATH_OBAVJESTENJA,
+	PATH_OBAVJESTENJA_FIND,
+	PARAM_OBAVJESTENJA_STUDENT,
+	
+	PATH_PREDMETI,
+	PATH_PREDMETI_FIND,
+	PARAM_PREDMETI_STUDENT,
+
+}

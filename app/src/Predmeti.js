@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './css/Predmeti.css';
 import PredmetDetalji from './PredmetDetalji';
-
+import {PATH_BASE, PATH_PREDMETI, PATH_PREDMETI_FIND, PARAM_PREDMETI_STUDENT} from './globals';
 
 class Predmeti extends Component {
 	constructor(props){
@@ -15,23 +15,9 @@ class Predmeti extends Component {
 	}
 
 	dohvatiPredmete(){
-		this.setState({
-			semestri: [{
-				semestar: 1,
-				predmeti: [
-				{id: 1, naziv: "Matematika", ocjena: 6, profesor: "Huse Fatkić"},
-				{id: 2, naziv: "Linearna algebra", ocjena: 9, profesor: "Almasa Odžak"},
-				{id: 3, naziv: "Operativni sistemi", ocjena: 7, profesor: "Samir Ribić"}]
-			},
-			{
-				semestar: 2,
-				predmeti: [
-				{id: 4, naziv: "Matematika 2", ocjena: 9, profesor: "Huse Fatkić"},
-				{id: 5, naziv: "Elektrotehnika", ocjena: null, profesor: "Džemo Džemić"},
-				{id: 6, naziv: "Fizika", ocjena: 10, profesor: "Suljo Suljić"}]
-			},
-			
-			]});
+        fetch(`${PATH_BASE}${PATH_PREDMETI}${PATH_PREDMETI_FIND}?${PARAM_PREDMETI_STUDENT}${this.props.user.id}`)
+        	.then(response => response.json())
+        	.then(result => this.setState({semestri: result}));
 	}
 
 	componentDidMount() {

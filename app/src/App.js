@@ -42,8 +42,10 @@ class App extends Component {
   }
 
   login(){
+
     this.setState({ulogovan: true,
           user: {
+          id: 1,
           ime: "Mujo", 
           prezime: "Mujić", 
           jmbg: "1234567890123", 

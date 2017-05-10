@@ -47,6 +47,7 @@ public class PredmetService {
 			
 			PredmetDto predmet = new PredmetDto(
 					pohadjanje.getPredmet().getId(),
+					pohadjanje.getPredmet().getNaziv(),
 					pohadjanje.getOcjena(),
 					pohadjanje.getPredmet().getProfesor().toString()
 				);

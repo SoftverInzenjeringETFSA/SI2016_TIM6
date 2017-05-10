@@ -3,6 +3,7 @@ package ba.isss.controllers;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,6 +18,7 @@ import ba.isss.services.PohadjanjeService;
 import ba.isss.services.PredmetService;
 
 @RestController
+@CrossOrigin
 @RequestMapping(path="/pohadjanje")
 public class PohadjanjeController {
 	

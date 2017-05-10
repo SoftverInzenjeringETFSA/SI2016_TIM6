@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './css/Obavjestenja.css';
+import {PATH_BASE, PATH_OBAVJESTENJA, PATH_OBAVJESTENJA_FIND, PARAM_OBAVJESTENJA_STUDENT} from './globals';
 
 class Obavjestenja extends Component {
 	constructor(props){
@@ -19,16 +20,10 @@ class Obavjestenja extends Component {
 	}
 
 	dohvatiObavijesti(){
-		const updatedState = Object.assign({}, this.state);
-		
-		updatedState.obavijesti = [
-          {id:1, naslov: "Et pluribus Unum", tekst: this.lipsum},
-          {id:2, naslov: "Et pluribus Unum", tekst: this.lipsum},
-          {id:3, naslov: "Et pluribus Unum", tekst: this.lipsum},
-          {id:4, naslov: "Et pluribus Unum", tekst: this.lipsum}
-        ];
 
-		this.setState(updatedState);
+        fetch(`${PATH_BASE}${PATH_OBAVJESTENJA}${PATH_OBAVJESTENJA_FIND}?${PARAM_OBAVJESTENJA_STUDENT}${this.props.user.id}`)
+        	.then(response => response.json())
+        	.then(result => {this.setState({obavijesti: result});});		
 	}
 
 	render() {
