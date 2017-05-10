@@ -56,13 +56,19 @@ class Profil extends Component {
 
 	onChangeMjesto(event){
 		const updatedState = Object.assign({}, this.state);
-		updatedState.user.mjesto = event.target.value;
+		updatedState.user.mjestoRodjenja = event.target.value;
 		this.setState({updatedState});
 	}
 
 	onChangeTelefon(event){
 		const updatedState = Object.assign({}, this.state);
 		updatedState.user.telefon = event.target.value;
+		this.setState({updatedState});
+	}
+
+	onChangeDatumRodjenja(event){
+		const updatedState = Object.assign({}, this.state);
+		updatedState.user.datumRodjenja = event.target.value;
 		this.setState({updatedState});
 	}
 
@@ -95,7 +101,7 @@ class Profil extends Component {
 			nextErrorCodes.push("AD");
 		}
 
-		if (this.state.user.mjesto.length <= 0){
+		if (this.state.user.mjestoRodjenja.length <= 0){
 			nextErrorCodes.push("MJ");
 		}
 
@@ -185,15 +191,34 @@ class Profil extends Component {
 			  null
 			  }
 
+  			  <div className="form-group profil-form-group">
+			    <label htmlFor="mjesto1" className="col-sm-2 control-label">Datum rođenja:</label>
+			    <div className="col-sm-9">
+			      <input type="date" className="form-control" id="mjesto1" placeholder="Mjesto" onChange={this.onChangeDatumRodjenja} value={this.state.user.datumRodjenja} />
+			    </div>
+			  </div>
+
+			  {this.state.errorCodes.find(x => x === "MJ")
+			  ? <div className="row error-row">
+			  	<div className="col-sm-2">
+			  	</div>
+			    <div className="col-sm-9">
+			    	<span>Morate unijeti mjesto u kojem živite.</span>
+			    </div>
+			  </div>
+			  :
+			  null
+			  }
+
 			  <div className="form-group profil-form-group">
 			    <label className="col-sm-2 control-label">Spol:</label>
 			    <div className="col-sm-9" onChange={this.onChangeSpol}>
 			      <label className="radio-inline">
-	  				<input type="radio" name="spolOpcije" id="spol1" value="m" checked={this.state.user.spol === "m"}/> Muški
+	  				<input type="radio" name="spolOpcije" id="spol1" value="M" checked={this.state.user.spol === "M"}/> Muški
 				</label>
 
 			      <label className="radio-inline">
-	  				<input type="radio" name="spolOpcije" id="spol2" value="f" checked={this.state.user.spol === "f"}/> Ženski
+	  				<input type="radio" name="spolOpcije" id="spol2" value="F" checked={this.state.user.spol === "F"}/> Ženski
 				</label>
 			    </div>
 			  </div>
@@ -220,7 +245,7 @@ class Profil extends Component {
 			  <div className="form-group profil-form-group">
 			    <label htmlFor="mjesto1" className="col-sm-2 control-label">Mjesto:</label>
 			    <div className="col-sm-9">
-			      <input type="text" className="form-control" id="mjesto1" placeholder="Mjesto" onChange={this.onChangeMjesto} value={this.state.user.mjesto} />
+			      <input type="text" className="form-control" id="mjesto1" placeholder="Mjesto" onChange={this.onChangeMjesto} value={this.state.user.mjestoRodjenja} />
 			    </div>
 			  </div>
 

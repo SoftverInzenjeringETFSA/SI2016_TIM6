@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './css/Predmeti.css';
 import PredmetDetalji from './PredmetDetalji';
-import {PATH_BASE, PATH_PREDMETI, PATH_PREDMETI_FIND, PARAM_PREDMETI_STUDENT} from './globals';
+import Error from './Error';
+import {makeCancelable, PATH_BASE, PATH_PREDMETI, PATH_PREDMETI_FIND, PARAM_PREDMETI_STUDENT} from './globals';
+
 
 class Predmeti extends Component {
 	constructor(props){
@@ -9,15 +11,23 @@ class Predmeti extends Component {
 		this.state = {
 			semestri: [],
 			izabraniPredmet: null,
+			errorMessage: null,
 		};
 		this.dohvatiPredmete = this.dohvatiPredmete.bind(this);
 		this.izborPredmeta = this.izborPredmeta.bind(this);
+		this.request = null;
 	}
 
 	dohvatiPredmete(){
-        fetch(`${PATH_BASE}${PATH_PREDMETI}${PATH_PREDMETI_FIND}?${PARAM_PREDMETI_STUDENT}${this.props.user.id}`)
-        	.then(response => response.json())
-        	.then(result => this.setState({semestri: result}));
+        this.request = makeCancelable(fetch(`${PATH_BASE}${PATH_PREDMETI}${PATH_PREDMETI_FIND}?${PARAM_PREDMETI_STUDENT}${this.props.user.id}`));
+
+        this.request.promise.then(response => response.json())
+        	.then(result => this.setState({semestri: result}))
+        	.catch(error => this.setState({errorMessage: error + ""}));
+	}
+
+	componentWillUnmount(){
+		this.request.cancel();
 	}
 
 	componentDidMount() {
@@ -57,23 +67,35 @@ class Predmeti extends Component {
 		);}
 			);
 
-		return (
-			<div>
-				<h1 className="main-naslov">Pregled predmeta</h1>
-				<div className="row">
-					<div className="panel-group col-md-3" id="accordion">
-						{listaSemestara}
-					</div>
+		if (!this.state.errorMessage){
+			return (
+				<div>
+					<h1 className="main-naslov">Pregled predmeta</h1>
+					<div className="row">
+						<div className="panel-group col-md-3" id="accordion">
+							{listaSemestara}
+						</div>
 
-					{this.state.izabraniPredmet
-					?<div className="col-md-9">
-						<PredmetDetalji predmet={this.state.izabraniPredmet} />
+						{this.state.izabraniPredmet
+						?<div className="col-md-9">
+							<PredmetDetalji predmet={this.state.izabraniPredmet} />
+						</div>
+						: <div className="col-md-9"></div>
+					}
 					</div>
-					: <div className="col-md-9"></div>
-				}
 				</div>
-			</div>
-		);
+			);
+		}
+		else{
+			return (
+				<div>
+					<h1 className="main-naslov">Pregled predmeta</h1>
+					<div className="row">
+						<Error errorMessage={this.state.errorMessage}/>
+					</div>
+				</div>
+				);
+		}
 	}
 }
 

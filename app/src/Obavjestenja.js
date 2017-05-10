@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
 import './css/Obavjestenja.css';
-import {PATH_BASE, PATH_OBAVJESTENJA, PATH_OBAVJESTENJA_FIND, PARAM_OBAVJESTENJA_STUDENT} from './globals';
+import {PATH_BASE, PATH_OBAVJESTENJA, PATH_OBAVJESTENJA_FIND, PARAM_OBAVJESTENJA_STUDENT, makeCancelable} from './globals';
+
+import Error from './Error';
 
 class Obavjestenja extends Component {
 	constructor(props){
 		super(props);
-		this.state = {obavijesti: []};
+		this.state = {obavijesti: [], errorMessage: null};
 		this.dohvatiObavijesti = this.dohvatiObavijesti.bind(this);
 
-	    this.lipsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris rhoncus fringilla erat."
-      + "Nullam eros leo, euismod et erat ut, congue tristique est. Sed eu varius lorem." 
-      + "Nam semper ex sapien, non porttitor sem scelerisque mattis. Sed imperdiet arcu in viverra interdum."
-      + "Nunc id leo imperdiet turpis maximus condimentum ut quis odio.";
-
+		this.request = null;
 	}
 
 	componentDidMount() {
@@ -20,11 +18,17 @@ class Obavjestenja extends Component {
 	}
 
 	dohvatiObavijesti(){
+        this.request = makeCancelable(fetch(`${PATH_BASE}${PATH_OBAVJESTENJA}${PATH_OBAVJESTENJA_FIND}?${PARAM_OBAVJESTENJA_STUDENT}${this.props.user.id}`));
 
-        fetch(`${PATH_BASE}${PATH_OBAVJESTENJA}${PATH_OBAVJESTENJA_FIND}?${PARAM_OBAVJESTENJA_STUDENT}${this.props.user.id}`)
-        	.then(response => response.json())
-        	.then(result => {this.setState({obavijesti: result});});		
+        this.request.promise.then(response => response.json())
+        	.then(result => this.setState({obavijesti: result}))
+        	.catch(error => this.setState({errorMessage: error + ""}));
 	}
+
+	componentWillUnmount(){
+		this.request.cancel();
+	}
+
 
 	render() {
 		const obavijesti = this.state.obavijesti.map((i) => (
@@ -38,7 +42,7 @@ class Obavjestenja extends Component {
 		<div>
 			<h1 className="main-naslov">Obavještenja</h1>
 			<div className="list-group">
-				{obavijesti}
+				{!this.state.errorMessage? obavijesti : <Error errorMessage={this.state.errorMessage}/>}
 			</div>
 		</div>
 	);

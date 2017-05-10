@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './css/Ispiti.css';
-
+import Error from './Error';
 
 class Ispiti extends Component {
   constructor(props){
     super(props);
     this.state = {ispiti: [],
                   prijavljeniIspiti: [],
+                  errorMessage: null,
                 };
 
     this.prijavaIspita = this.prijavaIspita.bind(this);
@@ -60,11 +61,20 @@ class Ispiti extends Component {
       <tr key={i.id}><td>{i.naziv}</td><td>{i.datum}</td><td>{i.termin}</td><td>{<button className="btn btn-primary btn-xs" onClick={() => this.odjavaIspita(i.id)}>Odjavi</button>}</td></tr>
     ));
 
+    if (this.state.errorMessage){
+      return (
+        <div>
+          <h1 className="main-naslov">Termini ispita</h1>
+          <Error errorMessage={this.state.errorMessage}/>
+        </div>
+        );
+    }
     return (
     	<div>
+        <h1 className="main-naslov">Termini ispita</h1>
+
       {this.state.ispiti.length > 0
         ? <div>
-  			<h1 className="main-naslov">Termini ispita</h1>
   			<h2 className="podnaslov">Objavljeni termini ispita:</h2>
   			<table className="table table-striped">
   				<tbody>

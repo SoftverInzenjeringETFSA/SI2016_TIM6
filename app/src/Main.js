@@ -48,12 +48,6 @@ const navigationItems = [
 class Main extends Component {
   constructor(){
     super();
-
-    var lipsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris rhoncus fringilla erat."
-      + "Nullam eros leo, euismod et erat ut, congue tristique est. Sed eu varius lorem." 
-      + "Nam semper ex sapien, non porttitor sem scelerisque mattis. Sed imperdiet arcu in viverra interdum."
-      + "Nunc id leo imperdiet turpis maximus condimentum ut quis odio.";
-
     this.state = {};
   }
 

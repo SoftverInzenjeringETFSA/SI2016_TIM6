@@ -85,3 +85,11 @@
     padding-right: 30px;
   }
 }
+
+.fetch-error {
+   padding-left: 15px;
+}
+
+.fetch-error .podnaslov{
+  color: red;
+}

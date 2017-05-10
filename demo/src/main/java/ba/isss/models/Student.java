@@ -29,6 +29,9 @@ public class Student implements Serializable {
     private String email;
     private String password;
     private String jmbg;
+    private String spol;
+    private String adresa;
+    private String telefon;
     private Date datumRodjenja;
     private String mjestoRodjenja;
     private Integer semestar;
@@ -119,5 +122,29 @@ public class Student implements Serializable {
 
 	public void setOdsjek(Odsjek odsjek) {
 		this.odsjek = odsjek;
+	}
+
+	public String getSpol() {
+		return spol;
+	}
+
+	public void setSpol(String spol) {
+		this.spol = spol;
+	}
+
+	public String getAdresa() {
+		return adresa;
+	}
+
+	public void setAdresa(String adresa) {
+		this.adresa = adresa;
+	}
+
+	public String getTelefon() {
+		return telefon;
+	}
+
+	public void setTelefon(String telefon) {
+		this.telefon = telefon;
 	}
 }

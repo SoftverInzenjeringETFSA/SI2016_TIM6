@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './css/LoginPage.css';
 
 
+
+
 class LoginPage extends Component {
   constructor(props){
     super(props);
@@ -25,7 +27,7 @@ class LoginPage extends Component {
               </div>
 
               <form className="v-center form-horizontal col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-3 col-md-offset-3" 
-                    onSubmit={() => this.props.onLoginSubmit()}>
+                    >
                     
                 <div className="form-group">
                     <input type="text" className="form-control" placeholder="Ime"/>
@@ -36,7 +38,7 @@ class LoginPage extends Component {
                 </div>
       
                 <div className="form-group">
-                    <input type="submit" className="btn btn-primary" value="Prijava" />
+                  <button type="button" className="btn btn-primary" onClick={() => this.props.onLoginSubmit()}>Prijava</button>
                 </div>
               </form>
           </div>
