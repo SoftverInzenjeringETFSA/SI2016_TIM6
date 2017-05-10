@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import './css/App.css';
 import Main from './Main';
 
+import {makeCancelable, PATH_BASE, PATH_STUDENT, PATH_STUDENT_FIND, PARAM_STUDENT_STUDENT} from './globals';
+
 import LoginPage from './LoginPage';
 
 import {
@@ -35,6 +37,8 @@ class App extends Component {
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.onProfileSubmit = this.onProfileSubmit.bind(this);
+
+    this.request = null;
   }
 
   logout(){
@@ -42,6 +46,13 @@ class App extends Component {
   }
 
   login(){
+
+    /*this.request = makeCancelable(fetch(`${PATH_BASE}${PATH_STUDENT}${PATH_STUDENT_FIND}?${PARAM_STUDENT_STUDENT}1`));
+    
+    console.log("rekv: " + `${PATH_BASE}${PATH_STUDENT}${PATH_STUDENT_FIND}?${PARAM_STUDENT_STUDENT}1`);
+
+    this.request.promise.then(response => response.json())
+                        .then(result => this.setState({user: result, ulogovan: true}));*/
 
     this.setState({ulogovan: true,
           user: {
