@@ -34,7 +34,15 @@ public class Predmet  {
 	@ManyToOne(targetEntity=Odsjek.class)
     @JoinColumn(name="odsjek_id")
     private Odsjek odsjek;
+	
+	public Integer getId() {
+		return id;
+	}
 
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
 	public String getNaziv() {
 		return naziv;
 	}
