@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2017 at 12:19 PM
+-- Generation Time: May 10, 2017 at 02:48 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -120,10 +120,8 @@ CREATE TABLE `pohadjanje` (
 --
 
 INSERT INTO `pohadjanje` (`id`, `ocjena`, `predmet_id`, `student_id`) VALUES
-(1, 6, 1, 1),
-(2, 8, 2, 2),
-(3, 10, 2, 1),
-(4, 9, 4, 1);
+(1, NULL, 1, 1),
+(2, 8, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -207,23 +205,26 @@ CREATE TABLE `student` (
   `ime` varchar(256) COLLATE utf8_slovenian_ci NOT NULL,
   `prezime` varchar(256) COLLATE utf8_slovenian_ci NOT NULL,
   `email` varchar(256) COLLATE utf8_slovenian_ci NOT NULL,
+  `spol` varchar(1) COLLATE utf8_slovenian_ci NOT NULL,
   `password` varchar(256) COLLATE utf8_slovenian_ci NOT NULL,
   `jmbg` varchar(13) COLLATE utf8_slovenian_ci NOT NULL,
   `datum_rodjenja` date NOT NULL,
   `mjesto_rodjenja` varchar(256) COLLATE utf8_slovenian_ci NOT NULL,
   `semestar` int(11) NOT NULL,
-  `odsjek_id` int(11) NOT NULL
+  `odsjek_id` int(11) NOT NULL,
+  `adresa` varchar(256) COLLATE utf8_slovenian_ci NOT NULL,
+  `telefon` varchar(256) COLLATE utf8_slovenian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci;
 
 --
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`id`, `ime`, `prezime`, `email`, `password`, `jmbg`, `datum_rodjenja`, `mjesto_rodjenja`, `semestar`, `odsjek_id`) VALUES
-(1, 'Alija', 'Izetbegović', 'zlatna_kasika@sda.ba', '123123', '1122331122334', '2017-05-08', 'Bosanski Šamac', 1, 1),
-(2, 'Alija', 'Izetbegović', 'zlatna_kasika@sda.ba', '123123', '1122331122334', '2017-05-08', 'Bosanski Šamac', 1, 1),
-(3, 'Mujo', 'Mujić', 'mmujic1@etf.unsa.ba', 'pass', '1234545984521', '2017-05-01', 'Gusinje', 1, 1),
-(4, 'Suljo', 'Suljić', 'ssuljic@etf.unsa.ba', 'pass', '1234567890123', '2017-05-02', 'Sarajevo', 2, 1);
+INSERT INTO `student` (`id`, `ime`, `prezime`, `email`, `spol`, `password`, `jmbg`, `datum_rodjenja`, `mjesto_rodjenja`, `semestar`, `odsjek_id`, `adresa`, `telefon`) VALUES
+(1, 'Alija', 'Izetbegović', 'zlatna_kasika@sda.ba', 'M', '123123', '1122331122334', '2017-05-08', 'Bosanski Šamac', 1, 1, 'Sarajevska 2', '033256322'),
+(2, 'Alija', 'Izetbegović', 'zlatna_kasika@sda.ba', 'M', '123123', '1122331122334', '2017-05-08', 'Bosanski Šamac', 1, 1, 'Ramiza Salcina 3', '061254635'),
+(3, 'Mujo', 'Mujić', 'mmujic1@etf.unsa.ba', 'M', 'pass', '1234545984521', '2017-05-01', 'Gusinje', 1, 1, 'Pofalićka 2', '033568984'),
+(4, 'Suljo', 'Suljić', 'ssuljic@etf.unsa.ba', 'M', 'pass', '1234567890123', '2017-05-02', 'Sarajevo', 2, 1, 'Podigmanska 12', '061547896');
 
 --
 -- Indexes for dumped tables
@@ -321,7 +322,7 @@ ALTER TABLE `odsjek`
 -- AUTO_INCREMENT for table `pohadjanje`
 --
 ALTER TABLE `pohadjanje`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `predmet`
 --
@@ -384,6 +385,12 @@ ALTER TABLE `predmet`
 ALTER TABLE `prijava`
   ADD CONSTRAINT `prijava_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`),
   ADD CONSTRAINT `prijava_ibfk_2` FOREIGN KEY (`ispit_id`) REFERENCES `ispit` (`id`);
+
+--
+-- Constraints for table `student`
+--
+ALTER TABLE `student`
+  ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`odsjek_id`) REFERENCES `odsjek` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
