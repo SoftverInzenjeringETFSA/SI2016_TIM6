@@ -24,8 +24,8 @@ public class ObavjestenjaController {
     
     @RequestMapping(value="/find")
     @ResponseBody
-    public Obavjestenje findOne(@RequestParam("id") Integer id) {
-    	return studentService.findOne(id);
+    public Iterable<Obavjestenje> find(@RequestParam("student_id") Integer id) {
+    	return studentService.findByStudent(id);
     }
 
 }
