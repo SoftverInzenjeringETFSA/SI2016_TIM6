@@ -1,10 +1,7 @@
 package ba.isss.controllers;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +15,7 @@ public class StudentController {
 
 	@Autowired
     private StudentService studentService;
+	
  
     @RequestMapping(path="/findall")
     public Iterable<Student> findAll() {
@@ -29,5 +27,6 @@ public class StudentController {
     public Student findOne(@RequestParam("id") Integer id) {
     	return studentService.findOne(id);
     }
+
  
 }
