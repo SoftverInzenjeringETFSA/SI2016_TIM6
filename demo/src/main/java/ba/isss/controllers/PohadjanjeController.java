@@ -7,27 +7,25 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import ba.isss.models.Obavjestenje;
+import ba.isss.models.Pohadjanje;
 import ba.isss.services.ObavjestenjeService;
+import ba.isss.services.PohadjanjeService;
 
 @RestController
 @RequestMapping(path="/pohadjanje")
 public class PohadjanjeController {
 	
 	@Autowired
-    private ObavjestenjeService studentService;
+    private PohadjanjeService studentService;
  
     @RequestMapping(path="/findall")
-    public Iterable<Obavjestenje> findAll() {
+    public Iterable<Pohadjanje> findAll() {
     	return studentService.findAll();
     }
     
     @RequestMapping(value="/find")
     @ResponseBody
-    public Obavjestenje findOne(@RequestParam("id") Integer id) {
+    public Pohadjanje findAllByStudent(@RequestParam("id") Integer id) {
     	return studentService.findOne(id);
     }
-    
-    
-
-
 }

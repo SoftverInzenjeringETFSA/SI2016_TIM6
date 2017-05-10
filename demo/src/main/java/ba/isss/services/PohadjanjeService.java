@@ -20,6 +20,11 @@ public class PohadjanjeService {
 		return repository.findOne(id);
 	}
 	
+	public Iterable<Pohadjanje> findAllByStudent(Integer id)
+	{ 
+		return repository.findAllByStudent(id);
+	}
+	
 	
 }
 
