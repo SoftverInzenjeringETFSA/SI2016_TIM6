@@ -1,5 +1,6 @@
-# SI2016_TIM6
-
+# ISSS - Studentska stranica
+# Imamović Solutions
+## Software Development Agency
 
 ## Uputstvo za pokretanje
 
