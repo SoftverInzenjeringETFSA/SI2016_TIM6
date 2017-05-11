@@ -1,4 +1,7 @@
+<p align="center">
 # ISSS - Studentska stranica
+</p>
+
 ### Imamović Solutions
 #### Software Development Agency
 
