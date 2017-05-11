@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './css/Ispiti.css';
 import Error from './Error';
+import {PATH_BASE, PATH_ISPIT, PATH_ISPIT_PRIJAVLJENI_FIND, PATH_ISPIT_NEPRIJAVLJENI_FIND, PARAM_ISPIT_STUDENT, makeCancelable} from './globals';
 
 class Ispiti extends Component {
   constructor(props){
@@ -13,12 +14,33 @@ class Ispiti extends Component {
     this.prijavaIspita = this.prijavaIspita.bind(this);
     this.odjavaIspita = this.odjavaIspita.bind(this);
     this.dohvatiIspite = this.dohvatiIspite.bind(this);
+    this.request1 = null;
+    this.request2 = null;
   }
 
   componentDidMount() {
     this.dohvatiIspite();
   }
 
+  dohvatiIspite(){
+        this.request1 = makeCancelable(fetch(`${PATH_BASE}${PATH_ISPIT}${PATH_ISPIT_NEPRIJAVLJENI_FIND}?${PARAM_ISPIT_STUDENT}${this.props.user.id}`));
+        this.request2 = makeCancelable(fetch(`${PATH_BASE}${PATH_ISPIT}${PATH_ISPIT_PRIJAVLJENI_FIND}?${PARAM_ISPIT_STUDENT}${this.props.user.id}`));
+
+        this.request1.promise.then(response => response.json())
+          .then(result => this.setState({ispiti: result}))
+          .catch(error => this.setState({errorMessage: error + ""}));
+
+        this.request2.promise.then(response => response.json())
+          .then(result => this.setState({prijavljeniIspiti: result}))
+          .catch(error => this.setState({errorMessage: error + ""}));
+  }
+
+  componentWillUnmount(){
+    this.request1.cancel();
+    this.request2.cancel();
+  }
+
+  /*
   dohvatiIspite(){
     const updatedState = Object.assign({}, this.state);
     
@@ -35,6 +57,7 @@ class Ispiti extends Component {
 
     this.setState(updatedState);
   }
+  */
 
   prijavaIspita(ispitId){
     const foundIndex = this.state.ispiti.findIndex(x => x.id === ispitId);
@@ -54,11 +77,11 @@ class Ispiti extends Component {
 
   render() {
     const ispiti = this.state.ispiti.map((i) => (
-      <tr key={i.id}><td>{i.naziv}</td><td>{i.datum}</td><td>{i.termin}</td><td>{i.status != "Slobodan"? i.status : <button className="btn btn-primary btn-xs" onClick={() => this.prijavaIspita(i.id)}>Prijavi</button>}</td></tr>
+      <tr key={i.id}><td>{i.predmet.naziv}</td><td>{i.datum}</td><td>{i.termin}</td><td>{i.status != "Slobodan"? i.status : <button className="btn btn-primary btn-xs" onClick={() => this.prijavaIspita(i.id)}>Prijavi</button>}</td></tr>
     ));
 
     const prijavljeniIspiti = this.state.prijavljeniIspiti.map((i) => (
-      <tr key={i.id}><td>{i.naziv}</td><td>{i.datum}</td><td>{i.termin}</td><td>{<button className="btn btn-primary btn-xs" onClick={() => this.odjavaIspita(i.id)}>Odjavi</button>}</td></tr>
+      <tr key={i.id}><td>{i.predmet.naziv}</td><td>{i.datum}</td><td>{i.termin}</td><td>{<button className="btn btn-primary btn-xs" onClick={() => this.odjavaIspita(i.id)}>Odjavi</button>}</td></tr>
     ));
 
     if (this.state.errorMessage){

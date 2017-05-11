@@ -12,6 +12,11 @@ const PATH_STUDENT = '/student';
 const PATH_STUDENT_FIND = '/get';
 const PARAM_STUDENT_STUDENT = 'id=';
 
+const PATH_ISPIT = '/ispit';
+const PATH_ISPIT_PRIJAVLJENI_FIND = '/find/prijavljeni';
+const PATH_ISPIT_NEPRIJAVLJENI_FIND = '/find/neprijavljeni';
+const PARAM_ISPIT_STUDENT = 'student_id=';
+
 const makeCancelable = (promise) => {
   let hasCanceled_ = false;
 
@@ -48,4 +53,9 @@ export {
   PATH_STUDENT,
   PATH_STUDENT_FIND,
   PARAM_STUDENT_STUDENT,
+
+  PATH_ISPIT,
+  PATH_ISPIT_PRIJAVLJENI_FIND,
+  PATH_ISPIT_NEPRIJAVLJENI_FIND,
+  PARAM_ISPIT_STUDENT,
 }

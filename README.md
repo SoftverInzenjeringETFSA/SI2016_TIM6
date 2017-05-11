@@ -67,5 +67,6 @@
 * Frontend:
 	* Popraviti bug na login stranici (kada je visina stranice manja od slike)
 	* Povezati sa nedovršenim backend servisima
+	* Parsirati timestamp kao datum i vrijeme ispita u komponenti Ispiti.js
 
 * Autentikacija korisnika
