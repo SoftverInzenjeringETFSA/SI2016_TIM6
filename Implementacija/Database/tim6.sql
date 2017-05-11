@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2017 at 03:21 PM
+-- Generation Time: May 11, 2017 at 01:25 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `isss_db`
+-- Database: `tim6`
 --
 
 -- --------------------------------------------------------
@@ -26,7 +26,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `fakultet`
 --
 
-DROP TABLE IF EXISTS `fakultet`;
 CREATE TABLE `fakultet` (
   `id` int(11) NOT NULL,
   `naziv` varchar(256) COLLATE utf8_slovenian_ci NOT NULL
@@ -46,7 +45,6 @@ INSERT INTO `fakultet` (`id`, `naziv`) VALUES
 -- Table structure for table `ispit`
 --
 
-DROP TABLE IF EXISTS `ispit`;
 CREATE TABLE `ispit` (
   `id` int(11) NOT NULL,
   `prijave_do` datetime NOT NULL,
@@ -68,7 +66,6 @@ INSERT INTO `ispit` (`id`, `prijave_do`, `termin`, `predmet_id`) VALUES
 -- Table structure for table `obavjestenja`
 --
 
-DROP TABLE IF EXISTS `obavjestenja`;
 CREATE TABLE `obavjestenja` (
   `id` int(11) NOT NULL,
   `naslov` varchar(256) COLLATE utf8_slovenian_ci NOT NULL,
@@ -91,7 +88,6 @@ INSERT INTO `obavjestenja` (`id`, `naslov`, `tekst`, `vrijeme`, `predmet_id`) VA
 -- Table structure for table `odsjek`
 --
 
-DROP TABLE IF EXISTS `odsjek`;
 CREATE TABLE `odsjek` (
   `id` int(11) NOT NULL,
   `naziv` varchar(256) COLLATE utf8_slovenian_ci NOT NULL,
@@ -112,7 +108,6 @@ INSERT INTO `odsjek` (`id`, `naziv`, `fakultet_id`) VALUES
 -- Table structure for table `pohadjanje`
 --
 
-DROP TABLE IF EXISTS `pohadjanje`;
 CREATE TABLE `pohadjanje` (
   `id` int(11) NOT NULL,
   `ocjena` int(11) DEFAULT NULL,
@@ -136,7 +131,6 @@ INSERT INTO `pohadjanje` (`id`, `ocjena`, `predmet_id`, `student_id`) VALUES
 -- Table structure for table `predmet`
 --
 
-DROP TABLE IF EXISTS `predmet`;
 CREATE TABLE `predmet` (
   `id` int(11) NOT NULL,
   `naziv` varchar(256) COLLATE utf8_slovenian_ci NOT NULL,
@@ -163,7 +157,6 @@ INSERT INTO `predmet` (`id`, `naziv`, `semestar`, `profesor_id`, `odsjek_id`) VA
 -- Table structure for table `prijava`
 --
 
-DROP TABLE IF EXISTS `prijava`;
 CREATE TABLE `prijava` (
   `id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
@@ -184,7 +177,6 @@ INSERT INTO `prijava` (`id`, `student_id`, `ispit_id`) VALUES
 -- Table structure for table `profesor`
 --
 
-DROP TABLE IF EXISTS `profesor`;
 CREATE TABLE `profesor` (
   `id` int(11) NOT NULL,
   `ime` varchar(256) COLLATE utf8_slovenian_ci NOT NULL,
@@ -210,7 +202,6 @@ INSERT INTO `profesor` (`id`, `ime`, `prezime`, `email`) VALUES
 -- Table structure for table `student`
 --
 
-DROP TABLE IF EXISTS `student`;
 CREATE TABLE `student` (
   `id` int(11) NOT NULL,
   `ime` varchar(256) COLLATE utf8_slovenian_ci NOT NULL,
