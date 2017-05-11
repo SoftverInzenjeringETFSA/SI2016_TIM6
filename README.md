@@ -1,8 +1,8 @@
-<p align="center">
-# ISSS - Studentska stranica
-</p>
+<h1 align="center">
+ISSS - Studentska stranica
+</h1>
 
-### Imamović Solutions
+<h3 align="center">Imamović Solutions</h3>
 #### Software Development Agency
 
 ## Uputstvo za pokretanje
