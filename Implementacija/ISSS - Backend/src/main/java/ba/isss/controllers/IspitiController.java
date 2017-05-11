@@ -15,11 +15,6 @@ public class IspitiController {
 	
 	@Autowired
     private IspitService ispitService;
- 
-    @RequestMapping(path="/findall")
-    public Iterable<Ispit> findAll() {
-    	return ispitService.findAll();
-    }
     
     @RequestMapping(value="/find")
     @ResponseBody

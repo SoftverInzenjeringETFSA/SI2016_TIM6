@@ -16,12 +16,7 @@ public class ObavjestenjaController {
 
 	@Autowired
     private ObavjestenjeService studentService;
- 
-    @RequestMapping(path="/findall")
-    public Iterable<Obavjestenje> findAll() {
-    	return studentService.findAll();
-    }
-    
+     
     @RequestMapping(value="/find")
     @ResponseBody
     public Iterable<Obavjestenje> find(@RequestParam("student_id") Integer id) {

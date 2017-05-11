@@ -22,6 +22,4 @@ public class StudentController {
     	return studentService.findOne(id);
     }
     
-    
-    
 }
