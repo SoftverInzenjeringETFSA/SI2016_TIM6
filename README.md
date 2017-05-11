@@ -1,6 +1,6 @@
 # ISSS - Studentska stranica
-# Imamović Solutions
-## Software Development Agency
+### Imamović Solutions
+#### Software Development Agency
 
 ## Uputstvo za pokretanje
 
