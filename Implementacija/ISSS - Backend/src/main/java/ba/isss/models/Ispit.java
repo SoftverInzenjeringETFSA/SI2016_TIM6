@@ -38,7 +38,7 @@ public Ispit() {
 		this.prijave_do = prijave_do;
 	}
 
-	public Timestamp getTermino() {
+	public Timestamp getTermin() {
 		return termin;
 	}
 

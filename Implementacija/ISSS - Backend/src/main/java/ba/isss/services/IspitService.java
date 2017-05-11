@@ -20,8 +20,13 @@ public class IspitService {
     	return repository.findOne(id);
 	}
     
-    public Iterable<Ispit> findByStudent(Integer id){
-    	return repository.findAllForStudent(id);
+    public Iterable<Ispit> findPrijavljeniByStudent(Integer id){
+    	return repository.findAllPrijavljeniForStudent(id);
+	}
+    
+    public Iterable<Ispit> findNePrijavljeniByStudent(Integer id){
+    	return repository.findAllNePrijavljeniForStudent(id);
 	}
 
+    
 }

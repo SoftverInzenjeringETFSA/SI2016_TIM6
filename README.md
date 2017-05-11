@@ -39,9 +39,13 @@
 	
     	Vraća podatke o studentu
         
-    * /ispit/find?student_id=*
+    * /ispit/find/prijavljeni?student_id=*
 	
-    	Vraća sve objavljene termine ispita na predmetima koje student pohađa
+    	Vraća sve prijavljene termine ispita
+
+    * /ispit/find/neprijavljeni?student_id=*
+	
+    	Vraća sve objavljene termine ispita na koje student nije prijavljen, a čiji predmet pohađa
 
 * Frontend:
 	* login stranica
@@ -55,7 +59,6 @@
 ### TODO
 
 * Backend:
-	* Izmijeniti postojeći ispit servis, tako da se razdvoji dohvaćanje prijavljenih i ne prijavljenih ispita
 	* Servis koji omogućava prijavu i odjavu termina ispita
 	* Promjena ličnih podataka
 	* Validacija podataka

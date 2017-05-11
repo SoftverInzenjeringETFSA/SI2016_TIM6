@@ -18,9 +18,15 @@ public class IspitiController {
 	@Autowired
     private IspitService ispitService;
     
-    @RequestMapping(value="/find")
+    @RequestMapping(value="/find/prijavljeni")
     @ResponseBody
-    public Iterable<Ispit> find(@RequestParam("student_id") Integer id) {
-    	return ispitService.findByStudent(id);
+    public Iterable<Ispit> findPrijavljeni(@RequestParam("student_id") Integer id) {
+    	return ispitService.findPrijavljeniByStudent(id);
+    }
+    
+    @RequestMapping(value="/find/neprijavljeni")
+    @ResponseBody
+    public Iterable<Ispit> findNePrijavljeni(@RequestParam("student_id") Integer id) {
+    	return ispitService.findNePrijavljeniByStudent(id);
     }
 }
