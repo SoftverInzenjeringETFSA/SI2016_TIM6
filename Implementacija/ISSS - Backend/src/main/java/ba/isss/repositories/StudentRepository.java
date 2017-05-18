@@ -9,4 +9,6 @@ public interface StudentRepository extends Repository<Student, Integer> {
 	Iterable<Student> findAll();
 	Integer count();
 	boolean exists(Integer primaryKey);
+
+	Student findStudentByUsername(String user);
 }

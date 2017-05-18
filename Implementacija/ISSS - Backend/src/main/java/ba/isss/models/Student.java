@@ -27,6 +27,7 @@ public class Student implements Serializable {
     private String ime;
     private String prezime;
     private String email;
+    private String username;
     private String password;
     private String jmbg;
     private String spol;
@@ -146,5 +147,13 @@ public class Student implements Serializable {
 
 	public void setTelefon(String telefon) {
 		this.telefon = telefon;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 }

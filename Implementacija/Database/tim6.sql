@@ -7,6 +7,9 @@
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
+CREATE DATABASE tim6;
+USE  tim6;
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -208,6 +211,7 @@ CREATE TABLE `student` (
   `prezime` varchar(256) COLLATE utf8_slovenian_ci NOT NULL,
   `email` varchar(256) COLLATE utf8_slovenian_ci NOT NULL,
   `spol` varchar(1) COLLATE utf8_slovenian_ci NOT NULL,
+  `username` varchar(45) COLLATE utf8_slovenian_ci NOT NULL,
   `password` varchar(256) COLLATE utf8_slovenian_ci NOT NULL,
   `jmbg` varchar(13) COLLATE utf8_slovenian_ci NOT NULL,
   `datum_rodjenja` date NOT NULL,
@@ -222,11 +226,11 @@ CREATE TABLE `student` (
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`id`, `ime`, `prezime`, `email`, `spol`, `password`, `jmbg`, `datum_rodjenja`, `mjesto_rodjenja`, `semestar`, `odsjek_id`, `adresa`, `telefon`) VALUES
-(1, 'Alija', 'Izetbegović', 'zlatna_kasika@sda.ba', 'M', '123123', '1122331122334', '2017-05-08', 'Bosanski Šamac', 1, 1, 'Sarajevska 2', '033256322'),
-(2, 'Alija', 'Izetbegović', 'zlatna_kasika@sda.ba', 'M', '123123', '1122331122334', '2017-05-08', 'Bosanski Šamac', 1, 1, 'Ramiza Salcina 3', '061254635'),
-(3, 'Mujo', 'Mujić', 'mmujic1@etf.unsa.ba', 'M', 'pass', '1234545984521', '2017-05-01', 'Gusinje', 1, 1, 'Pofalićka 2', '033568984'),
-(4, 'Suljo', 'Suljić', 'ssuljic@etf.unsa.ba', 'M', 'pass', '1234567890123', '2017-05-02', 'Sarajevo', 2, 1, 'Podigmanska 12', '061547896');
+INSERT INTO `student` (`id`, `ime`, `prezime`, `email`, `spol`, `username`, `password`, `jmbg`, `datum_rodjenja`, `mjesto_rodjenja`, `semestar`, `odsjek_id`, `adresa`, `telefon`) VALUES
+(1, 'Alija', 'Izetbegović', 'zlatna_kasika@sda.ba', 'M', 'alija1', '123123', '1122331122334', '2017-05-08', 'Bosanski Šamac', 1, 1, 'Sarajevska 2', '033256322'),
+(2, 'Alija', 'Izetbegović', 'zlatna_kasika@sda.ba', 'M', 'alija2', '123123', '1122331122334', '2017-05-08', 'Bosanski Šamac', 1, 1, 'Ramiza Salcina 3', '061254635'),
+(3, 'Mujo', 'Mujić', 'mmujic1@etf.unsa.ba', 'M', 'mujo1', 'pass',  '1234545984521', '2017-05-01', 'Gusinje', 1, 1, 'Pofalićka 2', '033568984'),
+(4, 'Suljo', 'Suljić', 'ssuljic@etf.unsa.ba', 'M', 'suljo1', 'pass', '1234567890123', '2017-05-02', 'Sarajevo', 2, 1, 'Podigmanska 12', '061547896');
 
 --
 -- Indexes for dumped tables
