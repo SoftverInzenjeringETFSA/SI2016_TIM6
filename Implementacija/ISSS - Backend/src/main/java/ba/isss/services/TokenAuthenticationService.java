@@ -2,7 +2,6 @@ package ba.isss.services;
 
 import ba.isss.models.Student;
 import ba.isss.repositories.StudentRepository;
-import com.sun.org.apache.xml.internal.security.algorithms.SignatureAlgorithm;
 import io.jsonwebtoken.Jwts;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

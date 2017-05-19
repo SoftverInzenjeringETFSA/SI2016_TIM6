@@ -25,5 +25,8 @@ public class StudentService {
     	return repository.findOne(id);
 	}
 
+	public Student findByUsername (String username)
+	{return repository.findStudentByUsername(username);}
+
    
 }
