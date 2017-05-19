@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './css/PredmetDetalji.css';
 
 
-const PredmetDetalji = ({predmet}) => 
+const PredmetDetalji = ({predmet}) =>
 	<div className="panel panel-default">
 	  <div className="panel-heading"><h3 className="panel-title podnaslov">{predmet.naziv}</h3></div>
 	  <div className="panel-body">
@@ -19,6 +19,12 @@ const PredmetDetalji = ({predmet}) =>
 		      <span>{predmet.ocjena? predmet.ocjena : "Još uvijek niste upisali ocjenu iz ovog predmeta"}</span>
 		    </div>
 		  </div>
+			<div className="form-group">
+				<label className="col-sm-4 control-label">Prosječna ocjena na predmetu: </label>
+				<div className="col-sm-8 predmet-data">
+					<span>{predmet.prosjek ? predmet.prosjek : "/"}</span>
+				</div>
+			</div>
 
 		</div>
 	  </div>

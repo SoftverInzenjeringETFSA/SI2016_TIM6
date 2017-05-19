@@ -8,109 +8,46 @@ class Profil extends Component {
 		super(props);
 		this.state = {user: Object.assign({}, this.props.user),
 						errorCodes: [],
-						status: null
+						status: null,
+						sifra1: "",
+						sifra2: "",
+						sifra: ""
 					};
-    	this.onChangeIme = this.onChangeIme.bind(this);
-    	this.onChangePrezime = this.onChangePrezime.bind(this);
-    	this.onChangeJMBG = this.onChangeJMBG.bind(this);
-    	this.onChangeAdresa = this.onChangeAdresa.bind(this);
-    	this.onChangeMjesto = this.onChangeMjesto.bind(this);
-    	this.onChangeSpol = this.onChangeSpol.bind(this);
-    	this.onChangeTelefon = this.onChangeTelefon.bind(this);
-    	this.onChangeEmail = this.onChangeEmail.bind(this);
-    	
+  		this.onChangeSifra1 = this.onChangeSifra1.bind(this);
+			this.onChangeSifra2 = this.onChangeSifra2.bind(this);
+			this.onChangeSifra = this.onChangeSifra.bind(this);
     	this.submitProfile = this.submitProfile.bind(this);
     	this.validacija = this.validacija.bind(this);
-    	this.isEmail = this.isEmail.bind(this);
 	}
 
-	onChangeIme(event){
-		const updatedState = Object.assign({}, this.state);
-		updatedState.user.ime = event.target.value;
-		this.setState({updatedState});
+	onChangeSifra(event){
+		this.setState({sifra: event.target.value});
+	}
+	onChangeSifra1(event){
+		this.setState({sifra1: event.target.value});
+	}
+	onChangeSifra2(event){
+		this.setState({sifra2: event.target.value});
 	}
 
-	onChangePrezime(event){
-		const updatedState = Object.assign({}, this.state);
-		updatedState.user.prezime = event.target.value;
-	this.setState({updatedState});
-	}
-
-	onChangeJMBG(event){
-		const updatedState = Object.assign({}, this.state);
-		updatedState.user.jmbg = event.target.value;
-		this.setState({updatedState});
-	}
-
-	onChangeAdresa(event){
-		const updatedState = Object.assign({}, this.state);
-		updatedState.user.adresa = event.target.value;
-		this.setState({updatedState});
-	}
-
-	onChangeSpol(event){
-		const updatedState = Object.assign({}, this.state);
-		updatedState.user.spol = event.target.value;
-		this.setState({updatedState});
-	}
-
-	onChangeMjesto(event){
-		const updatedState = Object.assign({}, this.state);
-		updatedState.user.mjestoRodjenja = event.target.value;
-		this.setState({updatedState});
-	}
-
-	onChangeTelefon(event){
-		const updatedState = Object.assign({}, this.state);
-		updatedState.user.telefon = event.target.value;
-		this.setState({updatedState});
-	}
-
-	onChangeDatumRodjenja(event){
-		const updatedState = Object.assign({}, this.state);
-		updatedState.user.datumRodjenja = event.target.value;
-		this.setState({updatedState});
-	}
-
-	onChangeEmail(event){
-		const updatedState = Object.assign({}, this.state);
-		updatedState.user.email = event.target.value;
-		this.setState({updatedState});
-	}
-
-	isEmail(email){
-		return /^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$/.test( email );	
-	}
 
 	validacija(){
 		var nextErrorCodes = [];
-		
-		if (this.state.user.ime.length <= 0){
-			nextErrorCodes.push("IM");
+
+		if (this.state.sifra1.length <= 4){
+			nextErrorCodes.push("DS");
 		}
 
-		if (this.state.user.prezime.length <= 0){
-			nextErrorCodes.push("PI");
+		if (this.state.sifra1 != this.state.sifra2){
+			nextErrorCodes.push("NS");
 		}
 
-		if (this.state.user.jmbg.length !== 13 || !(/^\d{13}$/.test(this.state.user.jmbg))){
-			nextErrorCodes.push("MB");
+		if(this.state.sifra1 == this.state.sifra){
+			nextErrorCodes.push("SS");
 		}
 
-		if (this.state.user.adresa.length <= 0){
-			nextErrorCodes.push("AD");
-		}
-
-		if (this.state.user.mjestoRodjenja.length <= 0){
-			nextErrorCodes.push("MJ");
-		}
-
-		if ( !(/^\d{3}-\d{3}-\d{3}$/.test(this.state.user.telefon)) && !(/^\d{9}$/.test(this.state.user.telefon))){
-			nextErrorCodes.push("TL");
-		}
-
-		if (!(this.isEmail(this.state.user.email))){
-			nextErrorCodes.push("EM");
+		if(this.state.user.password !== this.state.sifra){
+			nextErrorCodes.push("PS");
 		}
 
 		this.setState({errorCodes: nextErrorCodes});
@@ -129,184 +66,155 @@ class Profil extends Component {
     return (
     	<div>
 			<h1 className="main-naslov profil-naslov">Pregled studentskog profila</h1>
-	      	
-	      	<form className="form-horizontal profil-forma center-block">
+	<div className="form-horizontal profil-forma center-block">
 
-
+					<div className="form-group profil-form-group">
+						<label  className="col-sm-2 control-label">Korisničko ime:</label>
+						<div className="col-sm-2 control-label">
+								<span>{this.state.user.username}</span>
+						</div>
+				 	</div>
 			  <div className="form-group profil-form-group">
-			    <label htmlFor="inputIme1" className="col-sm-2 control-label">Ime:</label>
-			    <div className="col-sm-9">
-			      <input type="text" className="form-control" id="inputIme1" placeholder="Ime" onChange={this.onChangeIme} value={this.state.user.ime} />
-			    </div>
-			  </div>
+			    <label  className="col-sm-2 control-label">Ime:</label>
+			    <div className="col-sm-2 control-label">
+							<span>{this.state.user.ime}</span>
+			 		</div>
+			 </div>
 
-			  {this.state.errorCodes.find(x => x === "IM")
-			  ? <div className="row error-row">
-			  	<div className="col-sm-2">
-			  	</div>
-			    <div className="col-sm-9">
-			    	<span>Morate unijeti Vaše ime.</span>
-			    </div>
-			  </div>
-			  :
-			  null
-			  }
+			 <div className="form-group profil-form-group">
+				 <label  className="col-sm-2 control-label">Prezime:</label>
+				 <div className="col-sm-2 control-label">
+						 <span>{this.state.user.prezime}</span>
+				 </div>
+			</div>
+
+			<div className="form-group profil-form-group">
+				<label  className="col-sm-2 control-label">JMBG:</label>
+				<div className="col-sm-2 control-label">
+						<span>{this.state.user.jmbg}</span>
+				</div>
+		 </div>
+
+		 <div className="form-group profil-form-group">
+			 <label  className="col-sm-2 control-label">Datum rođenja:</label>
+			 <div className="col-sm-2 control-label">
+					 <span>{this.state.user.datumRodjenja}</span>
+			 </div>
+		</div>
+		<div className="form-group profil-form-group">
+		 <label  className="col-sm-2 control-label">Mjesto rođenja:</label>
+		 <div className="col-sm-2 control-label">
+				 <span>{this.state.user.mjestoRodjenja}</span>
+		 </div>
+	 </div>
+		<div className="form-group profil-form-group">
+			<label  className="col-sm-2 control-label">Spol:</label>
+			<div className="col-sm-2 control-label">
+					<span>{(this.state.user.spol === "M") ? "Muški" : "Ženski"}</span>
+			</div>
+	 </div>
+	 <div className="form-group profil-form-group">
+		 <label  className="col-sm-2 control-label">Adresa:</label>
+		 <div className="col-sm-2 control-label">
+				 <span>{this.state.user.adresa}</span>
+		 </div>
+	</div>
+	<div className="form-group profil-form-group">
+ 	 <label  className="col-sm-2 control-label">Telefon:</label>
+ 	 <div className="col-sm-2 control-label">
+ 			 <span>{this.state.user.telefon}</span>
+ 	 </div>
+ 	</div>
+ 	<div className="form-group profil-form-group">
+		<label  className="col-sm-2 control-label">Email:</label>
+		<div className="col-sm-2 control-label">
+				<span>{this.state.user.email}</span>
+		</div>
+ 	</div>
+</div>
 
 
-			  <div className="form-group profil-form-group">
-			    <label htmlFor="inputPrezime1" className="col-sm-2 control-label">Prezime:</label>
-			    <div className="col-sm-9">
-			      <input type="text" className="form-control" id="inputPassword3" placeholder="Prezime" onChange={this.onChangePrezime} value={this.state.user.prezime} />
-			    </div>
-			  </div>
-
-			  {this.state.errorCodes.find(x => x === "PI")
-			  ? <div className="row error-row">
-			  	<div className="col-sm-2">
-			  	</div>
-			    <div className="col-sm-9">
-			    	<span>Morate unijeti Vaše prezime.</span>
-			    </div>
-			  </div>
-			  :
-			  null
-			  }
-
-			  <div className="form-group profil-form-group">
-			    <label htmlFor="jmbg1" className="col-sm-2 control-label">JMBG:</label>
-			    <div className="col-sm-9">
-			      <input type="text" className="form-control" id="jmbg1"  placeholder="JMBG" onChange={this.onChangeJMBG} value={this.state.user.jmbg} />
-			    </div>
-			  </div>
-
-  			  {this.state.errorCodes.find(x => x === "MB")
-			  ? <div className="row error-row">
-			  	<div className="col-sm-2">
-			  	</div>
-			    <div className="col-sm-9">
-			    	<span>Morate unijeti Vaše JMBG koji se sastoji od 13 cifara.</span>
-			    </div>
-			  </div>
-			  :
-			  null
-			  }
-
-  			  <div className="form-group profil-form-group">
-			    <label htmlFor="mjesto1" className="col-sm-2 control-label">Datum rođenja:</label>
-			    <div className="col-sm-9">
-			      <input type="date" className="form-control" id="mjesto1" placeholder="Mjesto" onChange={this.onChangeDatumRodjenja} value={this.state.user.datumRodjenja} />
-			    </div>
-			  </div>
-
-			  {this.state.errorCodes.find(x => x === "MJ")
-			  ? <div className="row error-row">
-			  	<div className="col-sm-2">
-			  	</div>
-			    <div className="col-sm-9">
-			    	<span>Morate unijeti mjesto u kojem živite.</span>
-			    </div>
-			  </div>
-			  :
-			  null
-			  }
-
-			  <div className="form-group profil-form-group">
-			    <label className="col-sm-2 control-label">Spol:</label>
-			    <div className="col-sm-9" onChange={this.onChangeSpol}>
-			      <label className="radio-inline">
-	  				<input type="radio" name="spolOpcije" id="spol1" value="M" checked={this.state.user.spol === "M"}/> Muški
-				</label>
-
-			      <label className="radio-inline">
-	  				<input type="radio" name="spolOpcije" id="spol2" value="F" checked={this.state.user.spol === "F"}/> Ženski
-				</label>
-			    </div>
-			  </div>
-
-			  <div className="form-group profil-form-group">
-			    <label htmlFor="adresa1" className="col-sm-2 control-label">Adresa (ulica i broj):</label>
-			    <div className="col-sm-9">
-			      <input type="text" className="form-control" id="adresa1" placeholder="Ulica i broj" onChange={this.onChangeAdresa} value={this.state.user.adresa} />
-			    </div>
-			  </div>
-
-			  {this.state.errorCodes.find(x => x === "AD")
-			  ? <div className="row error-row">
-			  	<div className="col-sm-2">
-			  	</div>
-			    <div className="col-sm-9">
-			    	<span>Morate unijeti Vašu adresu.</span>
-			    </div>
-			  </div>
-			  :
-			  null
-			  }
-
-			  <div className="form-group profil-form-group">
-			    <label htmlFor="mjesto1" className="col-sm-2 control-label">Mjesto:</label>
-			    <div className="col-sm-9">
-			      <input type="text" className="form-control" id="mjesto1" placeholder="Mjesto" onChange={this.onChangeMjesto} value={this.state.user.mjestoRodjenja} />
-			    </div>
-			  </div>
-
-			  {this.state.errorCodes.find(x => x === "MJ")
-			  ? <div className="row error-row">
-			  	<div className="col-sm-2">
-			  	</div>
-			    <div className="col-sm-9">
-			    	<span>Morate unijeti mjesto u kojem živite.</span>
-			    </div>
-			  </div>
-			  :
-			  null
-			  }
-
-			  <div className="form-group profil-form-group">
-			    <label htmlFor="telefon1" className="col-sm-2 control-label">Telefon:</label>
-			    <div className="col-sm-9">
-			      <input type="tel" className="form-control" id="telefon1" placeholder="Telefon" onChange={this.onChangeTelefon} value={this.state.user.telefon} />
-			    </div>
-			  </div>
-
-			  {this.state.errorCodes.find(x => x === "TL")
-			  ? <div className="row error-row">
-			  	<div className="col-sm-2">
-			  	</div>
-			    <div className="col-sm-9">
-			    	<span>Morate unijeti Vaš broj telefona u formatu 123-456-789 ili 123456789.</span>
-			    </div>
-			  </div>
-			  :
-			  null
-			  }
+<div>
+<h2 className="main-naslov profil-naslov">Izmjena šifre</h2>
+<div className="form-horizontal profil-forma center-block">
+	<form className="form-horizontal profil-forma center-block">
 
 	  		  <div className="form-group profil-form-group">
-			    <label htmlFor="email1" className="col-sm-2 control-label">Email:</label>
-			    <div className="col-sm-9">
-			      <input type="email" className="form-control" id="email1" placeholder="Email" onChange={this.onChangeEmail} value={this.state.user.email} />
+			    <label htmlFor="password1" className="col-sm-2 control-label">Nova šifra:</label>
+			    <div className="col-sm-2">
+			      <input type="password" className="form-control" id="password1" placeholder="Nova šifra" onChange={this.onChangeSifra1} />
 			    </div>
 			  </div>
 
-  			  {this.state.errorCodes.find(x => x === "EM")
+				{this.state.errorCodes.find(x => x === "DS")
+			? <div className="row error-row">
+				<div className="col-sm-2">
+				</div>
+				<div className="col-sm-9">
+					<span>Šifra je prekratka.</span>
+				</div>
+			</div>
+			:
+			null
+			}
+				<div className="form-group profil-form-group">
+				<label htmlFor="password2" className="col-sm-2 control-label">Nova šifra:</label>
+				<div className="col-sm-2">
+					<input type="password" className="form-control" id="password2" placeholder="Nova šifra" onChange={this.onChangeSifra2}   />
+				</div>
+			</div>
+
+
+  			  {this.state.errorCodes.find(x => x === "NS")
 			  ? <div className="row error-row">
 			  	<div className="col-sm-2">
 			  	</div>
 			    <div className="col-sm-9">
-			    	<span>Morate unijeti validnu email adresu.</span>
+			    	<span>Šifre nisu jednake.</span>
 			    </div>
 			  </div>
 			  :
 			  null
 			  }
+				<div className="form-group profil-form-group">
+				<label htmlFor="password" className="col-sm-2 control-label">Stara šifra:</label>
+				<div className="col-sm-2">
+					<input type="password" className="form-control" id="password" placeholder="Stara šifra" onChange={this.onChangeSifra}   />
+				</div>
+			</div>
+
+				{this.state.errorCodes.find(x => x === "SS")
+			? <div className="row error-row">
+				<div className="col-sm-2">
+				</div>
+				<div className="col-sm-9">
+					<span>Nova i stara šifra su jednake.</span>
+				</div>
+			</div>
+			:
+			null
+			}
+
+			{this.state.errorCodes.find(x => x === "PS")
+		? <div className="row error-row">
+			<div className="col-sm-2">
+			</div>
+			<div className="col-sm-9">
+				<span>Unijeli ste pogrešnu šifru.</span>
+			</div>
+		</div>
+		:
+		null
+		}
 
 			  <div className="form-group profil-form-group">
 			    <div className="col-sm-6 status-profil">
-			    	{this.state.status === "US"? 
-			    		<span className="status-profil-uspjeh">Uspješno ažuriran profil!</span>
+			    	{this.state.status === "US"?
+			    		<span className="status-profil-uspjeh">Šifra je uspješno promijenjena!</span>
 			    			: null
 		    		}
-			    	{this.state.status === "ER"? 
-			    		<span className="status-profil-error">Greška pri ažuriranju profila!</span>
+			    	{this.state.status === "ER"?
+			    		<span className="status-profil-error">Greška pri mijenjanju šifre!</span>
 			    			: null
 		    		}
 
@@ -318,7 +226,8 @@ class Profil extends Component {
 			  </div>
 			</form>
 		</div>
-
+</div>
+</div>
     );
   }
 }

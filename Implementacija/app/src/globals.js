@@ -1,4 +1,5 @@
 const PATH_BASE = 'http://localhost:8080';
+const PATH_LOGIN = '/prijava';
 
 const PATH_OBAVJESTENJA = '/obavjestenja';
 const PATH_OBAVJESTENJA_FIND = '/find';
@@ -17,6 +18,8 @@ const PATH_ISPIT_PRIJAVLJENI_FIND = '/find/prijavljeni';
 const PATH_ISPIT_NEPRIJAVLJENI_FIND = '/find/neprijavljeni';
 const PARAM_ISPIT_STUDENT = 'student_id=';
 
+
+
 const makeCancelable = (promise) => {
   let hasCanceled_ = false;
 
@@ -28,7 +31,7 @@ const makeCancelable = (promise) => {
       hasCanceled_ ? reject({isCanceled: true}) : reject(error)
     );
   });
-  
+
   return {
     promise: wrappedPromise,
     cancel() {
@@ -41,11 +44,12 @@ export {
 	makeCancelable,
 
 	PATH_BASE,
+  PATH_LOGIN,
 
 	PATH_OBAVJESTENJA,
 	PATH_OBAVJESTENJA_FIND,
 	PARAM_OBAVJESTENJA_STUDENT,
-	
+
 	PATH_PREDMETI,
 	PATH_PREDMETI_FIND,
 	PARAM_PREDMETI_STUDENT,

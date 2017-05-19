@@ -55,7 +55,7 @@ class Predmeti extends Component {
 				        {i.semestar + ". semestar"}</a>
 				      </h4>
 				    </div>
-				    <div id={"collapse" + index} className={this.props.user.semestar === i.semestar ? "panel-collapse collapse in" : "panel-collapse collapse"}>
+				    <div id={"collapse" + index} className={this.props.user.semestar != i.semestar ? "panel-collapse collapse in" : "panel-collapse collapse"}>
 				      <div className="panel-body predmeti-accordion-body">
 						<div className="list-group predmeti-accordion-list">
 							{listaPredmeta}

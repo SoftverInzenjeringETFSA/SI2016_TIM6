@@ -26,17 +26,17 @@ class LoginPage extends Component {
                 <img className="v-center" src={require('./img/unsa.png')} alt="UNSA Logo"/>
               </div>
 
-              <form className="v-center form-horizontal col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-3 col-md-offset-3" 
+              <form className="v-center form-horizontal col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-3 col-md-offset-3"
                     >
-                    
+
                 <div className="form-group">
-                    <input type="text" className="form-control" placeholder="Ime"/>
+                    <input type="text" className="form-control" placeholder="Korisničko ime"/>
                 </div>
 
                 <div className="form-group">
-                    <input type="text" className="form-control" placeholder="Prezime"/>
+                    <input type="password" className="form-control" placeholder="Šifra"/>
                 </div>
-      
+
                 <div className="form-group">
                   <button type="button" className="btn btn-primary" onClick={() => this.props.onLoginSubmit()}>Prijava</button>
                 </div>

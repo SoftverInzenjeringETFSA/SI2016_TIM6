@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './css/App.css';
 import Main from './Main';
 
-import {makeCancelable, PATH_BASE, PATH_STUDENT, PATH_STUDENT_FIND, PARAM_STUDENT_STUDENT} from './globals';
+import {makeCancelable, PATH_BASE,  PATH_LOGIN, PATH_STUDENT, PATH_STUDENT_FIND, PARAM_STUDENT_STUDENT} from './globals';
 
 import LoginPage from './LoginPage';
 
@@ -31,7 +31,8 @@ class App extends Component {
   constructor(){
     super();
     this.state = {ulogovan: false,
-                  user: {}
+                  user: {},
+                  token: ""
                 };
 
     this.login = this.login.bind(this);
@@ -47,12 +48,25 @@ class App extends Component {
 
   login(){
 
-    this.request = makeCancelable(fetch(`${PATH_BASE}${PATH_STUDENT}${PATH_STUDENT_FIND}?${PARAM_STUDENT_STUDENT}1`));
-    
-    console.log("rekv: " + `${PATH_BASE}${PATH_STUDENT}${PATH_STUDENT_FIND}?${PARAM_STUDENT_STUDENT}1`);
+    //this.request = makeCancelable(fetch(`${PATH_BASE}${PATH_STUDENT}${PATH_STUDENT_FIND}?${PARAM_STUDENT_STUDENT}1`));
 
-    this.request.promise.then(response => response.json())
-                        .then(result => this.setState({user: result, ulogovan: true}));
+    this.request=makeCancelable(fetch(`${PATH_BASE}${PATH_LOGIN}`,{
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    username: 'alija1',
+    password: '123123',
+  })
+}));
+//this.request.promise.then(response => response.headers()).then(Authorization )
+  //console.log("rekv: " + `${PATH_BASE}${PATH_STUDENT}${PATH_STUDENT_FIND}?${PARAM_STUDENT_STUDENT}1`);
+  this.request.promise.then((response) => console.log(response.headers.get("Authorization")));
+
+  //  this.request.promise.then(response => response.json())
+    //                    .then(result => this.setState({user: result, ulogovan: true}));
   }
 
   onProfileSubmit(nextProfileState){

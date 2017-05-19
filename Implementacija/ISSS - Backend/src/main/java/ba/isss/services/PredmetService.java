@@ -43,13 +43,16 @@ public class PredmetService {
 			Integer brojSemestra = pohadjanje.getPredmet().getSemestar();
 			
 			if( semestri.get(brojSemestra) == null )
-				semestri.put(brojSemestra, new ArrayList<PredmetDto>());			
+				semestri.put(brojSemestra, new ArrayList<PredmetDto>());
+			
+			Double prosjek = this.pohadjanjeRepository.findAVGByPredmet(pohadjanje.getPredmet().getId());
 			
 			PredmetDto predmet = new PredmetDto(
 					pohadjanje.getPredmet().getId(),
 					pohadjanje.getPredmet().getNaziv(),
 					pohadjanje.getOcjena(),
-					pohadjanje.getPredmet().getProfesor().toString()
+					pohadjanje.getPredmet().getProfesor().toString(),
+					prosjek
 				);
 			
 			ArrayList<PredmetDto> tmp = semestri.get(brojSemestra);

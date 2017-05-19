@@ -25,6 +25,11 @@ public class PohadjanjeService {
 		return repository.findAllByStudent(id);
 	}
 	
+	public Double findAVGByPredmet(Integer id)
+	{
+		return repository.findAVGByPredmet(id);
+	}
+	
 	
 }
 

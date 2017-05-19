@@ -19,4 +19,7 @@ public interface PohadjanjeRepository extends JpaRepository<Pohadjanje, Integer>
 	@Query("Select p from Pohadjanje p where student_id=?")
 	//Iterable<Pohadjanje> findAllByStudent(@Param("id") Integer id);
 	Iterable<Pohadjanje> findAllByStudent(Integer id);
+	
+	@Query("Select avg(ocjena) from Pohadjanje p where predmet_id=?")
+	Double findAVGByPredmet(Integer id);
 }

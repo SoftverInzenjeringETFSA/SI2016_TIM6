@@ -6,12 +6,14 @@ public class PredmetDto {
 	private String naziv;
 	private Integer ocjena;
 	private String profesor;
+	private Double prosjek;
 	
-	public PredmetDto(Integer ID, String naziv, Integer oc, String prof) {
+	public PredmetDto(Integer ID, String naziv, Integer oc, String prof, Double pros) {
 		this.id = ID;
 		this.naziv = naziv;
 		this.ocjena = oc;
 		this.profesor = prof;
+		this.prosjek = pros;
 	}	
 	
 	// Getters and Setters
@@ -39,5 +41,12 @@ public class PredmetDto {
 	public void setNaziv(String naziv) {
 		this.naziv = naziv;
 	}
+	public Double getProsjek() {
+		return prosjek;
+	}
+	public void setProsjek(Double prosjek) {
+		this.prosjek = prosjek;
+	}
+	
 	
 }

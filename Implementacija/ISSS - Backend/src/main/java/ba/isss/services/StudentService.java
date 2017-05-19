@@ -24,5 +24,6 @@ public class StudentService {
     public Student findOne(Integer id) {
     	return repository.findOne(id);
 	}
+
    
 }
