@@ -38,11 +38,11 @@ class Profil extends Component {
 			nextErrorCodes.push("DS");
 		}
 
-		if (this.state.sifra1 != this.state.sifra2){
+		if (this.state.sifra1 !== this.state.sifra2){
 			nextErrorCodes.push("NS");
 		}
 
-		if(this.state.sifra1 == this.state.sifra){
+		if(this.state.sifra1 === this.state.sifra){
 			nextErrorCodes.push("SS");
 		}
 

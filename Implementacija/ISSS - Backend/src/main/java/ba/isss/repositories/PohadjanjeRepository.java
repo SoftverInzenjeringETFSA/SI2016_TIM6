@@ -22,4 +22,5 @@ public interface PohadjanjeRepository extends JpaRepository<Pohadjanje, Integer>
 	
 	@Query("Select avg(ocjena) from Pohadjanje p where predmet_id=?")
 	Double findAVGByPredmet(Integer id);
+	
 }

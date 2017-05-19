@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './css/Predmeti.css';
 import PredmetDetalji from './PredmetDetalji';
 import Error from './Error';
+import App from './App';
 import {makeCancelable, PATH_BASE, PATH_PREDMETI, PATH_PREDMETI_FIND, PARAM_PREDMETI_STUDENT} from './globals';
 
 
@@ -19,7 +20,14 @@ class Predmeti extends Component {
 	}
 
 	dohvatiPredmete(){
-        this.request = makeCancelable(fetch(`${PATH_BASE}${PATH_PREDMETI}${PATH_PREDMETI_FIND}?${PARAM_PREDMETI_STUDENT}${this.props.user.id}`));
+        this.request = makeCancelable(fetch(`${PATH_BASE}${PATH_PREDMETI}${PATH_PREDMETI_FIND}?${PARAM_PREDMETI_STUDENT}${this.props.user.id}`,{
+		   method: 'GET',
+		   headers: {
+		     'Accept': 'application/json',
+		     'Content-Type': 'application/json',
+		     'Authorization': this.props.token
+		   }
+		   }));
 
         this.request.promise.then(response => response.json())
         	.then(result => this.setState({semestri: result}))

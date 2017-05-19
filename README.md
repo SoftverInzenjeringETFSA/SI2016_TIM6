@@ -64,13 +64,11 @@ ISSS - Studentska stranica
 
 * Backend:
 	* Servis koji omogućava prijavu i odjavu termina ispita
-	* Promjena ličnih podataka
-	* Validacija podataka
-	* Implementirati i kapacitet, odnosno popunjenost, termina ispita 
+	* Promjena šifre
+	* Prikaz budućih predmeta
+	* Prikaz historije uspješnih prijavljenih ispita
 
 * Frontend:
-	* Popraviti bug na login stranici (kada je visina stranice manja od slike)
-	* Povezati sa nedovršenim backend servisima
 	* Parsirati timestamp kao datum i vrijeme ispita u komponenti Ispiti.js
+	* Prikaz greške prilikom login-a i logout
 
-* Autentikacija korisnika

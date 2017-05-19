@@ -7,8 +7,23 @@ import './css/LoginPage.css';
 class LoginPage extends Component {
   constructor(props){
     super(props);
-    this.state = {};
+    this.state = {username: '', password: ''};
+    this.onChangePassword = this.onChangePassword.bind(this);
+    this.onChangeUsername = this.onChangeUsername.bind(this);
+    this.onLogin = this.onLogin.bind(this);
   }
+
+  onChangePassword(event){
+  	this.setState({password: event.target.value});
+  }
+  onChangeUsername(event){
+  	this.setState({username: event.target.value});
+  }
+
+
+  	onLogin(){
+  			this.props.onLoginSubmit(this.state);
+  	}
 
   render() {
     return (
@@ -30,15 +45,15 @@ class LoginPage extends Component {
                     >
 
                 <div className="form-group">
-                    <input type="text" className="form-control" placeholder="Korisničko ime"/>
+                    <input type="text" className="form-control" id="username" placeholder="Korisničko ime" onChange={this.onChangeUsername}  />
                 </div>
 
                 <div className="form-group">
-                    <input type="password" className="form-control" placeholder="Šifra"/>
+                    <input type="password" className="form-control" id="password"  placeholder="Šifra" onChange={this.onChangePassword}  />
                 </div>
 
                 <div className="form-group">
-                  <button type="button" className="btn btn-primary" onClick={() => this.props.onLoginSubmit()}>Prijava</button>
+                  <button type="button" className="btn btn-primary" onClick={this.onLogin}>Prijava</button>
                 </div>
               </form>
           </div>

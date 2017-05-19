@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './css/App.css';
 import Main from './Main';
+import Error from './Error';
 
-import {makeCancelable, PATH_BASE,  PATH_LOGIN, PATH_STUDENT, PATH_STUDENT_FIND, PARAM_STUDENT_STUDENT} from './globals';
+import {makeCancelable, PATH_BASE,  PATH_LOGIN, PATH_STUDENT, PATH_STUDENT_PROFILE} from './globals';
 
 import LoginPage from './LoginPage';
 
@@ -32,23 +33,22 @@ class App extends Component {
     super();
     this.state = {ulogovan: false,
                   user: {},
-                  token: ""
+                  token: ''
                 };
 
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.onProfileSubmit = this.onProfileSubmit.bind(this);
+    this.onProfileCreate= this.onProfileCreate.bind(this);
 
     this.request = null;
   }
 
   logout(){
-    this.setState({ulogovan: false, user: {}});
+    this.setState({ulogovan: false, user: {}, token: ''});
   }
 
-  login(){
-
-    //this.request = makeCancelable(fetch(`${PATH_BASE}${PATH_STUDENT}${PATH_STUDENT_FIND}?${PARAM_STUDENT_STUDENT}1`));
+  login(st){
 
     this.request=makeCancelable(fetch(`${PATH_BASE}${PATH_LOGIN}`,{
   method: 'POST',
@@ -57,26 +57,38 @@ class App extends Component {
     'Content-Type': 'application/json',
   },
   body: JSON.stringify({
-    username: 'alija1',
-    password: '123123',
+    username: st.username,
+    password: st.password,
   })
 }));
-//this.request.promise.then(response => response.headers()).then(Authorization )
-  //console.log("rekv: " + `${PATH_BASE}${PATH_STUDENT}${PATH_STUDENT_FIND}?${PARAM_STUDENT_STUDENT}1`);
-  this.request.promise.then((response) => console.log(response.headers.get("Authorization")));
 
-  //  this.request.promise.then(response => response.json())
-    //                    .then(result => this.setState({user: result, ulogovan: true}));
+  this.request.promise.then(response => this.setState({token: response.headers.get("Authorization")},this.onProfileCreate)).catch(error => this.setState({errorMessage: error + ""}));
+
   }
 
+  onProfileCreate()
+  {
+
+    this.request=makeCancelable(fetch(`${PATH_BASE}${PATH_STUDENT}${PATH_STUDENT_PROFILE}`,{
+   method: 'GET',
+   headers: {
+     'Accept': 'application/json',
+     'Content-Type': 'application/json',
+     'Authorization': this.state.token
+   }
+   }));
+
+    this.request.promise.then(response => response.json())
+                     .then(result => this.setState({user: result, ulogovan: true})).catch(error => this.setState({errorMessage: error + ""}));
+  }
   onProfileSubmit(nextProfileState){
     this.setState(nextProfileState);
     return true;
   }
 
   render() {
-    const noviLoginPage = () => <LoginPage onLoginSubmit={() => this.login()}/>
-    const noviMainPage = () => <Main onLogout={() => this.logout()} user={this.state.user} onProfileSubmit={this.onProfileSubmit}/>
+    const noviLoginPage = () => <LoginPage onLoginSubmit={this.login}/>
+    const noviMainPage = () => <Main onLogout={this.logout} user={this.state.user} token={this.state.token} onProfileSubmit={this.onProfileSubmit}/>
 
     return (
       <Router>

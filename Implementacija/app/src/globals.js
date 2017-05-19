@@ -10,6 +10,7 @@ const PATH_PREDMETI_FIND = '/find';
 const PARAM_PREDMETI_STUDENT = 'id=';
 
 const PATH_STUDENT = '/student';
+const PATH_STUDENT_PROFILE = '/profile'
 const PATH_STUDENT_FIND = '/get';
 const PARAM_STUDENT_STUDENT = 'id=';
 
@@ -55,6 +56,7 @@ export {
 	PARAM_PREDMETI_STUDENT,
 
   PATH_STUDENT,
+  PATH_STUDENT_PROFILE,
   PATH_STUDENT_FIND,
   PARAM_STUDENT_STUDENT,
 

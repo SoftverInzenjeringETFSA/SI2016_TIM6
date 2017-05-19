@@ -3,13 +3,13 @@ import './css/Obavjestenja.css';
 import {PATH_BASE, PATH_OBAVJESTENJA, PATH_OBAVJESTENJA_FIND, PARAM_OBAVJESTENJA_STUDENT, makeCancelable} from './globals';
 
 import Error from './Error';
+import App from './App';
 
 class Obavjestenja extends Component {
 	constructor(props){
 		super(props);
 		this.state = {obavijesti: [], errorMessage: null};
 		this.dohvatiObavijesti = this.dohvatiObavijesti.bind(this);
-
 		this.request = null;
 	}
 
@@ -18,7 +18,14 @@ class Obavjestenja extends Component {
 	}
 
 	dohvatiObavijesti(){
-        this.request = makeCancelable(fetch(`${PATH_BASE}${PATH_OBAVJESTENJA}${PATH_OBAVJESTENJA_FIND}?${PARAM_OBAVJESTENJA_STUDENT}${this.props.user.id}`));
+        this.request = makeCancelable(fetch(`${PATH_BASE}${PATH_OBAVJESTENJA}${PATH_OBAVJESTENJA_FIND}?${PARAM_OBAVJESTENJA_STUDENT}${this.props.user.id}`,{
+		   method: 'GET',
+		   headers: {
+		     'Accept': 'application/json',
+		     'Content-Type': 'application/json',
+		     'Authorization': this.props.token
+		   }
+		   }));
 
         this.request.promise.then(response => response.json())
         	.then(result => this.setState({obavijesti: result}))

@@ -48,15 +48,15 @@ const navigationItems = [
 class Main extends Component {
   constructor(){
     super();
-    this.state = {};
+    this.state =  {};
   }
 
 
   render() {
-    const novaObavjestenja = () => <Obavjestenja user={this.props.user}/>
-    const novaProfilStranica = () => <Profil user={this.props.user} onProfileSubmit={this.props.onProfileSubmit}/>
-    const novaIspiti = () => <Ispiti user={this.props.user} ispiti={this.state.ispiti} prijavljeniIspiti={this.state.prijavljeniIspiti} onPrijava={this.prijavaIspita} onOdjava={this.odjavaIspita}/>
-    const novaPredmeti = () => <Predmeti user={this.props.user}/>
+    const novaObavjestenja = () => <Obavjestenja user={this.props.user} token={this.props.token}/>
+    const novaProfilStranica = () => <Profil user={this.props.user} token={this.props.token}  onProfileSubmit={this.props.onProfileSubmit}/>
+    const novaIspiti = () => <Ispiti user={this.props.user} token={this.props.token}   ispiti={this.state.ispiti} prijavljeniIspiti={this.state.prijavljeniIspiti} onPrijava={this.prijavaIspita} onOdjava={this.odjavaIspita}/>
+    const novaPredmeti = () => <Predmeti user={this.props.user}  token={this.props.token} />
 
     return (
         <div className="body">
@@ -80,7 +80,7 @@ class Main extends Component {
             <div id="main-content-wrapper">
               <Sidebar content={navigationItems}
                 color="#f5f5f5"
-                background="#347598" 
+                background="#347598"
                 width="200">
 
                 <div id="inner-content-wrapper">

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './css/Ispiti.css';
 import Error from './Error';
+import App from './App';
 import {PATH_BASE, PATH_ISPIT, PATH_ISPIT_PRIJAVLJENI_FIND, PATH_ISPIT_NEPRIJAVLJENI_FIND, PARAM_ISPIT_STUDENT, makeCancelable} from './globals';
 
 class Ispiti extends Component {
@@ -23,8 +24,22 @@ class Ispiti extends Component {
   }
 
   dohvatiIspite(){
-        this.request1 = makeCancelable(fetch(`${PATH_BASE}${PATH_ISPIT}${PATH_ISPIT_NEPRIJAVLJENI_FIND}?${PARAM_ISPIT_STUDENT}${this.props.user.id}`));
-        this.request2 = makeCancelable(fetch(`${PATH_BASE}${PATH_ISPIT}${PATH_ISPIT_PRIJAVLJENI_FIND}?${PARAM_ISPIT_STUDENT}${this.props.user.id}`));
+        this.request1 = makeCancelable(fetch(`${PATH_BASE}${PATH_ISPIT}${PATH_ISPIT_NEPRIJAVLJENI_FIND}?${PARAM_ISPIT_STUDENT}${this.props.user.id}`,{
+		   method: 'GET',
+		   headers: {
+		     'Accept': 'application/json',
+		     'Content-Type': 'application/json',
+		     'Authorization': this.props.token
+		   }
+		   }));
+        this.request2 = makeCancelable(fetch(`${PATH_BASE}${PATH_ISPIT}${PATH_ISPIT_PRIJAVLJENI_FIND}?${PARAM_ISPIT_STUDENT}${this.props.user.id}`,{
+		   method: 'GET',
+		   headers: {
+		     'Accept': 'application/json',
+		     'Content-Type': 'application/json',
+		     'Authorization': this.props.token
+		   }
+		   }));
 
         this.request1.promise.then(response => response.json())
           .then(result => this.setState({ispiti: result}))
@@ -43,7 +58,7 @@ class Ispiti extends Component {
   /*
   dohvatiIspite(){
     const updatedState = Object.assign({}, this.state);
-    
+
     updatedState.ispiti = [
           {naziv: "Matematika", datum: "12.5.2017.", termin:"12:30", status: "Zauzet", id:1},
           {naziv: "Matematika", datum: "12.5.2017.", termin:"13:00", status: "Zauzet", id:2},
