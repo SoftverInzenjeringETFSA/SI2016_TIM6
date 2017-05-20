@@ -1,18 +1,14 @@
 package ba.isss.controllers;
 
 import java.security.Principal;
+import java.util.ArrayList;
 
+import ba.isss.dto.PredmetSemestarDto;
+import ba.isss.models.Predmet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import ba.isss.models.Predmet;
 import ba.isss.models.Student;
 import ba.isss.services.PredmetService;
 import ba.isss.services.StudentService;
@@ -24,8 +20,9 @@ public class StudentController {
 
 	@Autowired
     private StudentService studentService;
+	@Autowired
 	private PredmetService predmetService;
-	
+
     // Pristup svim studentima
     @RequestMapping(value="/get")
     @ResponseBody
@@ -38,11 +35,11 @@ public class StudentController {
     public Student getProfile(Principal principal) {
         return studentService.findByUsername(principal.getName());
     }
-    
+
+    @PreAuthorize("hasAnyRole('ROLE_STUDENT')")
     @GetMapping(path="/buduci_predmeti")
     @ResponseBody
-    public Iterable<Predmet> buduciPredmeti(@RequestParam("id") Integer id_studenta) {
-    	return predmetService.findAllFuture(id_studenta);
+    public Iterable<Predmet> buduciPredmeti(Principal principal) {
+        return predmetService.findAllFuture(studentService.findByUsername(principal.getName()).getId());
     }
-    
 }
