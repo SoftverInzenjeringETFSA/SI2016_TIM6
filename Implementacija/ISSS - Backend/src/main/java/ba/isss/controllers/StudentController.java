@@ -39,7 +39,7 @@ public class StudentController {
     @PreAuthorize("hasAnyRole('ROLE_STUDENT')")
     @GetMapping(path="/buduci_predmeti")
     @ResponseBody
-    public Iterable<Predmet> buduciPredmeti(Principal principal) {
+    public Iterable<PredmetSemestarDto> buduciPredmeti(Principal principal) {
         return predmetService.findAllFuture(studentService.findByUsername(principal.getName()).getId());
     }
 }

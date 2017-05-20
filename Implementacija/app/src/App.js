@@ -33,7 +33,8 @@ class App extends Component {
     super();
     this.state = {ulogovan: false,
                   user: {},
-                  token: ''
+                  token: '',
+                  poruka: null
                 };
 
     this.login = this.login.bind(this);
@@ -45,7 +46,9 @@ class App extends Component {
   }
 
   logout(){
+    
     this.setState({ulogovan: false, user: {}, token: ''});
+    this.render();
   }
 
   login(st){
@@ -62,7 +65,15 @@ class App extends Component {
   })
 }));
 
-  this.request.promise.then(response => this.setState({token: response.headers.get("Authorization")},this.onProfileCreate)).catch(error => this.setState({errorMessage: error + ""}));
+  this.request.promise.then(response => { if (response.status== 200)
+    {
+      this.setState({token: response.headers.get("Authorization")},this.onProfileCreate)
+    }
+    else {
+      this.setState({poruka: "P"});
+    }
+  }
+).catch(error => this.setState({poruka: "P"}));
 
   }
 
@@ -87,7 +98,7 @@ class App extends Component {
   }
 
   render() {
-    const noviLoginPage = () => <LoginPage onLoginSubmit={this.login}/>
+    const noviLoginPage = () => <LoginPage onLoginSubmit={this.login} poruka={this.state.poruka}/>
     const noviMainPage = () => <Main onLogout={this.logout} user={this.state.user} token={this.state.token} onProfileSubmit={this.onProfileSubmit}/>
 
     return (

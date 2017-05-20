@@ -51,10 +51,19 @@ class LoginPage extends Component {
                 <div className="form-group">
                     <input type="password" className="form-control" id="password"  placeholder="Šifra" onChange={this.onChangePassword}  />
                 </div>
-
+                {this.props.poruka
+              ? <div className="v-center">
+                <div>
+                  <h4>Prijava nije uspjela.</h4>
+                </div>
+              </div>
+              :
+              null
+              }
                 <div className="form-group">
                   <button type="button" className="btn btn-primary" onClick={this.onLogin}>Prijava</button>
                 </div>
+
               </form>
           </div>
 

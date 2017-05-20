@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './css/Obavjestenja.css';
-import {PATH_BASE, PATH_OBAVJESTENJA, PATH_OBAVJESTENJA_FIND, PARAM_OBAVJESTENJA_STUDENT, makeCancelable} from './globals';
+import {PATH_BASE, PATH_OBAVJESTENJA, PATH_OBAVJESTENJA_FIND, makeCancelable} from './globals';
 
 import Error from './Error';
 import App from './App';
@@ -18,7 +18,7 @@ class Obavjestenja extends Component {
 	}
 
 	dohvatiObavijesti(){
-        this.request = makeCancelable(fetch(`${PATH_BASE}${PATH_OBAVJESTENJA}${PATH_OBAVJESTENJA_FIND}?${PARAM_OBAVJESTENJA_STUDENT}${this.props.user.id}`,{
+        this.request = makeCancelable(fetch(`${PATH_BASE}${PATH_OBAVJESTENJA}${PATH_OBAVJESTENJA_FIND}`,{
 		   method: 'GET',
 		   headers: {
 		     'Accept': 'application/json',

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './css/Ispiti.css';
 import Error from './Error';
 import App from './App';
-import {PATH_BASE, PATH_ISPIT, PATH_ISPIT_PRIJAVLJENI_FIND, PATH_ISPIT_NEPRIJAVLJENI_FIND, PARAM_ISPIT_STUDENT, makeCancelable} from './globals';
+import {PATH_BASE, PATH_ISPIT, PATH_ISPIT_PRIJAVLJENI_FIND, PATH_ISPIT_NEPRIJAVLJENI_FIND, makeCancelable} from './globals';
 
 class Ispiti extends Component {
   constructor(props){
@@ -24,7 +24,7 @@ class Ispiti extends Component {
   }
 
   dohvatiIspite(){
-        this.request1 = makeCancelable(fetch(`${PATH_BASE}${PATH_ISPIT}${PATH_ISPIT_NEPRIJAVLJENI_FIND}?${PARAM_ISPIT_STUDENT}${this.props.user.id}`,{
+        this.request1 = makeCancelable(fetch(`${PATH_BASE}${PATH_ISPIT}${PATH_ISPIT_NEPRIJAVLJENI_FIND}`,{
 		   method: 'GET',
 		   headers: {
 		     'Accept': 'application/json',
@@ -32,7 +32,7 @@ class Ispiti extends Component {
 		     'Authorization': this.props.token
 		   }
 		   }));
-        this.request2 = makeCancelable(fetch(`${PATH_BASE}${PATH_ISPIT}${PATH_ISPIT_PRIJAVLJENI_FIND}?${PARAM_ISPIT_STUDENT}${this.props.user.id}`,{
+        this.request2 = makeCancelable(fetch(`${PATH_BASE}${PATH_ISPIT}${PATH_ISPIT_PRIJAVLJENI_FIND}`,{
 		   method: 'GET',
 		   headers: {
 		     'Accept': 'application/json',

@@ -49,6 +49,13 @@ class Main extends Component {
   constructor(){
     super();
     this.state =  {};
+    this.onLogout = this.onLogout.bind(this);
+  }
+
+  onLogout(){
+    
+      this.props.onLogout();
+
   }
 
 
@@ -57,6 +64,12 @@ class Main extends Component {
     const novaProfilStranica = () => <Profil user={this.props.user} token={this.props.token}  onProfileSubmit={this.props.onProfileSubmit}/>
     const novaIspiti = () => <Ispiti user={this.props.user} token={this.props.token}   ispiti={this.state.ispiti} prijavljeniIspiti={this.state.prijavljeniIspiti} onPrijava={this.prijavaIspita} onOdjava={this.odjavaIspita}/>
     const novaPredmeti = () => <Predmeti user={this.props.user}  token={this.props.token} />
+    navigationItems[4] =   (<NavLink className="link" to="/" activeClassName="active">
+        <SidebarItem>
+          <span className="nav-title" onClick={this.onLogout}>Odjava</span>
+        </SidebarItem>
+      </NavLink> );
+
 
     return (
         <div className="body">
@@ -82,7 +95,6 @@ class Main extends Component {
                 color="#f5f5f5"
                 background="#347598"
                 width="200">
-
                 <div id="inner-content-wrapper">
                   <Route path="/obavjestenja" component={novaObavjestenja}/>
                   <Route path="/ispiti" component={novaIspiti}/>
@@ -90,6 +102,7 @@ class Main extends Component {
                   <Route path="/predmeti" component={novaPredmeti}/>
                 </div>
               </Sidebar>
+
             </div>
           </Router>
         </div>

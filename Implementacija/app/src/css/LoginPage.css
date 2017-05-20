@@ -1,4 +1,4 @@
-body {   
+body {
 	background-image: url('../img/background.jpg');
 	background-position: center center;
 	background-repeat: no-repeat;
@@ -11,8 +11,8 @@ body {
 	position: relative;
 }
 
-h1, h2 {
-	font-family: 'Open Sans', sans-serif;	
+h1, h2, h4 {
+	font-family: 'Open Sans', sans-serif;
 	color: #f5f5f5;
 }
 

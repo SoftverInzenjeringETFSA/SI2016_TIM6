@@ -37,8 +37,42 @@ public class PredmetService {
     	return this.predmetRepository.findOne(id);
 	}
 
-	public Iterable<Predmet> findAllFuture(Integer id_studenta) {
-		return predmetRepository.findAllPredmetByStudentAndSemestarAndOdsjek(id_studenta);
+	public Iterable<PredmetSemestarDto> findAllFuture(Integer id_studenta) {
+		
+		Map<Integer, ArrayList<PredmetDto>> semestri = new HashMap<Integer, ArrayList<PredmetDto>>();
+		ArrayList<Predmet> lista = (ArrayList<Predmet>) predmetRepository.findAllPredmetByStudentAndSemestarAndOdsjek(id_studenta);
+		
+		for (Predmet predmet : lista) {
+			Integer brojSemestra = predmet.getSemestar();
+			
+			if( semestri.get(brojSemestra) == null )
+				semestri.put(brojSemestra, new ArrayList<PredmetDto>());
+			
+			Double prosjek = this.pohadjanjeRepository.findAVGByPredmet(predmet.getId());
+			
+			PredmetDto predmetA = new PredmetDto(
+					predmet.getId(),
+					predmet.getNaziv(),
+					null,
+					predmet.getProfesor().toString(),
+					prosjek
+				);
+			
+			ArrayList<PredmetDto> tmp = semestri.get(brojSemestra);
+			tmp.add(predmetA);	
+		}
+		
+		Iterator<Entry<Integer, ArrayList<PredmetDto>>> it = semestri.entrySet().iterator();
+		ArrayList<PredmetSemestarDto> sviSemestri = new ArrayList<>();
+		
+	    while (it.hasNext()) {
+	        Map.Entry pair = (Map.Entry)it.next();
+	        PredmetSemestarDto pr = new PredmetSemestarDto((Integer)pair.getKey(), (ArrayList<PredmetDto>)pair.getValue());
+	        sviSemestri.add(pr);
+	        it.remove(); // avoids a ConcurrentModificationException
+	    }		
+		
+	    return sviSemestri;
 	}
     public ArrayList<PredmetSemestarDto> findAllSemesters(Integer student_id) {
     	Map<Integer, ArrayList<PredmetDto>> semestri = new HashMap<Integer, ArrayList<PredmetDto>>();
