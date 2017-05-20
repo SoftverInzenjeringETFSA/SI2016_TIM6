@@ -29,7 +29,10 @@ public Ispit() {
     @JoinColumn(name="predmet_id")
     private Predmet predmet;
 
-
+	public Integer getId() {
+		return id;
+	}
+	
 	public Timestamp getPrijave_do() {
 		return prijave_do;
 	}

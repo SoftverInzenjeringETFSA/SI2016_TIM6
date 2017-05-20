@@ -1,7 +1,8 @@
 package ba.isss.repositories;
 
-import ba.isss.models.Student;
 import org.springframework.data.repository.Repository;
+
+import ba.isss.models.Student;
 
 // Public interface
 public interface StudentRepository extends Repository<Student, Integer> {
@@ -11,4 +12,5 @@ public interface StudentRepository extends Repository<Student, Integer> {
 	boolean exists(Integer primaryKey);
 
 	Student findStudentByUsername(String user);
+	
 }

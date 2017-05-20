@@ -1,26 +1,26 @@
 package ba.isss.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
-import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import ba.isss.dto.PredmetDto;
 import ba.isss.dto.PredmetSemestarDto;
-import ba.isss.models.Predmet;
 import ba.isss.models.Pohadjanje;
+import ba.isss.models.Predmet;
+import ba.isss.models.Student;
 import ba.isss.repositories.PohadjanjeRepository;
 import ba.isss.repositories.PredmetRepository;
+import ba.isss.repositories.StudentRepository;
 
 @Service
 public class PredmetService {
-    
+    private StudentRepository studentRepo;
     @Autowired
     PredmetRepository predmetRepository;
     
@@ -35,6 +35,10 @@ public class PredmetService {
     	return this.predmetRepository.findOne(id);
 	}
     
+    public Iterable<Predmet> findAllFuture(Integer id_studenta) {
+    	return predmetRepository.findAllPredmetByStudentAndSemestarAndOdsjek(id_studenta);
+    }
+        
     public ArrayList<PredmetSemestarDto> findAllSemesters(Integer student_id) {
     	Map<Integer, ArrayList<PredmetDto>> semestri = new HashMap<Integer, ArrayList<PredmetDto>>();
 		ArrayList<Pohadjanje> lista = (ArrayList<Pohadjanje>) this.pohadjanjeRepository.findAllByStudent(student_id);
