@@ -1,11 +1,14 @@
 package ba.isss.filters;
 
 import ba.isss.services.TokenAuthenticationService;
+import ch.qos.logback.classic.Logger;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.crypto.codec.Hex;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -15,6 +18,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Collections;
 
 /**
@@ -47,11 +52,26 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
             creds = new ObjectMapper().readValue(req.getInputStream(), AccountCredentials.class);
         }
 
+        String password = creds.getPassword().toString();
+        StringBuffer sb = new StringBuffer();
+        try {
+			MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+			messageDigest.update(password.getBytes("UTF-8"));
+			byte[] digest = messageDigest.digest();
+			
+			for (int i = 0; i < digest.length; i++)
+			        sb.append(Integer.toString((digest[i] & 0xff) + 0x100, 16).substring(1));
 
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+                
+        
         return getAuthenticationManager().authenticate(
                 new UsernamePasswordAuthenticationToken(
                         creds.getUsername(),
-                        creds.getPassword(),
+                        sb.toString(),
                         Collections.emptyList()
                 )
         );

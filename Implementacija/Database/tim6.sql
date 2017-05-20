@@ -226,11 +226,12 @@ CREATE TABLE `student` (
 -- Dumping data for table `student`
 --
 
+-- Password: pass
 INSERT INTO `student` (`id`, `ime`, `prezime`, `email`, `spol`, `username`, `password`, `jmbg`, `datum_rodjenja`, `mjesto_rodjenja`, `semestar`, `odsjek_id`, `adresa`, `telefon`) VALUES
-(1, 'Alija', 'Izetbegović', 'zlatna_kasika@sda.ba', 'M', 'alija1', '123123', '1122331122334', '2017-05-08', 'Bosanski Šamac', 1, 1, 'Sarajevska 2', '033256322'),
-(2, 'Alija', 'Izetbegović', 'zlatna_kasika@sda.ba', 'M', 'alija2', '123123', '1122331122334', '2017-05-08', 'Bosanski Šamac', 1, 1, 'Ramiza Salcina 3', '061254635'),
-(3, 'Mujo', 'Mujić', 'mmujic1@etf.unsa.ba', 'M', 'mujo1', 'pass',  '1234545984521', '2017-05-01', 'Gusinje', 1, 1, 'Pofalićka 2', '033568984'),
-(4, 'Suljo', 'Suljić', 'ssuljic@etf.unsa.ba', 'M', 'suljo1', 'pass', '1234567890123', '2017-05-02', 'Sarajevo', 2, 1, 'Podigmanska 12', '061547896');
+(1, 'Alija', 'Izetbegović', 'zlatna_kasika@sda.ba', 'M', 'alija1', '1a1dc91c907325c69271ddf0c944bc72', '1122331122334', '2017-05-08', 'Bosanski Šamac', 1, 1, 'Sarajevska 2', '033256322'),
+(2, 'Alija', 'Izetbegović', 'zlatna_kasika@sda.ba', 'M', 'alija2', '1a1dc91c907325c69271ddf0c944bc72', '1122331122334', '2017-05-08', 'Bosanski Šamac', 1, 1, 'Ramiza Salcina 3', '061254635'),
+(3, 'Mujo', 'Mujić', 'mmujic1@etf.unsa.ba', 'M', 'mujo1', 'pass',  '1a1dc91c907325c69271ddf0c944bc72 ', '2017-05-01', 'Gusinje', 1, 1, 'Pofalićka 2', '033568984'),
+(4, 'Suljo', 'Suljić', 'ssuljic@etf.unsa.ba', 'M', 'suljo1', 'pass', '1a1dc91c907325c69271ddf0c944bc72 ', '2017-05-02', 'Sarajevo', 2, 1, 'Podigmanska 12', '061547896');
 
 --
 -- Indexes for dumped tables

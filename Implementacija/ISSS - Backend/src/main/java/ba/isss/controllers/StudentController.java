@@ -2,6 +2,8 @@ package ba.isss.controllers;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import ba.isss.dto.PredmetSemestarDto;
 import ba.isss.models.Predmet;
@@ -41,5 +43,26 @@ public class StudentController {
     @ResponseBody
     public Iterable<PredmetSemestarDto> buduciPredmeti(Principal principal) {
         return predmetService.findAllFuture(studentService.findByUsername(principal.getName()).getId());
+    }
+    
+    @PreAuthorize("hasAnyRole('ROLE_STUDENT')")
+    @PostMapping(path="/update_password")
+    @ResponseBody
+    public String updatePassword(@RequestParam("id") Integer id,@RequestParam("password1") String pass1, 
+    		@RequestParam("password2") String pass2, @RequestParam("password") String pass ) throws NoSuchAlgorithmException {
+    	
+    	Student s = studentService.findOne(id);
+    	String hash = StudentService.getMD5(pass);
+    	if(s.getPassword() != hash)
+    		return "Pogresan stari password";
+    	
+    	if(pass1 != pass2) 
+    		return "Passwordi razliciti";
+    	
+		
+    	if(studentService.updatePassword(id, hash ) == 0)
+    		return "ERROR";
+    	
+    	return "Password promijenjen";
     }
 }
