@@ -1,5 +1,9 @@
 package ba.isss.controllers;
 
+import ba.isss.models.Student;
+import ba.isss.services.IspitService;
+import ba.isss.services.StudentService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import ba.isss.models.Prijava;
 import ba.isss.services.PrijavaService;
 
+import javax.print.attribute.standard.PrinterInfo;
+import java.security.Principal;
+
 @RestController
 @RequestMapping(path="/prijave")
 public class PrijavaController {
@@ -20,22 +27,25 @@ public class PrijavaController {
 	@Autowired
 	PrijavaService prijavaService;
 	
-	
-	@GetMapping(path="/sve")
-	@ResponseBody
-	public Iterable<Prijava> svePrijave(@RequestParam("id") Integer id) {
-		return prijavaService.findAllByStudentID(id);
-	}
-	
+	@Autowired
+	IspitService ispitService;
+
+	@Autowired
+	StudentService studentService;
+
+	@PreAuthorize("hasAnyRole('ROLE_STUDENT')")
 	@PostMapping(path="/prijavi")
-	public void prijaviIspit(@ModelAttribute("prijava") Prijava p) {
-		prijavaService.SavePrijava(p);
+	public void prijaviIspit(@ModelAttribute("prijava") Prijava p, Principal principal) throws Exception {
+		Student s = studentService.findByUsername(principal.getName());
+		prijavaService.SavePrijava(p,s);
 	}
-	
+
+	@PreAuthorize("hasAnyRole('ROLE_STUDENT')")
 	@RequestMapping(path="/odjavi", method = RequestMethod.POST)
 	@ResponseBody
-	public void odjaviIspit(@ModelAttribute("odjava") Prijava p) {
-		prijavaService.DeletePrijava(p);
+	public void odjaviIspit(@ModelAttribute("odjava") Prijava p, Principal principal) throws Exception {
+		Student s = studentService.findByUsername(principal.getName());
+		prijavaService.DeletePrijava(p,s);
 	}
 	
 	

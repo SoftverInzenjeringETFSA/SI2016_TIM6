@@ -1,5 +1,6 @@
 package ba.isss.services;
 
+import ba.isss.models.Student;
 import ba.isss.repositories.PrijavaRepository;
 import ba.isss.models.Prijava;
 
@@ -13,12 +14,15 @@ public class PrijavaService {
 	
 	@Autowired
 	private PrijavaRepository prijavaRepo;
+	@Autowired
 	private PrijavaService prijavaService;
 	public Iterable<Prijava> findAllByStudentID(Integer id) {
 		return prijavaRepo.findAllByStudentId(id);
 	}
 	
-	public void SavePrijava(Prijava p) {
+	public void SavePrijava(Prijava p, Student s) throws Exception {
+	    if(!p.getStudent().equals(s))
+	        throw new Exception("ERROR");
 		Iterable<Prijava> prijave = prijavaService.findAllByStudentID(p.getStudent().getId());
 		
 		for (Prijava prijava : prijave) {
@@ -35,8 +39,9 @@ public class PrijavaService {
 		prijavaRepo.save(p);
 	}
 	
-	public void DeletePrijava(Prijava p) {
-		
+	public void DeletePrijava(Prijava p, Student s) throws Exception {
+        if(!p.getStudent().equals(s))
+            throw new Exception("ERROR");
 		prijavaRepo.delete(p);
 	}
 }
