@@ -3,7 +3,6 @@ import './css/Obavjestenja.css';
 import {PATH_BASE, PATH_OBAVJESTENJA, PATH_OBAVJESTENJA_FIND, makeCancelable} from './globals';
 
 import Error from './Error';
-import App from './App';
 
 class Obavjestenja extends Component {
 	constructor(props){

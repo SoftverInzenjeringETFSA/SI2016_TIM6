@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './css/Predmeti.css';
 import PredmetDetalji from './PredmetDetalji';
 import Error from './Error';
-import App from './App';
 import {makeCancelable, PATH_BASE, PATH_PREDMETI, PATH_PREDMETI_FIND, PARAM_STUDENT_FUTURE, PATH_STUDENT} from './globals';
 
 

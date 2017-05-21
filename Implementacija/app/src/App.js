@@ -4,7 +4,7 @@ import './css/App.css';
 import Main from './Main';
 import Error from './Error';
 
-import {makeCancelable, PATH_BASE,  PATH_LOGIN, PATH_STUDENT, PATH_STUDENT_PROFILE} from './globals';
+import {makeCancelable, PATH_BASE,  PATH_LOGIN, PATH_STUDENT, PATH_STUDENT_PROFILE, PATH_STUDENT_PASSWORD} from './globals';
 
 import LoginPage from './LoginPage';
 
@@ -34,7 +34,8 @@ class App extends Component {
     this.state = {ulogovan: false,
                   user: {},
                   token: '',
-                  poruka: null
+                  poruka: null,
+                  poruka1: null
                 };
 
     this.login = this.login.bind(this);
@@ -46,7 +47,7 @@ class App extends Component {
   }
 
   logout(){
-    
+
     this.setState({ulogovan: false, user: {}, token: ''});
     this.render();
   }
@@ -92,19 +93,48 @@ class App extends Component {
     this.request.promise.then(response => response.json())
                      .then(result => this.setState({user: result, ulogovan: true})).catch(error => this.setState({errorMessage: error + ""}));
   }
-  onProfileSubmit(nextProfileState){
-    this.setState(nextProfileState);
-    return true;
+
+
+  onProfileSubmit(stat){
+    this.request=makeCancelable(fetch(`${PATH_BASE}${PATH_STUDENT}${PATH_STUDENT_PASSWORD}`,{
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'Authorization': this.state.token
+  },
+  body: JSON.stringify({
+    password1: stat.sifra1,
+    password2: stat.sifra2,
+    password: stat.sifra,
+  })
+}));
+
+  this.request.promise.then(response => { if (response.status== 200)
+    {
+      this.setState({poruka1: "Y"});
+      this.onProfileCreate();
+    }
+    else {
+      this.setState({poruka1: "N"});
+    }
   }
+).catch(error =>
+  {
+    this.setState({poruka1: "N"});
+  });
+
+}
+
 
   render() {
     const noviLoginPage = () => <LoginPage onLoginSubmit={this.login} poruka={this.state.poruka}/>
-    const noviMainPage = () => <Main onLogout={this.logout} user={this.state.user} token={this.state.token} onProfileSubmit={this.onProfileSubmit}/>
+    const noviMainPage = () => <Main onLogout={this.logout} user={this.state.user} token={this.state.token} onProfileSubmit={this.onProfileSubmit} poruka1={this.state.poruka1}/>
 
     return (
       <Router>
         <div>
-          {this.state.ulogovan? <Redirect from="/" to="obavjestenja" /> : <Route exact path="/" component={noviLoginPage} /> }
+          {this.state.ulogovan ? <Redirect from="/" to="obavjestenja" /> : <Route exact path="/" component={noviLoginPage} /> }
           <PrivateRoute path="/obavjestenja" component={noviMainPage} ulogovanost={this.state.ulogovan} />
           <PrivateRoute path="/ispiti" component={noviMainPage} ulogovanost={this.state.ulogovan}/>
           <PrivateRoute path="/profil" component={noviMainPage} ulogovanost={this.state.ulogovan}/>

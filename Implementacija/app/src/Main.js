@@ -11,7 +11,8 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
-  NavLink
+  NavLink,
+  Redirect,
 } from 'react-router-dom';
 
 
@@ -53,7 +54,7 @@ class Main extends Component {
   }
 
   onLogout(){
-    
+
       this.props.onLogout();
 
   }
@@ -61,7 +62,7 @@ class Main extends Component {
 
   render() {
     const novaObavjestenja = () => <Obavjestenja user={this.props.user} token={this.props.token}/>
-    const novaProfilStranica = () => <Profil user={this.props.user} token={this.props.token}  onProfileSubmit={this.props.onProfileSubmit}/>
+    const novaProfilStranica = () => <Profil user={this.props.user} token={this.props.token}  onProfileSubmit={this.props.onProfileSubmit} poruka1= {this.props.poruka1}/>
     const novaIspiti = () => <Ispiti user={this.props.user} token={this.props.token}   ispiti={this.state.ispiti} prijavljeniIspiti={this.state.prijavljeniIspiti} onPrijava={this.prijavaIspita} onOdjava={this.odjavaIspita}/>
     const novaPredmeti = () => <Predmeti user={this.props.user}  token={this.props.token} />
     navigationItems[4] =   (<NavLink className="link" to="/" activeClassName="active">
@@ -95,7 +96,7 @@ class Main extends Component {
                 color="#f5f5f5"
                 background="#347598"
                 width="200">
-                <div id="inner-content-wrapper">
+                <div id="inner-content-wrapper">              
                   <Route path="/obavjestenja" component={novaObavjestenja}/>
                   <Route path="/ispiti" component={novaIspiti}/>
                   <Route path="/profil" component={novaProfilStranica}/>

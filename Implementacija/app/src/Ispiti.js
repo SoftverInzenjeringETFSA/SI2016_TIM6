@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './css/Ispiti.css';
 import Error from './Error';
-import App from './App';
 import {PATH_BASE, PATH_ISPIT, PATH_ISPIT_PRIJAVLJENI_FIND, PATH_ISPIT_NEPRIJAVLJENI_FIND, makeCancelable} from './globals';
 
 class Ispiti extends Component {

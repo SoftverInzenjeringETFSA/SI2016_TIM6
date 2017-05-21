@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './css/Profil.css';
-
+var md5 = require('js-md5');
 
 class Profil extends Component {
 
@@ -11,7 +11,8 @@ class Profil extends Component {
 						status: null,
 						sifra1: "",
 						sifra2: "",
-						sifra: ""
+						sifra: "",
+						poruka1: this.props.poruka1,
 					};
   		this.onChangeSifra1 = this.onChangeSifra1.bind(this);
 			this.onChangeSifra2 = this.onChangeSifra2.bind(this);
@@ -46,7 +47,7 @@ class Profil extends Component {
 			nextErrorCodes.push("SS");
 		}
 
-		if(this.state.user.password !== this.state.sifra){
+		if(this.state.user.password !== md5(this.state.sifra)){
 			nextErrorCodes.push("PS");
 		}
 
@@ -59,6 +60,14 @@ class Profil extends Component {
 			this.props.onProfileSubmit(this.state);
 		}
 	}
+PrikazPoruke() {
+	if (this.state.poruka1==="Y")
+	        alert("Uspješno ste promijenili šifru.");
+	else
+			alert("Šifra nije promijenjena.");
+
+	this.setState({poruka1: null});
+}
 
   	render() {
   	const trenutniUser = Object.assign({}, this.state);
@@ -67,6 +76,8 @@ class Profil extends Component {
     	<div>
 			<h1 className="main-naslov profil-naslov">Pregled studentskog profila</h1>
 	<div className="form-horizontal profil-forma center-block">
+
+       {this.state.poruka1 ? this.PrikazPoruke() : null}
 
 					<div className="form-group profil-form-group">
 						<label  className="col-sm-2 control-label">Korisničko ime:</label>
@@ -221,7 +232,7 @@ class Profil extends Component {
 			    </div>
 
 			    <div className="col-sm-6">
-			      <button type="button" className="btn btn-primary" onClick={this.submitProfile}>Ažuriraj podatke</button>
+			      <button type="button" className="btn btn-primary" onClick={this.submitProfile}>Promijeni šifru</button>
 			    </div>
 			  </div>
 			</form>
