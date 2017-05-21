@@ -51,13 +51,64 @@ ISSS - Studentska stranica
 	
     	Vraća sve objavljene termine ispita na koje student nije prijavljen, a čiji predmet pohađa
 
+* Autorizovani servisi po ulozi:
+
+	* /prijava
+	
+	Login korisnika
+
+	* /student/profile
+
+	Vraća sve informacije o studentu
+
+	* /student/buduci_predmeti
+
+	Vraća buduće predmete
+
+	* /student/update_password
+
+	Ažurira šifru
+	
+	* /obavjestenja/pregled
+	
+	Vraća sva obavještenja
+
+	* /pohadjanje/pregled
+
+	Vraća predmete koje student sluša
+
+	* /ispit/prijavljeni
+	
+	Vraća prijavljene ispite
+
+	* /ispit/neprijavljeni
+
+	Vraća neprijavljene ispite
+
+	* /ispit/historija
+
+	Vraća uspješno prijavljene ispite
+
+	* /prijave/prijavi
+
+	Prijava ispita
+
+	* /prijave/odjava
+	
+	Odjava ispita
+
+	
+
 * Frontend:
 	* login stranica
 	* pregled obavještenja
+	* pregled predmeta
 	* pregled termina ispita
 	* pregled studentskog profila
 	* povezanost sa dovršenim backend servisima
 	* responzivnost
-	* validacija formi (treba dodatno testirati)
+	* validacija formi 
+	* parsiranje timestamp
+	* prikazi grešaka
         
 
