@@ -3,6 +3,8 @@ package ba.isss.repositories;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import ba.isss.models.Student;
 
@@ -16,7 +18,8 @@ public interface StudentRepository extends Repository<Student, Integer> {
 	Student findStudentByUsername(String user);
 	
 	@Modifying(clearAutomatically = true)
-	@Query("UPDATE Student s SET s.password =:password_hash WHERE s.id=:id")
-	int updatePassword(Integer id, String password_hash);
+	@Transactional
+	@Query("UPDATE Student s SET s.password =:pass1 WHERE s.id=:id")
+	int updatePassword(@Param("id") Integer id, @Param("pass1") String password_hash);
 	
 }
