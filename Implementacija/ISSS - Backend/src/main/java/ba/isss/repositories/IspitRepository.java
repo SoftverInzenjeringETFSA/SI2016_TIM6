@@ -1,10 +1,8 @@
 package ba.isss.repositories;
 
 import ba.isss.models.Ispit;
-import ba.isss.models.Obavjestenje;
 
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 

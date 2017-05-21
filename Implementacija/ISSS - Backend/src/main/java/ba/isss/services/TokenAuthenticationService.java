@@ -18,7 +18,6 @@ import java.util.Collection;
 import java.util.Date;
 
 import static io.jsonwebtoken.SignatureAlgorithm.HS512;
-import static java.util.Collections.emptyList;
 
 /**
  * Created by Edin on 18.05.2017..

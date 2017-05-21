@@ -73,7 +73,7 @@ CREATE TABLE `obavjestenja` (
   `id` int(11) NOT NULL,
   `naslov` varchar(256) COLLATE utf8_slovenian_ci NOT NULL,
   `tekst` text COLLATE utf8_slovenian_ci NOT NULL,
-  `vrijeme` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `vrijeme` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `predmet_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci;
 

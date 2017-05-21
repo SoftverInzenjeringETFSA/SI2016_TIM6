@@ -1,6 +1,6 @@
 package ba.isss.models;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,8 +22,8 @@ public Ispit() {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	
-	private Timestamp prijave_do;
-	private Timestamp termin;
+	private Date prijave_do;
+	private Date termin;
 	
 	@ManyToOne(targetEntity=Predmet.class)
     @JoinColumn(name="predmet_id")
@@ -33,19 +33,19 @@ public Ispit() {
 		return id;
 	}
 	
-	public Timestamp getPrijave_do() {
+	public Date getPrijave_do() {
 		return prijave_do;
 	}
 
-	public void setPrijave_do(Timestamp prijave_do) {
+	public void setPrijave_do(Date prijave_do) {
 		this.prijave_do = prijave_do;
 	}
 
-	public Timestamp getTermin() {
+	public Date getTermin() {
 		return termin;
 	}
 
-	public void setTermin(Timestamp termin) {
+	public void setTermin(Date termin) {
 		this.termin = termin;
 	}
 	
