@@ -54,9 +54,7 @@ class Main extends Component {
   }
 
   onLogout(){
-
       this.props.onLogout();
-
   }
 
 
@@ -96,7 +94,8 @@ class Main extends Component {
                 color="#f5f5f5"
                 background="#347598"
                 width="200">
-                <div id="inner-content-wrapper">              
+                <div id="inner-content-wrapper">
+
                   <Route path="/obavjestenja" component={novaObavjestenja}/>
                   <Route path="/ispiti" component={novaIspiti}/>
                   <Route path="/profil" component={novaProfilStranica}/>

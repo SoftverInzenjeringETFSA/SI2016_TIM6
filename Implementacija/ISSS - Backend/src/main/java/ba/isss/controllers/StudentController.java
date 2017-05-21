@@ -60,7 +60,6 @@ public class StudentController {
     		return "Passwordi razliciti";
     	
     	if(studentService.updatePassword(s.getId(), StudentService.getMD5(pass1)) == 0)
-
     		return "ERROR";
     	
     	return "Password promijenjen";

@@ -8,11 +8,10 @@ class Profil extends Component {
 		super(props);
 		this.state = {user: Object.assign({}, this.props.user),
 						errorCodes: [],
-						status: null,
 						sifra1: "",
 						sifra2: "",
 						sifra: "",
-						poruka1: this.props.poruka1,
+						poruka1: this.props.poruka1
 					};
   		this.onChangeSifra1 = this.onChangeSifra1.bind(this);
 			this.onChangeSifra2 = this.onChangeSifra2.bind(this);
@@ -35,7 +34,7 @@ class Profil extends Component {
 	validacija(){
 		var nextErrorCodes = [];
 
-		if (this.state.sifra1.length <= 4){
+		if (this.state.sifra1.length < 4){
 			nextErrorCodes.push("DS");
 		}
 
@@ -46,11 +45,6 @@ class Profil extends Component {
 		if(this.state.sifra1 === this.state.sifra){
 			nextErrorCodes.push("SS");
 		}
-
-		if(this.state.user.password !== md5(this.state.sifra)){
-			nextErrorCodes.push("PS");
-		}
-
 		this.setState({errorCodes: nextErrorCodes});
 		return nextErrorCodes.length === 0;
 	}
@@ -61,10 +55,10 @@ class Profil extends Component {
 		}
 	}
 PrikazPoruke() {
-	if (this.state.poruka1==="Y")
-	        alert("Uspješno ste promijenili šifru.");
+	if (this.state.poruka1==="N")
+	        alert("Šifra nije promijenjena.");
 	else
-			alert("Šifra nije promijenjena.");
+			alert(this.state.poruka1);
 
 	this.setState({poruka1: null});
 }
@@ -206,35 +200,15 @@ PrikazPoruke() {
 			null
 			}
 
-			{this.state.errorCodes.find(x => x === "PS")
-		? <div className="row error-row">
-			<div className="col-sm-2">
-			</div>
-			<div className="col-sm-9">
-				<span>Unijeli ste pogrešnu šifru.</span>
-			</div>
-		</div>
-		:
-		null
-		}
 
-			  <div className="form-group profil-form-group">
-			    <div className="col-sm-6 status-profil">
-			    	{this.state.status === "US"?
-			    		<span className="status-profil-uspjeh">Šifra je uspješno promijenjena!</span>
-			    			: null
-		    		}
-			    	{this.state.status === "ER"?
-			    		<span className="status-profil-error">Greška pri mijenjanju šifre!</span>
-			    			: null
-		    		}
 
-			    </div>
+
+
 
 			    <div className="col-sm-6">
 			      <button type="button" className="btn btn-primary" onClick={this.submitProfile}>Promijeni šifru</button>
 			    </div>
-			  </div>
+
 			</form>
 		</div>
 </div>

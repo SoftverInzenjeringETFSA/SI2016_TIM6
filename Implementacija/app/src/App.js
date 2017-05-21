@@ -96,24 +96,34 @@ class App extends Component {
 
 
   onProfileSubmit(stat){
+
+    var params = {
+      password1: stat.sifra1,
+      password2: stat.sifra2,
+      password: stat.sifra
+};
+
+var formBody = [];
+for (var property in params) {
+  var encodedKey = encodeURIComponent(property);
+  var encodedValue = encodeURIComponent(params[property]);
+  formBody.push(encodedKey + "=" + encodedValue);
+}
+formBody = formBody.join("&");
     this.request=makeCancelable(fetch(`${PATH_BASE}${PATH_STUDENT}${PATH_STUDENT_PASSWORD}`,{
   method: 'POST',
   headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
+    'Accept': 'application/text',
+    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
     'Authorization': this.state.token
   },
-  body: JSON.stringify({
-    password1: stat.sifra1,
-    password2: stat.sifra2,
-    password: stat.sifra,
-  })
+  body: formBody
 }));
 
   this.request.promise.then(response => { if (response.status== 200)
     {
-      this.setState({poruka1: "Y"});
-      this.onProfileCreate();
+      response.text().then(text => {
+      this.setState({poruka1: text});})
     }
     else {
       this.setState({poruka1: "N"});
