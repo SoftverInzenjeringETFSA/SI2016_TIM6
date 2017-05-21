@@ -1,11 +1,11 @@
 package ba.isss.dto;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 public class PrijavljeniIspitDto {
 
 	private String predmet;
-	private Timestamp termin;
+	private Date termin;
 	
 	//konstruktor
 	
@@ -15,10 +15,10 @@ public class PrijavljeniIspitDto {
 	public void setPredmet(String predmet) {
 		this.predmet = predmet;
 	}
-	public Timestamp getTermin() {
+	public Date getTermin() {
 		return termin;
 	}
-	public void setTermin(Timestamp termin) {
+	public void setTermin(Date termin) {
 		this.termin = termin;
 	}
 	

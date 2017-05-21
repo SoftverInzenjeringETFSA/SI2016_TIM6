@@ -1,7 +1,6 @@
 package ba.isss.services;
 
 import ba.isss.repositories.PrijavaRepository;
-import ba.isss.models.Ispit;
 import ba.isss.models.Prijava;
 
 import java.util.Date;
@@ -28,8 +27,7 @@ public class PrijavaService {
 			}
 		}
 		
-		Integer millis = (p.getIspit().getPrijave_do().getNanos())/1000000;
-		Date prijave_do = new Date(millis);
+		Date prijave_do = p.getIspit().getPrijave_do();
 		Date trenutno = new Date(System.currentTimeMillis());
 		
 		if(prijave_do.compareTo(trenutno) < 0) 

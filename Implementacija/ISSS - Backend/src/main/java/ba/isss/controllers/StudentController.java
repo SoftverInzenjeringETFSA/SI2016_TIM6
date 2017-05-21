@@ -1,12 +1,9 @@
 package ba.isss.controllers;
 
 import java.security.Principal;
-import java.util.ArrayList;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import ba.isss.dto.PredmetSemestarDto;
-import ba.isss.models.Predmet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;

@@ -1,17 +1,13 @@
 package ba.isss.models;
 
-import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -29,7 +25,7 @@ public class Obavjestenje {
 	
 	private String naslov;
 	private String tekst;
-	private Timestamp vrijeme;
+	private Date vrijeme;
 	
 	@ManyToOne(targetEntity=Predmet.class)
     @JoinColumn(name="predmet_id")
@@ -51,11 +47,11 @@ public class Obavjestenje {
 		this.tekst = tekst;
 	}
 
-	public Timestamp getVrijeme() {
+	public Date getVrijeme() {
 		return vrijeme;
 	}
 
-	public void setVrijeme(Timestamp vrijeme) {
+	public void setVrijeme(Date vrijeme) {
 		this.vrijeme = vrijeme;
 	}
 

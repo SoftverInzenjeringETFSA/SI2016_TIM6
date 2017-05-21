@@ -1,9 +1,5 @@
 package ba.isss.models;
 
-import java.io.Serializable;
-import java.sql.Timestamp;
-
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

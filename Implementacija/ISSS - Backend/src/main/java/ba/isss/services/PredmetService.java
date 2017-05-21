@@ -13,7 +13,6 @@ import ba.isss.dto.PredmetDto;
 import ba.isss.dto.PredmetSemestarDto;
 import ba.isss.models.Pohadjanje;
 import ba.isss.models.Predmet;
-import ba.isss.models.Student;
 import ba.isss.repositories.PohadjanjeRepository;
 import ba.isss.repositories.PredmetRepository;
 import ba.isss.repositories.StudentRepository;
