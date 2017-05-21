@@ -18,7 +18,7 @@ public interface PrijavaRepository extends CrudRepository<Prijava,Integer> {
 	@Modifying(clearAutomatically = true)
 	@Transactional
 	@Query("DELETE FROM Prijava p WHERE p.student.id=:student_id AND p.ispit.id=:ispit_id")
-	public void delete (@Param("student_id")Integer student_id, @Param("ispit_id")Integer ispit_id);
+	public void deleteByPrijavaStudentIdAndPrijavaIspitId (@Param("student_id")Integer student_id, @Param("ispit_id")Integer ispit_id);
 	
 	public Prijava save(Prijava p);
 }

@@ -42,6 +42,6 @@ public class PrijavaService {
 	public void DeletePrijava(Prijava p, Student s) throws Exception {
         if(!p.getStudent().equals(s))
             throw new Exception("ERROR");
-		prijavaRepo.delete(p);
+		prijavaRepo.deleteByPrijavaStudentIdAndPrijavaIspitId(s.getId(), p.getIspit().getId());;
 	}
 }
