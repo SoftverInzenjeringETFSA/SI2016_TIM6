@@ -43,21 +43,21 @@ public class StudentController {
     }
     
     @PreAuthorize("hasAnyRole('ROLE_STUDENT')")
-    @PostMapping(path="/update_password")
+    @RequestMapping(value="/update_password", method = RequestMethod.POST)
     @ResponseBody
-    public String updatePassword(@RequestParam("id") Integer id,@RequestParam("password1") String pass1, 
+    public String updatePassword(Principal principal,@RequestParam("password1") String pass1, 
     		@RequestParam("password2") String pass2, @RequestParam("password") String pass ) throws NoSuchAlgorithmException {
     	
-    	Student s = studentService.findOne(id);
-    	
-    	if(s.getPassword() != StudentService.getMD5(pass))
+    	Student s = studentService.findOne(studentService.findByUsername(principal.getName()).getId());
+   	
+    	if(!s.getPassword().equals(StudentService.getMD5(pass)))
     		return "Pogresan stari password";
     	
-    	if(pass1 != pass2) 
+    	if(!pass1.equals(pass2)) 
     		return "Passwordi razliciti";
     	
 		
-    	if(studentService.updatePassword(id, StudentService.getMD5(pass1)) == 0)
+    	if(studentService.updatePassword(studentService.findByUsername(principal.getName()).getId(), StudentService.getMD5(pass1)) == 0)
     		return "ERROR";
     	
     	return "Password promijenjen";
