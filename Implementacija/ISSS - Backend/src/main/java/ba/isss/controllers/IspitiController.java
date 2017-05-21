@@ -53,5 +53,10 @@ public class IspitiController {
         return ispitService.findNePrijavljeniByStudent(studentService.findByUsername(principal.getName()).getId());
     }
 
-
+    @PreAuthorize("hasAnyRole('ROLE_STUDENT')")
+    @RequestMapping(value="/historija")
+    @ResponseBody
+    public Iterable<Ispit> findHistorija(Principal principal) {
+    	return ispitService.findPrijavljeniForStudentByTermin(studentService.findByUsername(principal.getName()).getId());
+    }
 }
