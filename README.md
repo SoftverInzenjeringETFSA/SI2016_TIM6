@@ -60,15 +60,4 @@ ISSS - Studentska stranica
 	* responzivnost
 	* validacija formi (treba dodatno testirati)
         
-### TODO
-
-* Backend:
-	* Servis koji omogućava prijavu i odjavu termina ispita
-	* Promjena šifre
-	* Prikaz budućih predmeta
-	* Prikaz historije uspješnih prijavljenih ispita
-
-* Frontend:
-	* Parsirati timestamp kao datum i vrijeme ispita u komponenti Ispiti.js
-	* Prikaz greške prilikom login-a i logout
 
