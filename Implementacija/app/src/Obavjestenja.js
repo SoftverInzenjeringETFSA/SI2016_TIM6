@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './css/Obavjestenja.css';
 import {PATH_BASE, PATH_OBAVJESTENJA, PATH_OBAVJESTENJA_FIND, makeCancelable} from './globals';
+const Timestamp = require('react-timestamp');
 
 import Error from './Error';
 
@@ -40,6 +41,7 @@ class Obavjestenja extends Component {
 		const obavijesti = this.state.obavijesti.map((i) => (
 		  <a key={i.id} className="list-group-item">
 		    <h4 className="list-group-item-heading">{i.naslov}</h4>
+				<p className="list-group-item-text"><Timestamp time={i.vrijeme/1000} format='full'/></p>
 		    <p className="list-group-item-text">{i.tekst}</p>
 		  </a>
 		));

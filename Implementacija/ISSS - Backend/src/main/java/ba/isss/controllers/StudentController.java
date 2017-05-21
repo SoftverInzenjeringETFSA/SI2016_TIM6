@@ -49,17 +49,15 @@ public class StudentController {
     		@RequestParam("password2") String pass2, @RequestParam("password") String pass ) throws NoSuchAlgorithmException {
     	
 
-    	Student s = studentService.findByUsername(principal.getName());
+    	Student s = studentService.findOne(studentService.findByUsername(principal.getName()).getId());
     	
-    	if(s.getPassword() != StudentService.getMD5(pass))
-
     	if(!s.getPassword().equals(StudentService.getMD5(pass)))
     		return "Pogresan stari password";
     	
     	if(!pass1.equals(pass2)) 
     		return "Passwordi razliciti";
     	
-    	if(studentService.updatePassword(s.getId(), StudentService.getMD5(pass1)) == 0)
+    	if(studentService.updatePassword(studentService.findByUsername(principal.getName()).getId(), StudentService.getMD5(pass1)) == 0)
     		return "ERROR";
     	
     	return "Password promijenjen";

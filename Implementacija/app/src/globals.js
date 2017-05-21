@@ -15,6 +15,7 @@ const PATH_STUDENT_PASSWORD ='/update_password';
 const PATH_ISPIT = '/ispit';
 const PATH_ISPIT_PRIJAVLJENI_FIND = '/prijavljeni';
 const PATH_ISPIT_NEPRIJAVLJENI_FIND = '/neprijavljeni';
+const PATH_ISPIT_HISTORIJA_FIND = '/historija';
 
 
 
@@ -59,4 +60,5 @@ export {
   PATH_ISPIT,
   PATH_ISPIT_PRIJAVLJENI_FIND,
   PATH_ISPIT_NEPRIJAVLJENI_FIND,
+  PATH_ISPIT_HISTORIJA_FIND
 }

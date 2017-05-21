@@ -68,7 +68,7 @@ class App extends Component {
 
   this.request.promise.then(response => { if (response.status== 200)
     {
-      this.setState({token: response.headers.get("Authorization")},this.onProfileCreate)
+      this.setState({token: response.headers.get("Authorization"), poruka: null},this.onProfileCreate)
     }
     else {
       this.setState({poruka: "P"});
