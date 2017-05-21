@@ -15,7 +15,7 @@ public interface IspitRepository extends Repository<Ispit, Integer> {
 	
 	@Query("select i from Ispit i, Prijava p, Student s, Predmet r "
 			+ "where s.id = p.student.id and p.ispit.id = i.id and i.predmet.id = r.id and s.id = :id "
-			+ "order by i.termin desc")
+			+ "and i.termin > current_date() order by i.termin desc")
 	Iterable<Ispit> findAllPrijavljeniForStudent(@Param("id") Integer id);
 	
 	@Query("select distinct i from Ispit i, Prijava p, Pohadjanje po, Student s, Predmet pred "
@@ -25,13 +25,13 @@ public interface IspitRepository extends Repository<Ispit, Integer> {
 			+ "where st.id = pr.student.id and pr.ispit.id = isp.id and isp.predmet.id = pre.id and st.id = :id "
 			+ ") "
 			+ "and s.id = :id "
-			+ "order by i.termin desc")
+			+ " and i.termin > current_date() order by i.termin desc")
 	Iterable<Ispit> findAllNePrijavljeniForStudent(@Param("id") Integer id);
 	
 	@Query("SELECT i FROM Ispit i, Student s, Prijava p "
-			+ "WHERE p.student.id=:id "
-			+ "AND s.id = :id "
-			+ "AND p.ispit.id = i.id "
-			+ "AND i.termin < now() order by i.termin desc")
+			 			+ "WHERE p.student.id=:id "
+			 			+ "AND s.id = :id "
+			 			+ "AND p.ispit.id = i.id "
+			 			+ "AND i.termin < current_date() order by i.termin desc")
 	Iterable<Ispit> findAllPrijavljeniForStudentByTermin(@Param("id") Integer id);
 }

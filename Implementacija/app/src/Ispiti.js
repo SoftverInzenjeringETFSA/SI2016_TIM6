@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './css/Ispiti.css';
 import Error from './Error';
-import {PATH_BASE, PATH_ISPIT, PATH_ISPIT_PRIJAVLJENI_FIND, PATH_ISPIT_NEPRIJAVLJENI_FIND, PATH_ISPIT_HISTORIJA_FIND, makeCancelable} from './globals';
+import {PATH_BASE, PATH_ISPIT, PATH_ISPIT_PRIJAVLJENI_FIND, PATH_PRIJAVA_ISPIT, PATH_ISPIT_NEPRIJAVLJENI_FIND, PATH_ISPIT_HISTORIJA_FIND, PATH_ISPIT_PRIJAVA, PATH_ISPIT_ODJAVA, makeCancelable} from './globals';
 const Timestamp = require('react-timestamp');
 
 
@@ -20,6 +20,7 @@ class Ispiti extends Component {
     this.request1 = null;
     this.request2 = null;
     this.request3=null;
+    this.request = null;
   }
 
   componentDidMount() {
@@ -64,6 +65,7 @@ class Ispiti extends Component {
         this.request3.promise.then(response => response.json())
             .then(result => this.setState({historijaIspiti: result}))
             .catch(error => this.setState({errorMessage: error + ""}));
+
   }
 
   componentWillUnmount(){
@@ -74,32 +76,79 @@ class Ispiti extends Component {
 
 
   prijavaIspita(ispitId){
-    const foundIndex = this.state.ispiti.findIndex(x => x.id === ispitId);
-    const ispitiNext = this.state.ispiti.filter(x => x.id !== ispitId);
-    const prijavljeniIspitiNext = [this.state.ispiti[foundIndex], ...this.state.prijavljeniIspiti];
 
-    this.setState({ispiti: ispitiNext, prijavljeniIspiti: prijavljeniIspitiNext});
+const foundIndex = this.state.ispiti.findIndex(x => x.id === ispitId);
+    var data = new FormData();
+    data.append("ispit", this.state.ispiti[foundIndex].predmet.id);
+    data.append("student", this.props.user.id);
+    data.append("model_attribute","prijava");
+    this.request=makeCancelable(fetch(`${PATH_BASE}${PATH_PRIJAVA_ISPIT}${PATH_ISPIT_PRIJAVA}`,{
+  method: 'POST',
+  headers: {
+    'Authorization': this.props.token
+  },
+  body: data
+}));
+this.request.promise.then(response => {if (response.status== 200)
+
+  this.dohvatiIspite()
+
+else {
+  response.json().then(text => alert(text.message));
+}
+}
+);
+
+  //  const ispitiNext = this.state.ispiti.filter(x => x.id !== ispitId);
+  //  const prijavljeniIspitiNext = [this.state.ispiti[foundIndex], ...this.state.prijavljeniIspiti];
+
+  //  this.setState({ispiti: ispitiNext, prijavljeniIspiti: prijavljeniIspitiNext});
+
   }
 
   odjavaIspita(ispitId){
-    const foundIndex = this.state.prijavljeniIspiti.findIndex(x => x.id === ispitId);
-    const prijavljeniIspitiNext = this.state.prijavljeniIspiti.filter(x => x.id !== ispitId);
-    const ispitiNext = [this.state.prijavljeniIspiti[foundIndex], ...this.state.ispiti];
 
-    this.setState({ispiti: ispitiNext, prijavljeniIspiti: prijavljeniIspitiNext});
+const foundIndex = this.state.prijavljeniIspiti.findIndex(x => x.id === ispitId);
+    var data = new FormData();
+    data.append("ispit",  this.state.prijavljeniIspiti[foundIndex].predmet.id);
+    data.append("student", this.props.user.id);
+    data.append("model_attribute","odjava");
+
+    this.request=makeCancelable(fetch(`${PATH_BASE}${PATH_PRIJAVA_ISPIT}${PATH_ISPIT_ODJAVA}`,{
+  method: 'POST',
+  headers: {
+    'Authorization': this.props.token
+  },
+  body: data
+  }));
+  this.request.promise.then(response => {if (response.status== 200)
+
+    this.dohvatiIspite()
+    else {
+      response.json().then(text => alert(text.message));
+    }
+  }
+  );
+
+  //  const foundIndex = this.state.prijavljeniIspiti.findIndex(x => x.id === ispitId);
+  //  const prijavljeniIspitiNext = this.state.prijavljeniIspiti.filter(x => x.id !== ispitId);
+  //  const ispitiNext = [this.state.prijavljeniIspiti[foundIndex], ...this.state.ispiti];
+
+  //  this.setState({ispiti: ispitiNext, prijavljeniIspiti: prijavljeniIspitiNext});
   }
 
   render() {
     const ispiti = this.state.ispiti.map((i) => (
-      <tr key={i.id}><td>{i.predmet.naziv}</td><td><Timestamp time={i.datum/1000} format='full'/></td><td><Timestamp time={i.termin/1000} format='full'/></td><td>{i.status != "Slobodan"? i.status : <button className="btn btn-primary btn-xs" onClick={() => this.prijavaIspita(i.id)}>Prijavi</button>}</td></tr>
+      <tr key={i.id}><td>{i.predmet.naziv}</td><td><Timestamp time={i.prijave_do/1000} format='full'/></td><td><Timestamp time={i.termin/1000} format='full'/></td><td>
+      <button className="btn btn-primary btn-xs" onClick={() => this.prijavaIspita(i.id)}>Prijavi</button></td></tr>
     ));
 
     const prijavljeniIspiti = this.state.prijavljeniIspiti.map((i) => (
-      <tr key={i.id}><td>{i.predmet.naziv}</td><td><Timestamp time={i.datum/1000} format='full'/></td><td><Timestamp time={i.termin/1000} format='full'/></td><td>{<button className="btn btn-primary btn-xs" onClick={() => this.odjavaIspita(i.id)}>Odjavi</button>}</td></tr>
+      <tr key={i.id}><td>{i.predmet.naziv}</td><td><Timestamp time={i.prijave_do/1000} format='full'/></td><td><Timestamp time={i.termin/1000} format='full'/></td><td>{<button className="btn btn-primary btn-xs" onClick={() => this.odjavaIspita(i.id)}>Odjavi</button>}</td></tr>
     ));
 
-    const prijavljeniIspitiHistorija = this.state.historijaIspiti.map((i) => (
-      <tr key={i.id}><td>{i.predmet.naziv}</td><td><Timestamp time={i.termin/1000} format='full'/></td></tr>
+    const historijaIspiti= this.state.historijaIspiti.map((i) => (
+      <tr key={i.id}><td>{i.predmet.naziv}</td><td><Timestamp time={i.prijave_do/1000} format='full'/></td><td><Timestamp time={i.termin/1000} format='full'/></td></tr>
     ));
 
     if (this.state.errorMessage){
@@ -139,12 +188,12 @@ class Ispiti extends Component {
           :<h3>Niste prijavili nijedan ispit.</h3>
       }
 
-      {this.state.prijavljeniIspitiHistorija
+      {this.state.historijaIspiti
        ? <div><h2 className="podnaslov">Uspješni termini:</h2>
           <table className="table table-striped">
             <tbody>
               <tr><th>Predmet</th><th>Datum</th><th>Termin</th><th></th></tr>
-              {prijavljeniIspitiHistorija}
+              {historijaIspiti}
             </tbody>
           </table>
           </div>
