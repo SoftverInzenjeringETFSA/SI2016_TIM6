@@ -60,7 +60,7 @@ class Main extends Component {
 
   render() {
     const novaObavjestenja = () => <Obavjestenja user={this.props.user} token={this.props.token}/>
-    const novaProfilStranica = () => <Profil user={this.props.user} token={this.props.token}  onProfileSubmit={this.props.onProfileSubmit} poruka1= {this.props.poruka1}/>
+    const novaProfilStranica = () => <Profil user={this.props.user} token={this.props.token} />
     const novaIspiti = () => <Ispiti user={this.props.user} token={this.props.token}   ispiti={this.state.ispiti} prijavljeniIspiti={this.state.prijavljeniIspiti} onPrijava={this.prijavaIspita} onOdjava={this.odjavaIspita}/>
     const novaPredmeti = () => <Predmeti user={this.props.user}  token={this.props.token} />
     navigationItems[4] =   (<NavLink className="link" to="/" activeClassName="active">

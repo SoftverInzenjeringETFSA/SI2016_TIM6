@@ -34,13 +34,11 @@ class App extends Component {
     this.state = {ulogovan: false,
                   user: {},
                   token: '',
-                  poruka: null,
-                  poruka1: null
+                  poruka: null
                 };
 
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
-    this.onProfileSubmit = this.onProfileSubmit.bind(this);
     this.onProfileCreate= this.onProfileCreate.bind(this);
 
     this.request = null;
@@ -48,8 +46,8 @@ class App extends Component {
 
   logout(){
 
-    this.setState({ulogovan: false, user: {}, token: ''});
-    this.render();
+    this.setState({ulogovan: false, user: {}, token: ''},this.render);
+  //  this.render();
   }
 
   login(st){
@@ -95,51 +93,12 @@ class App extends Component {
   }
 
 
-  onProfileSubmit(stat){
 
-    var params = {
-      password1: stat.sifra1,
-      password2: stat.sifra2,
-      password: stat.sifra
-};
-
-var formBody = [];
-for (var property in params) {
-  var encodedKey = encodeURIComponent(property);
-  var encodedValue = encodeURIComponent(params[property]);
-  formBody.push(encodedKey + "=" + encodedValue);
-}
-formBody = formBody.join("&");
-    this.request=makeCancelable(fetch(`${PATH_BASE}${PATH_STUDENT}${PATH_STUDENT_PASSWORD}`,{
-  method: 'POST',
-  headers: {
-    'Accept': 'application/text',
-    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-    'Authorization': this.state.token
-  },
-  body: formBody
-}));
-
-  this.request.promise.then(response => { if (response.status== 200)
-    {
-      response.text().then(text => {
-      this.setState({poruka1: text});})
-    }
-    else {
-      this.setState({poruka1: "N"});
-    }
-  }
-).catch(error =>
-  {
-    this.setState({poruka1: "N"});
-  });
-
-}
 
 
   render() {
     const noviLoginPage = () => <LoginPage onLoginSubmit={this.login} poruka={this.state.poruka}/>
-    const noviMainPage = () => <Main onLogout={this.logout} user={this.state.user} token={this.state.token} onProfileSubmit={this.onProfileSubmit} poruka1={this.state.poruka1}/>
+    const noviMainPage = () => <Main onLogout={this.logout} user={this.state.user} token={this.state.token}/>
 
     return (
       <Router>

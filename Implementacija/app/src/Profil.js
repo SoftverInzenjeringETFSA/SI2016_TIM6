@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './css/Profil.css';
-var md5 = require('js-md5');
+import {makeCancelable, PATH_BASE,  PATH_STUDENT, PATH_STUDENT_PASSWORD} from './globals';
+
 
 class Profil extends Component {
 
@@ -51,7 +52,45 @@ class Profil extends Component {
 
 	submitProfile(){
 		if (this.validacija()){
-			this.props.onProfileSubmit(this.state);
+			//this.props.onProfileSubmit(this.state);
+
+		var params = {
+				password1: this.state.sifra1,
+				password2: this.state.sifra2,
+				password: this.state.sifra
+	};
+
+	var formBody = [];
+	for (var property in params) {
+		var encodedKey = encodeURIComponent(property);
+		var encodedValue = encodeURIComponent(params[property]);
+		formBody.push(encodedKey + "=" + encodedValue);
+	}
+	formBody = formBody.join("&");
+			this.request=makeCancelable(fetch(`${PATH_BASE}${PATH_STUDENT}${PATH_STUDENT_PASSWORD}`,{
+		method: 'POST',
+		headers: {
+			'Accept': 'application/text',
+			'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+			'Authorization': this.props.token
+		},
+		body: formBody
+	}));
+
+		this.request.promise.then(response => { if (response.status== 200)
+			{
+				response.text().then(text => {
+				this.setState({poruka1: text});})
+			}
+			else {
+				this.setState({poruka1: "N"});
+			}
+		}
+	).catch(error =>
+		{
+			this.setState({poruka1: "N"});
+		});
+
 		}
 	}
 PrikazPoruke() {
