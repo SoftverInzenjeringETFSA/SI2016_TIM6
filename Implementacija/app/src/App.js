@@ -45,9 +45,7 @@ class App extends Component {
   }
 
   logout(){
-  console.log("nesto2");
     this.setState({ulogovan: false, user: {}, token: '', poruka: null});
-  //  this.render();
   }
 
   login(st){
@@ -90,6 +88,7 @@ class App extends Component {
 
     this.request.promise.then(response => response.json())
                      .then(result => this.setState({user: result, ulogovan: true})).catch(error => this.setState({errorMessage: error + ""}));
+
   }
 
 

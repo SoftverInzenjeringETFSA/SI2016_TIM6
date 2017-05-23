@@ -54,7 +54,6 @@ class Main extends Component {
   }
 
   onLogout(){
-    console.log("nesto1");
       this.props.onLogout();
   }
 
@@ -65,7 +64,7 @@ class Main extends Component {
     const novaIspiti = () => <Ispiti user={this.props.user} token={this.props.token}   ispiti={this.state.ispiti} prijavljeniIspiti={this.state.prijavljeniIspiti} onPrijava={this.prijavaIspita} onOdjava={this.odjavaIspita}/>
     const novaPredmeti = () => <Predmeti user={this.props.user}  token={this.props.token} />
     navigationItems[4] =   (<NavLink className="link" to="/" activeClassName="active">
-        <SidebarItem onClick={this.onLogout}> 
+        <SidebarItem onClick={this.onLogout}>
           <span className="nav-title" >Odjava</span>
         </SidebarItem>
       </NavLink> );
