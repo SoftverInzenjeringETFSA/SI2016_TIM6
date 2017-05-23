@@ -45,8 +45,8 @@ class App extends Component {
   }
 
   logout(){
-
-    this.setState({ulogovan: false, user: {}, token: ''},this.render);
+  console.log("nesto2");
+    this.setState({ulogovan: false, user: {}, token: '', poruka: null});
   //  this.render();
   }
 
