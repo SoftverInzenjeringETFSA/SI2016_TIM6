@@ -163,7 +163,10 @@ const foundIndex = this.state.prijavljeniIspiti.findIndex(x => x.id === ispitId)
     }
     return (
     	<div>
-        <h1 className="main-naslov">Termini ispita</h1>
+        	<div className="row">
+			<h1 className="main-naslov">Termini isipita</h1>
+			<img className="icon" src={require('./img/ispit.png')}/>
+			</div>
 
       {this.state.ispiti.length
         ? <div>
