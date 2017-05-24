@@ -28,7 +28,7 @@ public class PrijavaService {
 		Iterable<Prijava> prijave = prijavaService.findAllByStudentID(p.getStudent().getId());
 		
 		for (Prijava prijava : prijave) {
-			if(p.getStudent().getId() == prijava.getStudent().getId() && p.getIspit().getId() == prijava.getIspit().getId()) {
+			if(p.getStudent().getId() == prijava.getStudent().getId() && p.getIspit().getPredmet().getId() == prijava.getIspit().getPredmet().getId()) {
 				throw new IllegalArgumentException("Prijava za ispit postoji");
 			}
 		}

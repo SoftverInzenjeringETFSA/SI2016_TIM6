@@ -79,7 +79,6 @@ class Ispiti extends Component {
 
   prijavaIspita(ispitId){
 
-const foundIndex = this.state.ispiti.findIndex(x => x.id === ispitId);
     var data = new FormData();
     data.append("ispit", ispitId);
     data.append("student", this.props.user.id);
@@ -97,20 +96,13 @@ this.request.promise.then(response => {if (response.status== 200)
 
 else {
   response.json().then(text => alert(text.message));
+    }
+    }
+  );
 }
-}
-);
-
-  //  const ispitiNext = this.state.ispiti.filter(x => x.id !== ispitId);
-  //  const prijavljeniIspitiNext = [this.state.ispiti[foundIndex], ...this.state.prijavljeniIspiti];
-
-  //  this.setState({ispiti: ispitiNext, prijavljeniIspiti: prijavljeniIspitiNext});
-
-  }
 
   odjavaIspita(ispitId){
 
-const foundIndex = this.state.prijavljeniIspiti.findIndex(x => x.id === ispitId);
     var data = new FormData();
     data.append("ispit",  ispitId);
     data.append("student", this.props.user.id);
@@ -131,13 +123,7 @@ const foundIndex = this.state.prijavljeniIspiti.findIndex(x => x.id === ispitId)
     }
   }
   );
-
-  //  const foundIndex = this.state.prijavljeniIspiti.findIndex(x => x.id === ispitId);
-  //  const prijavljeniIspitiNext = this.state.prijavljeniIspiti.filter(x => x.id !== ispitId);
-  //  const ispitiNext = [this.state.prijavljeniIspiti[foundIndex], ...this.state.ispiti];
-
-  //  this.setState({ispiti: ispitiNext, prijavljeniIspiti: prijavljeniIspitiNext});
-  }
+}
 
   render() {
     const ispiti = this.state.ispiti.map((i) => (
@@ -164,7 +150,7 @@ const foundIndex = this.state.prijavljeniIspiti.findIndex(x => x.id === ispitId)
     return (
     	<div>
         	<div className="row">
-			<h1 className="main-naslov">Termini isipita</h1>
+			<h1 className="main-naslov">Termini ispita</h1>
 			<img className="icon" src={require('./img/ispit.png')}/>
 			</div>
 
