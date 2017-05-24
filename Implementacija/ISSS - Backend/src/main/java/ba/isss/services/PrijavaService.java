@@ -22,15 +22,19 @@ public class PrijavaService {
 	}
 	
 	public void SavePrijava(Prijava p, Student s) throws Exception {
+		
 	    if(!p.getStudent().equals(s))
 	        throw new Exception("ERROR");
 		Iterable<Prijava> prijave = prijavaService.findAllByStudentID(p.getStudent().getId());
 		
 		for (Prijava prijava : prijave) {
-			if(p.getStudent().getId() == prijava.getStudent().getId() && p.getIspit().getPredmet().getId() == prijava.getIspit().getPredmet().getId()) {
+			if(p.getStudent().getId() == prijava.getStudent().getId() && p.getIspit().getId() == prijava.getIspit().getId()) {
 				throw new IllegalArgumentException("Prijava za ispit postoji");
 			}
 		}
+		
+		
+		
 		
 		Date prijave_do = p.getIspit().getPrijave_do();
 		Date trenutno = new Date(System.currentTimeMillis());

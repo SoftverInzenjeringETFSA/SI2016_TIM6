@@ -79,7 +79,7 @@ class Ispiti extends Component {
 
 const foundIndex = this.state.ispiti.findIndex(x => x.id === ispitId);
     var data = new FormData();
-    data.append("ispit", this.state.ispiti[foundIndex].predmet.id);
+    data.append("ispit", ispitId);
     data.append("student", this.props.user.id);
     data.append("model_attribute","prijava");
     this.request=makeCancelable(fetch(`${PATH_BASE}${PATH_PRIJAVA_ISPIT}${PATH_ISPIT_PRIJAVA}`,{
@@ -110,7 +110,7 @@ else {
 
 const foundIndex = this.state.prijavljeniIspiti.findIndex(x => x.id === ispitId);
     var data = new FormData();
-    data.append("ispit",  this.state.prijavljeniIspiti[foundIndex].predmet.id);
+    data.append("ispit",  ispitId);
     data.append("student", this.props.user.id);
     data.append("model_attribute","odjava");
 
