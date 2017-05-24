@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {reactLocalStorage} from 'reactjs-localstorage';
 import './css/Obavjestenja.css';
 import {PATH_BASE, PATH_OBAVJESTENJA, PATH_OBAVJESTENJA_FIND, makeCancelable} from './globals';
 const Timestamp = require('react-timestamp');
@@ -11,6 +12,7 @@ class Obavjestenja extends Component {
 		this.state = {obavijesti: [], errorMessage: null};
 		this.dohvatiObavijesti = this.dohvatiObavijesti.bind(this);
 		this.request = null;
+		reactLocalStorage.set('putanja','obavjestenja');
 	}
 
 	componentDidMount() {

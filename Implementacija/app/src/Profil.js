@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {reactLocalStorage} from 'reactjs-localstorage';
 import './css/Profil.css';
 import {makeCancelable, PATH_BASE,  PATH_STUDENT, PATH_STUDENT_PASSWORD} from './globals';
 
@@ -19,6 +20,7 @@ class Profil extends Component {
 			this.onChangeSifra = this.onChangeSifra.bind(this);
     	this.submitProfile = this.submitProfile.bind(this);
     	this.validacija = this.validacija.bind(this);
+			reactLocalStorage.set('putanja','profil');
 	}
 
 	onChangeSifra(event){

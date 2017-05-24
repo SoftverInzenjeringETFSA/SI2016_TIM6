@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {reactLocalStorage} from 'reactjs-localstorage';
 import './css/Ispiti.css';
 import Error from './Error';
 import {PATH_BASE, PATH_ISPIT, PATH_ISPIT_PRIJAVLJENI_FIND, PATH_PRIJAVA_ISPIT, PATH_ISPIT_NEPRIJAVLJENI_FIND, PATH_ISPIT_HISTORIJA_FIND, PATH_ISPIT_PRIJAVA, PATH_ISPIT_ODJAVA, makeCancelable} from './globals';
@@ -21,6 +22,7 @@ class Ispiti extends Component {
     this.request2 = null;
     this.request3=null;
     this.request = null;
+    reactLocalStorage.set('putanja','ispiti');
   }
 
   componentDidMount() {

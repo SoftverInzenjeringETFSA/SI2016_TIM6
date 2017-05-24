@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import {reactLocalStorage} from 'reactjs-localstorage';
 import logo from './logo.svg';
 import './css/App.css';
 import Main from './Main';
 import Error from './Error';
+
 
 import {makeCancelable, PATH_BASE,  PATH_LOGIN, PATH_STUDENT, PATH_STUDENT_PROFILE, PATH_STUDENT_PASSWORD} from './globals';
 
@@ -31,21 +33,23 @@ const PrivateRoute = ({ component: Component, ulogovanost, ...rest }) => (
 class App extends Component {
   constructor(){
     super();
-    this.state = {ulogovan: false,
+    this.state = {ulogovan: reactLocalStorage.get('ulogovan', false),
                   user: {},
-                  token: '',
-                  poruka: null
+                  token: reactLocalStorage.get('token', null),
+                  poruka: null,
+                  putanja: reactLocalStorage.get('putanja','obavjestenja'),
                 };
-
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.onProfileCreate= this.onProfileCreate.bind(this);
-
     this.request = null;
+    if(this.state.token) this.onProfileCreate();
+
   }
 
   logout(){
-    this.setState({ulogovan: false, user: {}, token: '', poruka: null});
+    reactLocalStorage.clear();
+    this.setState({ulogovan: false, user: {}, token: '', poruka: null,putanja: 'obavjestenja'});
   }
 
   login(st){
@@ -72,10 +76,13 @@ class App extends Component {
   }
 ).catch(error => this.setState({poruka: "P"}));
 
+
   }
 
   onProfileCreate()
   {
+    reactLocalStorage.set('token', this.state.token);
+    reactLocalStorage.set('ulogovan', true)
 
     this.request=makeCancelable(fetch(`${PATH_BASE}${PATH_STUDENT}${PATH_STUDENT_PROFILE}`,{
    method: 'GET',
@@ -92,9 +99,6 @@ class App extends Component {
   }
 
 
-
-
-
   render() {
     const noviLoginPage = () => <LoginPage onLoginSubmit={this.login} poruka={this.state.poruka}/>
     const noviMainPage = () => <Main onLogout={this.logout} user={this.state.user} token={this.state.token}/>
@@ -102,7 +106,8 @@ class App extends Component {
     return (
       <Router>
         <div>
-          {this.state.ulogovan ? <Redirect from="/" to="obavjestenja" /> : <Route exact path="/" component={noviLoginPage} /> }
+          {this.state.ulogovan ?
+            <Redirect from="/" to={this.state.putanja} />  : <Route exact path="/" component={noviLoginPage} /> }
           <PrivateRoute path="/obavjestenja" component={noviMainPage} ulogovanost={this.state.ulogovan} />
           <PrivateRoute path="/ispiti" component={noviMainPage} ulogovanost={this.state.ulogovan}/>
           <PrivateRoute path="/profil" component={noviMainPage} ulogovanost={this.state.ulogovan}/>
