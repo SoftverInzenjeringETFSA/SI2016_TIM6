@@ -48,7 +48,10 @@ class Obavjestenja extends Component {
 
 		return (
 		<div>
+			<div className="row">
 			<h1 className="main-naslov">Obavještenja</h1>
+			<img className="icon" src={require('./img/obavjestenja.png')}/>
+			</div>
 			<div className="list-group">
 				{!this.state.errorMessage? obavijesti : <Error errorMessage={this.state.errorMessage}/>}
 			</div>

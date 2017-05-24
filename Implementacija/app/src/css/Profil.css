@@ -22,3 +22,28 @@
 .status-profil-uspjeh{
 	color: green;
 }
+
+.control-label{
+	text-align: left!important;
+	color: #293b70;
+}
+
+.separator{
+	width: 35%;
+	margin:0!important;
+
+	border-color: #73A2A6!important;
+}
+
+.btn-pass{
+	float: right;
+	margin-right: 0px;
+	
+}
+.row-pass{
+	height: 100px!important;
+}
+.icon-pass{
+	top:-75px!important;
+	position: relative!important;
+}

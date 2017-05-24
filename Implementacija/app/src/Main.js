@@ -76,7 +76,10 @@ class Main extends Component {
               <div className="main-navigation-container">
                 <div className="navbar-header">
                   <a className="navbar-brand logo white-text">
-                    <strong>ISSS</strong>&nbsp;<span className="hidden-xs">Studentska stranica</span>
+                    <div className="row">
+                    <img className="logo-navbar" src={require('./img/unsa.png')}/>
+                    <h2 className="logo-title">Studentski portal</h2>
+                    </div>
                   </a>
                 </div>
                 <div className="collapse navbar-collapse">
@@ -92,7 +95,7 @@ class Main extends Component {
             <div id="main-content-wrapper">
               <Sidebar content={navigationItems}
                 color="#f5f5f5"
-                background="#347598"
+                background="#73A2A6"
                 width="200">
                 <div id="inner-content-wrapper">
 

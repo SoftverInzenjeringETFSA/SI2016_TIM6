@@ -1,8 +1,12 @@
 .body {
   width: 100%;
   height: 100vh;
-  background-color: #ededed;
   overflow-y: hidden;
+  background-image: url('../img/background-main.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+
+	background-size: cover;
 }
 
 .white-text {
@@ -11,7 +15,7 @@
 
 .logo {
   font-size: 2em;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 #main-content-wrapper {
@@ -36,6 +40,7 @@
 
 .navbar-right {
   margin-right: 0;
+ 
 }
 
 .link, .link:hover {
@@ -57,8 +62,8 @@
 }
 
 .navbar-default {
-  background-color: #347598;
-  border-color: #126796;
+  background-color: #293b70;
+  border-color: #293b70;
 }
 
 /* ---------------------------------------------------------*/
@@ -67,16 +72,16 @@
 .main-naslov {
   margin: 0;
   padding: 1em 0;
-  color: #3a3a3a;
-  font-family: 'Roboto', sans-serif;
+  color: #293b70;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .podnaslov {
   margin: 0;
   padding: 0.1em 0 1em 0;
   text-align: left;
-  color: #4c4c4c;
-  font-family: 'Roboto', sans-serif;
+  color: #126796;
+  font-family: 'Open Sans', sans-serif;
   font-size: 24px;
 }
 
@@ -92,4 +97,23 @@
 
 .fetch-error .podnaslov{
   color: red;
+}
+
+.logo-navbar{
+  
+  height: 40px;
+  width: 40px;
+}
+
+.logo-title{
+  margin-top: 0!important;
+  position: absolute;
+  top:15px;
+  left:50px;
+  font-size: 20px!important;
+}
+
+.navbar-brand{
+  padding-top: 5px!important;
+
 }

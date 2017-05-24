@@ -128,7 +128,11 @@ class Predmeti extends Component {
 		if (!this.state.errorMessage){
 			return (
 				<div>
-					<h1 className="main-naslov">Pregled predmeta</h1>
+					<div className="row">
+			<h1 className="main-naslov">Predmeti</h1>
+			<img className="icon" src={require('./img/predmeti.png')}/>
+			</div>
+					<h2 className="podnaslov">Pregled predmeta</h2>
 					<div className="row">
 						<div className="panel-group col-md-3" id="accordion">
 							{listaSemestara}
@@ -143,7 +147,7 @@ class Predmeti extends Component {
 					}
 					</div>
 
-					<h1 className="main-naslov">Pregled budućih predmeta</h1>
+					<h2 className="podnaslov">Pregled budućih predmeta</h2>
 					<div className="row">
 						<div className="panel-group col-md-3" id="accordion1">
 							{listaSemestara1}
