@@ -168,7 +168,7 @@ const foundIndex = this.state.prijavljeniIspiti.findIndex(x => x.id === ispitId)
   			<h2 className="podnaslov">Objavljeni termini ispita:</h2>
   			<table className="table table-striped">
   				<tbody>
-    				<tr><th>Predmet</th><th>Datum</th><th>Termin</th><th></th></tr>
+    				<tr><th>Predmet</th><th>Rok prijave</th><th>Termin</th><th></th></tr>
             {ispiti}
   				</tbody>
   			</table>
@@ -180,7 +180,7 @@ const foundIndex = this.state.prijavljeniIspiti.findIndex(x => x.id === ispitId)
        ? <div><h2 className="podnaslov">Termini na koje ste prijavljeni:</h2>
           <table className="table table-striped">
             <tbody>
-              <tr><th>Predmet</th><th>Datum</th><th>Termin</th><th></th></tr>
+              <tr><th>Predmet</th><th>Rok prijave</th><th>Termin</th><th></th></tr>
               {prijavljeniIspiti}
             </tbody>
           </table>
@@ -192,7 +192,7 @@ const foundIndex = this.state.prijavljeniIspiti.findIndex(x => x.id === ispitId)
        ? <div><h2 className="podnaslov">Uspješni termini:</h2>
           <table className="table table-striped">
             <tbody>
-              <tr><th>Predmet</th><th>Datum</th><th>Termin</th><th></th></tr>
+              <tr><th>Predmet</th><th>Rok prijave</th><th>Termin</th><th></th></tr>
               {historijaIspiti}
             </tbody>
           </table>
