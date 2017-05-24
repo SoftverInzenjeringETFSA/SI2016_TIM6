@@ -14,7 +14,7 @@ public interface ObavjestenjeRepository extends PagingAndSortingRepository<Obavj
 	Obavjestenje findOne(Integer id);
 	
 	@Query("select o from Obavjestenje o, Pohadjanje p, Student s "
-			+ "where s.id = p.student.id and p.predmet.id = o.predmet.id and s.id = :id "
+			+ "where s.id = p.student.id and p.predmet.id = o.predmet.id and s.id = :id and p.ocjena is null"
 			+ "order by o.vrijeme desc")
 	Iterable<Obavjestenje> findAllForStudent(@Param("id") Integer id);
 }
