@@ -2,8 +2,6 @@
 ISSS - Studentska stranica
 </h1>
 
-<h3 align="center">Imamović Solutions</h3>
-<h4 align="center">Software Development Agency</h4>
 
 ## Uputstvo za pokretanje
 
