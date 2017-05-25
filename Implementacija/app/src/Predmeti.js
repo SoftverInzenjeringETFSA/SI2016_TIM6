@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {reactLocalStorage} from 'reactjs-localstorage';
 import './css/Predmeti.css';
 import PredmetDetalji from './PredmetDetalji';
 import Error from './Error';
@@ -21,7 +20,6 @@ class Predmeti extends Component {
 		this.izborPredmeta1 = this.izborPredmeta1.bind(this);
 		this.request = null;
 		this.request1 = null;
-		reactLocalStorage.set('putanja','predmeti');
 	}
 
 	dohvatiPredmete(){

@@ -33,11 +33,11 @@ const PrivateRoute = ({ component: Component, ulogovanost, ...rest }) => (
 class App extends Component {
   constructor(){
     super();
+
     this.state = {ulogovan: reactLocalStorage.get('ulogovan', false),
                   user: {},
                   token: reactLocalStorage.get('token', null),
                   poruka: null,
-                  putanja: reactLocalStorage.get('putanja','obavjestenja'),
                 };
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
@@ -49,7 +49,7 @@ class App extends Component {
 
   logout(){
     reactLocalStorage.clear();
-    this.setState({ulogovan: false, user: {}, token: '', poruka: null,putanja: 'obavjestenja'});
+    this.setState({ulogovan: false, user: {}, token: '', poruka: null});
   }
 
   login(st){
@@ -94,7 +94,8 @@ class App extends Component {
    }));
 
     this.request.promise.then(response => response.json())
-                     .then(result => this.setState({user: result, ulogovan: true})).catch(error => this.setState({errorMessage: error + ""}));
+                     .then(result => this.setState({user: result, ulogovan: true})
+        ).catch(error => this.setState({errorMessage: error + ""}));
 
   }
 
@@ -106,9 +107,18 @@ class App extends Component {
     return (
       <Router>
         <div>
-          {this.state.ulogovan ?
-            <Redirect from="/" to={this.state.putanja} />  : <Route exact path="/" component={noviLoginPage} /> }
-          <PrivateRoute path="/obavjestenja" component={noviMainPage} ulogovanost={this.state.ulogovan} />
+
+        <Route exact path="/" render={() => (
+  this.state.ulogovan ? (
+    <Redirect to="/obavjestenja"/>
+  ) : (
+    null
+  )
+)}/>
+
+            <Route exact path="/" component={noviLoginPage} ulogovanost={this.state.ulogovan} />
+
+            <PrivateRoute path="/obavjestenja" component={noviMainPage} ulogovanost={this.state.ulogovan} />
           <PrivateRoute path="/ispiti" component={noviMainPage} ulogovanost={this.state.ulogovan}/>
           <PrivateRoute path="/profil" component={noviMainPage} ulogovanost={this.state.ulogovan}/>
           <PrivateRoute path="/predmeti" component={noviMainPage} ulogovanost={this.state.ulogovan}/>
