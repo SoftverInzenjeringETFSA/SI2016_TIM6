@@ -1,15 +1,17 @@
-body {
+body, html {
 	background-image: url('../img/background.jpg');
-	background-position: center center;
+	background-position: center;
 	background-repeat: no-repeat;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	
-
 	position: relative;
+	min-height: 100vh;
+    
 }
+
+
 
 h1, h2, h4,h5 {
 	font-family: 'Open Sans', sans-serif;
