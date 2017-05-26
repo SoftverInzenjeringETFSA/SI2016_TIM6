@@ -22,12 +22,13 @@ public class StudentController {
 	@Autowired
 	private PredmetService predmetService;
 
-    // Pristup svim studentima
+    /*** Pristup svim studentima    -  Admin
     @RequestMapping(value="/get")
     @ResponseBody
     public Student findOne(@RequestParam("id") Integer id) {
     	return studentService.findOne(id);
     }
+    ***/
     // Prikaz profile-a prijavljenog studenta
     @PreAuthorize("hasAnyRole('ROLE_STUDENT')")
     @RequestMapping(value = "/profile", method = RequestMethod.GET)

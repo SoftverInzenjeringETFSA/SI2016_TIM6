@@ -77,7 +77,7 @@ class Profil extends Component {
 		body: formBody
 	}));
 
-		this.request.promise.then(response => { if (response.status== 200)
+		this.request.promise.then(response => { if (response.status=== 200)
 			{
 				response.text().then(text => {
 				this.setState({poruka1: text});})
@@ -103,13 +103,12 @@ PrikazPoruke() {
 }
 
   	render() {
-  	const trenutniUser = Object.assign({}, this.state);
 
-    return (
+        return (
     	<div>
 				<div className="row">
 			<h1 className="main-naslov">Pregled studentskog profila</h1>
-			<img className="icon" src={require('./img/profil.png')}/>
+			<img className="icon" src={require('./img/profil.png')} alt="Sliku nije moguće prikazati"/>
 			</div>
 	<div className="form-horizontal profil-forma center-block">
 
@@ -121,77 +120,77 @@ PrikazPoruke() {
 								<span>{this.state.user.username}</span>
 						</div>
 				 	</div>
-					<hr className="separator"></hr>
+					<hr className="separator"/>
 			  <div className="form-group profil-form-group">
 			    <label  className="col-sm-2 control-label">Ime:</label>
 			    <div className="col-sm-2 control-label">
 							<span>{this.state.user.ime}</span>
 			 		</div>
 			 </div>
-			<hr className="separator"></hr>
+			<hr className="separator"/>
 			 <div className="form-group profil-form-group">
 				 <label  className="col-sm-2 control-label">Prezime:</label>
 				 <div className="col-sm-2 control-label">
 						 <span>{this.state.user.prezime}</span>
 				 </div>
 			</div>
-			<hr className="separator"></hr>
+			<hr className="separator"/>
 			<div className="form-group profil-form-group">
 				<label  className="col-sm-2 control-label">JMBG:</label>
 				<div className="col-sm-2 control-label">
 						<span>{this.state.user.jmbg}</span>
 				</div>
 		 </div>
-		 <hr className="separator"></hr>
+		 <hr className="separator"/>
 		 <div className="form-group profil-form-group">
 			 <label  className="col-sm-2 control-label">Datum rođenja:</label>
 			 <div className="col-sm-2 control-label">
 					 <span>{this.state.user.datumRodjenja}</span>
 			 </div>
 		</div>
-		<hr className="separator"></hr>
+		<hr className="separator"/>
 		<div className="form-group profil-form-group">
 		 <label  className="col-sm-2 control-label">Mjesto rođenja:</label>
 		 <div className="col-sm-2 control-label">
 				 <span>{this.state.user.mjestoRodjenja}</span>
 		 </div>
 	 </div>
-	 <hr className="separator"></hr>
+	 <hr className="separator"/>
 		<div className="form-group profil-form-group">
 			<label  className="col-sm-2 control-label">Spol:</label>
 			<div className="col-sm-2 control-label">
 					<span>{(this.state.user.spol === "M") ? "Muški" : "Ženski"}</span>
 			</div>
 	 </div>
-	 <hr className="separator"></hr>
+	 <hr className="separator"/>
 	 <div className="form-group profil-form-group">
 		 <label  className="col-sm-2 control-label">Adresa:</label>
 		 <div className="col-sm-2 control-label">
 				 <span>{this.state.user.adresa}</span>
 		 </div>
 	</div>
-	<hr className="separator"></hr>
+	<hr className="separator"/>
 	<div className="form-group profil-form-group">
  	 <label  className="col-sm-2 control-label">Telefon:</label>
  	 <div className="col-sm-2 control-label">
  			 <span>{this.state.user.telefon}</span>
  	 </div>
  	</div>
-	 <hr className="separator"></hr>
+	 <hr className="separator"/>
  	<div className="form-group profil-form-group">
 		<label  className="col-sm-2 control-label">Email:</label>
 		<div className="col-sm-2 control-label">
 				<span>{this.state.user.email}</span>
 		</div>
  	</div>
-	<hr className="separator"></hr>
+	<hr className="separator"/>
 </div>
 
 
 <div>
 <div className="row row-pass">
 			<h1 className="main-naslov">Izmjena šifre</h1>
-			<img className="icon icon-pass" src={require('./img/pass.png')}/>
+			<img className="icon icon-pass" src={require('./img/pass.png')} alt="Sliku nije moguće prikazati"/>
 			</div>
 <div className="form-horizontal profil-forma center-block">
 	<form className="form-horizontal profil-forma center-block">

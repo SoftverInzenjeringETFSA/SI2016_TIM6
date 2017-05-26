@@ -26,13 +26,13 @@ public class PohadjanjeController {
 	@Autowired
     private StudentService studentService;
 
-	// Pristup svim studentima
+	/*** Pristup svim studentima  - Admin
     @RequestMapping(value="/find")
     @ResponseBody
     public Iterable<PredmetSemestarDto> findAllByStudent(@RequestParam("id") Integer id) {
         return predmetService.findAllSemesters(id);
     }
-
+    ***/
     // Prikaz predmeta samo za prijavljenog studenta
     @PreAuthorize("hasAnyRole('ROLE_STUDENT')")
     @RequestMapping(value="/pregled")

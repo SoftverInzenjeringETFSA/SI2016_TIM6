@@ -26,13 +26,13 @@ public class ObavjestenjaController {
 	@Autowired
     private StudentService studentService;
 
-	// Pristup svim podacima
+	/*** Pristup svim podacima  - Admin3
 	@RequestMapping(value="/find")
     @ResponseBody
     public Iterable<Obavjestenje> find(@RequestParam("student_id") Integer id) {
     	return obavjestenjeService.findByStudent(id);
     }
-
+    ***/
     // Pregled obavjestenja prijavljenog studenta
     @PreAuthorize("hasAnyRole('ROLE_STUDENT')")
     @RequestMapping(value="/pregled")

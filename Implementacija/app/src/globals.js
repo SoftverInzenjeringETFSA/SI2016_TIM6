@@ -9,7 +9,7 @@ const PATH_PREDMETI_FIND = '/pregled';
 const PARAM_STUDENT_FUTURE = '/buduci_predmeti';
 
 const PATH_STUDENT = '/student';
-const PATH_STUDENT_PROFILE = '/profile'
+const PATH_STUDENT_PROFILE = '/profile';
 const PATH_STUDENT_PASSWORD ='/update_password';
 
 const PATH_ISPIT = '/ispit';

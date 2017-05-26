@@ -26,9 +26,6 @@ public class PrijavaController {
 	
 	@Autowired
 	PrijavaService prijavaService;
-	
-	@Autowired
-	IspitService ispitService;
 
 	@Autowired
 	StudentService studentService;

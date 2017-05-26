@@ -28,6 +28,6 @@ const PredmetDetalji = ({predmet}) =>
 
 		</div>
 	  </div>
-	</div>
+	</div>;
 
 export default PredmetDetalji;

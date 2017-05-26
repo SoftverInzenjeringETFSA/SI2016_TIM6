@@ -84,7 +84,7 @@ class Predmeti extends Component {
 				        {i.semestar + ". semestar"}</a>
 				      </h4>
 				    </div>
-				    <div id={"collapse" + index} className={this.props.user.semestar != i.semestar ? "panel-collapse collapse in" : "panel-collapse collapse"}>
+				    <div id={"collapse" + index} className={this.props.user.semestar !== i.semestar ? "panel-collapse collapse in" : "panel-collapse collapse"}>
 				      <div className="panel-body predmeti-accordion-body">
 						<div className="list-group predmeti-accordion-list">
 							{listaPredmeta}
@@ -111,7 +111,7 @@ class Predmeti extends Component {
 					        {i.semestar + ". semestar"}</a>
 					      </h4>
 					    </div>
-					    <div id={"collapse" + index1 + 1000} className={this.props.user.semestar != i.semestar ? "panel-collapse collapse in" : "panel-collapse collapse"}>
+					    <div id={"collapse" + index1 + 1000} className={this.props.user.semestar !== i.semestar ? "panel-collapse collapse in" : "panel-collapse collapse"}>
 					      <div className="panel-body predmeti-accordion-body">
 							<div className="list-group predmeti-accordion-list">
 								{listaPredmeta1}
@@ -130,7 +130,7 @@ class Predmeti extends Component {
 				<div>
 					<div className="row">
 			<h1 className="main-naslov">Predmeti</h1>
-			<img className="icon" src={require('./img/predmeti.png')}/>
+			<img className="icon" src={require('./img/predmeti.png')} alt="Sliku nije moguće prikazati"/>
 			</div>
 					<h2 className="podnaslov">Pregled predmeta</h2>
 					<div className="row">
@@ -143,7 +143,7 @@ class Predmeti extends Component {
 						?<div className="col-md-9">
 							<PredmetDetalji predmet={this.state.izabraniPredmet} />
 						</div>
-						: <div className="col-md-9"></div>
+						: <div className="col-md-9"/>
 					}
 					</div>
 
@@ -157,7 +157,7 @@ class Predmeti extends Component {
 						?<div className="col-md-9">
 							<PredmetDetalji predmet={this.state.izabraniPredmet1} />
 						</div>
-						: <div className="col-md-9"></div>
+						: <div className="col-md-9"/>
 					}
 					</div>
 

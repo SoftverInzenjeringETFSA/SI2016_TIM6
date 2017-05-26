@@ -25,7 +25,7 @@ public class IspitiController {
     @Autowired
     private StudentService studentService;
 
-    /*** Metode koje se primjenjuju na sve studente ***/
+    /*** Metode koje se primjenjuju na sve studente  - Admin
     @RequestMapping(value="/find/prijavljeni")
     @ResponseBody
     public Iterable<Ispit> findPrijavljeni(@RequestParam("student_id") Integer id) {
@@ -37,7 +37,7 @@ public class IspitiController {
     public Iterable<Ispit> findNePrijavljeni(@RequestParam("student_id") Integer id) {
     	return ispitService.findNePrijavljeniByStudent(id);
     }
-
+    ***/
     /*** Metode koje se primjenjuju na prijavljenog studenta ***/
     @PreAuthorize("hasAnyRole('ROLE_STUDENT')")
     @RequestMapping(value="/prijavljeni")

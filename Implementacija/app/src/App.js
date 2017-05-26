@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
 import {reactLocalStorage} from 'reactjs-localstorage';
-import logo from './logo.svg';
 import './css/App.css';
 import Main from './Main';
-import Error from './Error';
 
 
-import {makeCancelable, PATH_BASE,  PATH_LOGIN, PATH_STUDENT, PATH_STUDENT_PROFILE, PATH_STUDENT_PASSWORD} from './globals';
+import {makeCancelable, PATH_BASE,  PATH_LOGIN, PATH_STUDENT, PATH_STUDENT_PROFILE} from './globals';
 
 import LoginPage from './LoginPage';
 
 import {
   BrowserRouter as Router,
   Route,
-  Link,
   Redirect,
-  withRouter
 } from 'react-router-dom';
 
 const PrivateRoute = ({ component: Component, ulogovanost, ...rest }) => (
@@ -66,7 +62,7 @@ class App extends Component {
   })
 }));
 
-  this.request.promise.then(response => { if (response.status== 200)
+  this.request.promise.then(response => { if (response.status=== 200)
     {
       this.setState({token: response.headers.get("Authorization"), poruka: null},this.onProfileCreate)
     }
@@ -82,7 +78,7 @@ class App extends Component {
   onProfileCreate()
   {
     reactLocalStorage.set('token', this.state.token);
-    reactLocalStorage.set('ulogovan', true)
+    reactLocalStorage.set('ulogovan', true);
 
     this.request=makeCancelable(fetch(`${PATH_BASE}${PATH_STUDENT}${PATH_STUDENT_PROFILE}`,{
    method: 'GET',
@@ -101,8 +97,8 @@ class App extends Component {
 
 
   render() {
-    const noviLoginPage = () => <LoginPage onLoginSubmit={this.login} poruka={this.state.poruka}/>
-    const noviMainPage = () => <Main onLogout={this.logout} user={this.state.user} token={this.state.token}/>
+    const noviLoginPage = () => <LoginPage onLoginSubmit={this.login} poruka={this.state.poruka}/>;
+    const noviMainPage = () => <Main onLogout={this.logout} user={this.state.user} token={this.state.token}/>;
 
     return (
       <Router>

@@ -38,7 +38,7 @@ class LoginPage extends Component {
             </div>
           </div>
 
-         
+
           <div className="row text-center">
 
              <form className="v-center form-horizontal col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 "
@@ -46,14 +46,14 @@ class LoginPage extends Component {
 
                 <div className="login-input-wrapper">
                   <div className="form-group has-feedback">
-                      <input className=" colors login-input" placeholder="Korisničko ime" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Korisničko ime'"
+                      <input className=" colors login-input" placeholder="Korisničko ime" onfocus="{this.placeholder = ''}" onblur="{this.placeholder = 'Korisničko ime'}"
                           type="text" onChange={this.onChangeUsername} />
-                      <i className="glyphicon glyphicon-user form-control-feedback pull-left" aria-hidden="true" ></i>
+                      <i className="glyphicon glyphicon-user form-control-feedback pull-left" aria-hidden="true" />
                   </div>
                   <div className="form-group has-feedback">
-                      <input className="colors login-input" placeholder="Lozinka" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Lozinka'"
+                      <input className="colors login-input" placeholder="Lozinka" onfocus="{this.placeholder = ''}" onblur="{this.placeholder = 'Lozinka'}"
                           type="password" onChange={this.onChangePassword}/>
-                      <i className="glyphicon glyphicon-lock form-control-feedback pull-left" aria-hidden="true" ></i>
+                      <i className="glyphicon glyphicon-lock form-control-feedback pull-left" aria-hidden="true" />
                   </div>
                </div>
                 {this.props.poruka

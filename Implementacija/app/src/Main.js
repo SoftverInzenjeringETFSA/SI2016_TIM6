@@ -10,9 +10,7 @@ import Predmeti from './Predmeti';
 import {
   BrowserRouter as Router,
   Route,
-  Link,
   NavLink,
-  Redirect,
 } from 'react-router-dom';
 
 
@@ -59,10 +57,10 @@ class Main extends Component {
 
 
   render() {
-    const novaObavjestenja = () => <Obavjestenja user={this.props.user} token={this.props.token}/>
-    const novaProfilStranica = () => <Profil user={this.props.user} token={this.props.token}/>
-    const novaIspiti = () => <Ispiti user={this.props.user} token={this.props.token}   ispiti={this.state.ispiti} prijavljeniIspiti={this.state.prijavljeniIspiti} onPrijava={this.prijavaIspita} onOdjava={this.odjavaIspita}/>
-    const novaPredmeti = () => <Predmeti user={this.props.user}  token={this.props.token} />
+    const novaObavjestenja = () => <Obavjestenja user={this.props.user} token={this.props.token}/>;
+    const novaProfilStranica = () => <Profil user={this.props.user} token={this.props.token}/>;
+    const novaIspiti = () => <Ispiti user={this.props.user} token={this.props.token}   ispiti={this.state.ispiti} prijavljeniIspiti={this.state.prijavljeniIspiti} onPrijava={this.prijavaIspita} onOdjava={this.odjavaIspita}/>;
+    const novaPredmeti = () => <Predmeti user={this.props.user}  token={this.props.token} />;
     navigationItems[4] =   (<NavLink className="link" to="/" activeClassName="active">
         <SidebarItem onClick={this.onLogout}>
           <span className="nav-title" >Odjava</span>
@@ -77,7 +75,7 @@ class Main extends Component {
                 <div className="navbar-header">
                   <a className="navbar-brand logo white-text">
                     <div className="row">
-                    <img className="logo-navbar" src={require('./img/unsa.png')}/>
+                    <img className="logo-navbar" src={require('./img/unsa.png')} alt="Sliku nije moguće prikazati"/>
                     <h2 className="logo-title">Studentski portal</h2>
                     </div>
                   </a>
