@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="Implementacija/ISSS - Backend/src/main/java"/>
+	<classpathentry kind="src" path="Implementacija/ISSS - Backend/src/test/java"/>
+	<classpathentry kind="lib" path="Implementacija/ISSS - Backend/.mvn/wrapper/maven-wrapper.jar"/>
+	<classpathentry kind="lib" path="Implementacija/ISSS - Backend/bin/.mvn/wrapper/maven-wrapper.jar"/>
+	<classpathentry kind="lib" path="Implementacija/ISSS - Backend/lib/javax.annotation.jar"/>
+	<classpathentry kind="lib" path="Implementacija/ISSS - Backend/lib/javax.ejb.jar"/>
+	<classpathentry kind="lib" path="Implementacija/ISSS - Backend/lib/javax.jms.jar"/>
+	<classpathentry kind="lib" path="Implementacija/ISSS - Backend/lib/javax.persistence.jar"/>
+	<classpathentry kind="lib" path="Implementacija/ISSS - Backend/lib/javax.resource.jar"/>
+	<classpathentry kind="lib" path="Implementacija/ISSS - Backend/lib/javax.servlet.jar"/>
+	<classpathentry kind="lib" path="Implementacija/ISSS - Backend/lib/javax.servlet.jsp.jar"/>
+	<classpathentry kind="lib" path="Implementacija/ISSS - Backend/lib/javax.servlet.jsp.jstl.jar"/>
+	<classpathentry kind="lib" path="Implementacija/ISSS - Backend/lib/javax.transaction.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

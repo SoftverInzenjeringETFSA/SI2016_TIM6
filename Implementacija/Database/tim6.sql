@@ -23,6 +23,22 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Drop all tables first
+--
+
+DROP TABLE IF EXISTS prijava;
+DROP TABLE IF EXISTS ispit;
+DROP TABLE IF EXISTS obavjestenja;
+DROP TABLE IF EXISTS pohadjanje;
+DROP TABLE IF EXISTS student;
+DROP TABLE IF EXISTS predmet;
+DROP TABLE IF EXISTS odsjek;
+DROP TABLE IF EXISTS profesor;
+DROP TABLE IF EXISTS fakultet;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `fakultet`
 --
 
@@ -38,11 +54,17 @@ CREATE TABLE `fakultet` (
 INSERT INTO `fakultet` (`id`, `naziv`) VALUES
 (1, 'Elektrotehnički fakultet'),
 (2, 'Ekonomski fakultet'),
-(3, 'Fakultet za saobraćaj i komunikaciju'),
+(3, 'Fakultet za saobraćaj i komunikacije'),
 (4, 'Fakultet zdravstvenih studija'),
-(5, 'Filozofski fakultet'),
-(6, 'Građevinski fakultet\r\n'),
-(7, 'Mašinski fakultet');
+(5, 'Akademija likovnih umjetnosti'),
+(6, 'Fakultet političkih nauka'),
+(7, 'Medicinski fakultet'),
+(8, 'Farmaceutski fakultet'),
+(9, 'Filozofski fakultet'),
+(10, 'Pravni fakultet'),
+(11, 'Prirodno-matematički fakultet'),
+(12, 'Građevinski fakultet'),
+(13, 'Mašinski fakultet');
 
 -- --------------------------------------------------------
 
@@ -62,15 +84,24 @@ CREATE TABLE `ispit` (
 --
 
 INSERT INTO `ispit` (`id`, `prijave_do`, `termin`, `predmet_id`) VALUES
-(1, '2017-06-17 00:00:00', '2017-06-24 12:05:00', 1),
-(2, '2017-05-24 00:00:00', '2017-05-31 00:00:10', 2),
-(3, '2017-04-10 00:00:00', '2017-04-22 00:00:23', 4),
-(4, '2017-06-28 00:00:00', '2017-06-30 00:00:00', 2),
-(5, '2017-07-01 00:00:00', '2017-08-01 00:00:00', 9),
-(6, '2017-07-02 00:00:00', '2017-07-02 00:00:00', 9),
-(7, '2017-05-24 00:00:00', '2017-05-31 00:00:10', 20),
-(8, '2017-06-28 00:00:00', '2017-06-30 00:00:00', 20),
-(9, '2017-05-24 00:00:00', '2017-05-29 09:00:00', 18);
+(1, '2017-06-17 00:00:00', '2017-06-24 12:00:00', 1),
+(2, '2017-05-30 00:00:00', '2017-05-31 10:00:00', 2),
+(3, '2017-06-28 00:00:00', '2017-06-30 09:00:00', 2),
+(4, '2017-04-10 00:00:00', '2017-04-20 15:00:00', 4),
+(5, '2017-07-07 00:00:00', '2017-07-10 15:00:00', 6),
+(6, '2017-06-14 00:00:00', '2017-06-17 12:00:00', 7),
+(7, '2017-06-01 00:00:00', '2017-06-10 15:00:00', 9),
+(8, '2017-07-02 00:00:00', '2017-07-05 13:00:00', 9),
+(9, '2017-06-10 00:00:00', '2017-06-13 09:00:00', 10),
+(10, '2017-06-08 00:00:00', '2017-06-10 12:00:00', 13),
+(11, '2017-06-23 00:00:00', '2017-06-25 09:00:00', 13),
+(12, '2017-07-10 00:00:00', '2017-07-12 09:00:00', 14),
+(13, '2017-06-04 00:00:00', '2017-06-11 15:00:00', 15),
+(14, '2017-06-13 00:00:00', '2017-06-20 10:00:00', 16),
+(15, '2017-07-11 00:00:00', '2017-07-18 10:00:00', 18),
+(16, '2017-05-28 00:00:00', '2017-05-30 09:00:00', 19),
+(17, '2017-05-24 00:00:00', '2017-05-31 12:00:00', 20),
+(18, '2017-06-28 00:00:00', '2017-06-30 13:00:00', 20);
 
 -- --------------------------------------------------------
 
@@ -91,11 +122,14 @@ CREATE TABLE `obavjestenja` (
 --
 
 INSERT INTO `obavjestenja` (`id`, `naslov`, `tekst`, `vrijeme`, `predmet_id`) VALUES
-(1, 'Pažnja', 'Obavještavaju se studenti da je otkazan ispit iz Matematike 1.', '2017-05-09 12:53:02', 2),
-(2, 'Obavijest', 'S obzirom na veliki broj studenata formirane su nove grupe za vježbe iz Fizike 1.', '2017-05-09 12:53:02', 1),
-(3, 'Obavijest', 'Dragi studenti, 24.05.17. neće biti predavanja iz OSP jer sam na putu. LP, V.prof.dr Samir Omanovic', '2017-05-25 21:37:32', 11),
-(4, 'Obavijest', 'Sutra u 9:00 će se održati prvi SI sastanak. Dogovorit ćemo se za teme i tehnologije. SI nastavni ansambl', '2017-05-25 21:39:46', 6),
-(5, 'Obavijest', 'Za realizaciju demonstratorskih vježbi iz predmeta Linearna algebra i geometrija potreban je izvjestan broj demonstratora. ', '2017-05-25 21:45:42', 14);
+(1, 'Pažnja', 'Obavještavaju se studenti da je otkazan ispit iz Matematike 1.', '2017-05-09 11:45:06', 2),
+(2, 'Obavijest', 'S obzirom na veliki broj studenata formirane su nove grupe za vježbe iz Fizike 1.', '2017-05-10 12:53:02', 1),
+(3, 'Obavijest', 'Dragi studenti, 24.05.17. neće biti predavanja iz OSP jer sam na putu. LP, V.prof.dr Samir Omanovic', '2017-05-20 18:37:32', 11),
+(4, 'Obavijest', 'Sutra u 9:00 će se održati prvi SI sastanak. Dogovorit ćemo se za teme i tehnologije. SI nastavni ansambl', '2017-05-24 20:39:46', 6),
+(5, 'Obavijest', 'Za realizaciju demonstratorskih vježbi iz predmeta Linearna algebra i geometrija potreban je izvjestan broj demonstratora. ', '2017-05-25 21:45:42', 14),
+(6, 'Obavijest', 'Obavještavaju se studenti da će se vježbe planirane za 10.5.2017, održati 12.5.2017. u istom terminu. ', '2017-05-18 18:45:42', 42),
+(7, 'Obavijest', 'Vježbe se nastavljaju odvijati prema ranije utvrđenom rasporedu. ', '2017-05-19 16:21:23', 46),
+(8, 'Obavijest', 'Urađene su male korekcije u zadaći 2, pa se studentima savjetuje da istu ponovo pogledaju. ', '2017-05-22 10:07:06', 7);
 
 -- --------------------------------------------------------
 
@@ -114,23 +148,39 @@ CREATE TABLE `odsjek` (
 --
 
 INSERT INTO `odsjek` (`id`, `naziv`, `fakultet_id`) VALUES
-(1, 'Računarstvo i informatika', 1),
-(2, 'Automatika i elektronika', 1),
-(3, 'Telekomunikacije', 1),
-(4, 'Energetika', 1),
-(5, 'Odsjek za konstrukcije', 6),
-(6, 'Odsjek za hidrotehniku', 6),
-(7, 'Odsjek za geodeziju', 6),
-(8, 'Odsjek za saobraćajnic', 6),
-(9, 'Odsjek za mašinski proizvodni inžinjering', 7),
-(10, 'Odsjek za industrijsko inžinjerstvo i menadžment', 7),
-(11, 'Odsjek za energetiku, procesnu tehniku i okolinsko inžinjerstvo', 7),
-(12, 'Odsjek za motore i vozila', 7),
-(13, 'Odsjek za anglistiku ', 5),
-(14, 'Odsjek za bosanski, hrvatski i srpski jezik ', 5),
-(15, 'Odsjek za filozofiju ', 5),
-(16, 'SAOBRAĆAJ', 3),
-(17, 'KOMUNIKACIJE', 3);
+(1, 'Odsjek za računarstvo i informatiku', 1),
+(2, 'Odsjek za automatiku i elektroniku', 1),
+(3, 'Odsjek za telekomunikacije', 1),
+(4, 'Odsjek za energetiku', 1),
+(5, 'Odsjek za menadžment', 2),
+(6, 'Odsjek za poslovni biznis', 2),
+(7, 'Odsjek za cestovni saobraćaj', 3),
+(8, 'Odsjek za vazdušni saobraćaj', 3),
+(9, 'Odsjek za željeznički saobraćaj', 3),
+(10, 'Odsjek za komunikacije', 3),
+(11, 'Odsjek za politologiju', 6),
+(12, 'Odsjek za komunikologiju', 6),
+(13, 'Odsjek za sociologiju', 6),
+(14, 'Odsjek za SIMS', 6),
+(15, 'Odsjek za anglistiku', 9),
+(16, 'Odsjek za germanistiku', 9),
+(17, 'Odsjek za filozifiju', 9),
+(18, 'Odsjek za psihologiju', 9),
+(19, 'Odsjek za pedagogiju', 9),
+(20, 'Odsjek za bosanski, hrvatski i srpski jezik ', 9),
+(21, 'Odsjek za matematiku', 11),
+(22, 'Odsjek za fiziku', 11),
+(23, 'Odsjek za hemiju', 11),
+(24, 'Odsjek za biologiju', 11),
+(25, 'Odsjek za geografiju', 11),
+(26, 'Odsjek za mašinski proizvodni inžinjering', 13),
+(27, 'Odsjek za industrijsko inžinjerstvo i menadžment', 13),
+(28, 'Odsjek za energetiku, procesnu tehniku i okolinsko inžinjerstvo', 13),
+(29, 'Odsjek za tehnologiju drveta ', 13),
+(30, 'Odsjek za motore i vozila', 13),
+(31, 'Odsjek odbrambene tehnologije', 13),
+(32, 'Odsjek za mašinske konstrukcije', 13),
+(33, 'Opći odsjek', 7);
 
 -- --------------------------------------------------------
 
@@ -153,39 +203,39 @@ INSERT INTO `pohadjanje` (`id`, `ocjena`, `predmet_id`, `student_id`) VALUES
 (1, NULL, 1, 1),
 (2, 10, 2, 1),
 (3, 9, 4, 1),
-(4, 9, 9, 1),
-(5, NULL, 6, 1),
-(6, 6, 3, 1),
-(7, 7, 22, 1),
-(8, 8, 23, 1),
-(9, 6, 11, 1),
-(10, 9, 10, 1),
-(11, 6, 17, 5),
-(12, 7, 18, 5),
-(13, 8, 19, 5),
+(4, 9, 9, 2),
+(5, NULL, 6, 2),
+(6, 6, 3, 2),
+(7, 7, 22, 2),
+(8, 10, 23, 2),
+(9, 10, 11, 3),
+(10, 9, 10, 3),
+(11, 6, 17, 4),
+(12, 7, 18, 4),
+(13, 8, 19, 4),
 (14, 6, 20, 5),
 (15, 10, 21, 5),
-(16, NULL, 16, 5),
-(17, NULL, 15, 5),
-(18, 6, 14, 5),
-(19, 6, 13, 5),
-(20, NULL, 12, 5),
-(21, 6, 7, 3),
-(22, 7, 24, 3),
-(23, 8, 25, 3),
-(24, 6, 27, 3),
-(25, 10, 28, 3),
-(26, 8, 29, 3),
-(27, 6, 1, 3),
-(28, 7, 2, 3),
-(29, 8, 4, 3),
-(30, 9, 9, 3),
-(31, 10, 6, 3),
-(32, 9, 3, 3),
-(33, 8, 22, 3),
-(34, 7, 23, 3),
-(35, 6, 11, 3),
-(36, 6, 10, 3);
+(16, NULL, 16, 6),
+(17, NULL, 15, 7),
+(18, 6, 14, 7),
+(19, 6, 13, 8),
+(20, NULL, 12, 9),
+(21, 6, 7, 9),
+(22, 7, 24, 10),
+(23, 8, 25, 10),
+(24, 6, 27, 10),
+(25, 10, 28, 11),
+(26, 8, 29, 11),
+(27, 6, 1, 12),
+(28, 7, 2, 12),
+(29, 8, 4, 12),
+(30, 9, 9, 13),
+(31, 10, 6, 13),
+(32, NULL, 3, 14),
+(33, 8, 22, 14),
+(34, 7, 23, 14),
+(35, NULL, 11, 15),
+(36, 6, 10, 15);
 
 -- --------------------------------------------------------
 
@@ -216,7 +266,7 @@ INSERT INTO `predmet` (`id`, `naziv`, `semestar`, `profesor_id`, `odsjek_id`) VA
 (8, 'Računarske arhitekture', 4, 2, 1),
 (9, 'Operativni sistemi', 2, 5, 1),
 (10, 'Vjerovatnoća i statistika', 2, 10, 1),
-(11, 'Matematička logika', 2, 6, 1),
+(11, 'Matematička logika i teorija izračunljivosti', 2, 6, 1),
 (12, 'Elektronički elementi ', 2, 9, 2),
 (13, 'Električni krugovi 1', 2, 3, 2),
 (14, 'Inženjerska fizika 2', 2, 4, 2),
@@ -240,7 +290,24 @@ INSERT INTO `predmet` (`id`, `naziv`, `semestar`, `profesor_id`, `odsjek_id`) VA
 (32, 'Razvoj mobilnih aplikacija', 4, 14, 1),
 (33, 'Osnove računarskih mreža', 4, 15, 1),
 (34, 'Ugradbeni sistemi', 4, 13, 1),
-(35, 'Komunikacijske tehnologije', 1, 9, 17);
+(35, 'Komunikacijske tehnologije', 1, 9, 17),
+(36, 'Anatomija čovjeka 1', 3, 24, 33),
+(37, 'Histologija 1', 1, 25, 33),
+(38, 'Fiziologija', 3, 24, 33),
+(39, 'Klasična mehanika 1', 3, 17, 22),
+(40, 'Matematička analiza 1', 1, 23, 22),
+(41, 'Matematička analiza 2', 2, 23, 22),
+(42, 'Matematičke metode fizike 1', 3, 18, 22),
+(43, 'Matematičke metode fizike 2', 4, 18, 22),
+(44, 'Matematičke metode fizike 3', 5, 18, 22),
+(45, 'Elektromagnetizam', 3, 19, 22),
+(46, 'Optika', 4, 19, 22),
+(47, 'Atomska fizika', 4, 19, 22),
+(48, 'Opća hemija za fizičare', 2, 20, 22),
+(49, 'Teorija elektromagnetnog polja', 5, 18, 22),
+(50, 'Kvantna mehanika 1', 5, 21, 22),
+(51, 'Kvantna mehanika 2', 6, 21, 22),
+(52, 'Specijalna teorija relativnosti', 5, 22, 22);
 
 -- --------------------------------------------------------
 
@@ -262,13 +329,16 @@ INSERT INTO `prijava` (`id`, `student_id`, `ispit_id`) VALUES
 (2, 5, 8),
 (3, 1, 3),
 (4, 5, 9),
-(5, 15, 7),
+(5, 14, 7),
 (6, 6, 8),
 (7, 5, 8),
 (8, 15, 4),
-(9, 16, 9),
-(10, 1, 9),
-(11, 17, 8);
+(9, 8, 9),
+(10, 9, 9),
+(11, 12, 10),
+(12, 6, 5),
+(13, 4, 4),
+(14, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -303,7 +373,16 @@ INSERT INTO `profesor` (`id`, `ime`, `prezime`, `email`) VALUES
 (13, 'Samim', 'Konjicija', 'skonjicija@etf.unsa.ba'),
 (14, 'Vensada', 'Okanovic', 'vokanovic@etf.unsa.ba'),
 (15, 'Kemal', 'Hajdarevic', 'khajdarevic@etf.unsa.ba'),
-(16, 'Emir', 'Buza', 'ebuza@etf.unsa.ba');
+(16, 'Emir', 'Buza', 'ebuza@etf.unsa.ba'),
+(17, 'Senad', 'Odžak', 'sodzak@pmf.unsa.ba'),
+(18, 'Azra', 'Gazibegović-Busuladžić', 'agazibegovic@pmf.unsa.ba'),
+(19, 'Mustafa', 'Busuladžić', 'mbusuladzic@pmf.unsa.ba'),
+(20, 'Dejan', 'Milošević', 'dmilosevic@pmf.unsa.ba'),
+(21, 'Elvedin', 'Hasović', 'ehasovic@pmf.unsa.ba'),
+(22, 'Aner', 'Čerkić', 'acerkic@pmf.unsa.ba'),
+(23, 'Nedžad', 'Dukić', 'ndukic@pmf.unsa.ba'),
+(24, 'Amela', 'Kulenović', 'akulenovic@mf.unsa.ba'),
+(25, 'Zakira', 'Mornjaković', 'zmornjakovic@mf.unsa.ba');
 
 -- --------------------------------------------------------
 
@@ -333,20 +412,21 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `ime`, `prezime`, `email`, `spol`, `username`, `password`, `jmbg`, `datum_rodjenja`, `mjesto_rodjenja`, `semestar`, `odsjek_id`, `adresa`, `telefon`) VALUES
-(1, 'Mehmed', 'Baždarević', 'mbazdarevic@etf.unsa.ba', 'M', 'mesa1', '1a1dc91c907325c69271ddf0c944bc72', '2810995180046', '1995-10-28', 'Višegrad', 2, 1, 'Zvornicka bb', '033256322'),
-(3, 'Silvana', 'Armenulić', 'sarmenulic@etf.unsa.ba', 'Ž', 'silvana2', '1a1dc91c907325c69271ddf0c944bc72', '1805994232245', '1994-05-18', 'Doboj', 3, 1, 'Pofalićka 2', '033568984'),
-(5, 'Nihad', 'Alibegović', 'nalibegovic@etf.unsa.ba', 'M', 'nihad1', '1a1dc91c907325c69271ddf0c944bc72', '0101996116432', '1995-01-01', 'Gornji Vakuf', 2, 2, 'Sutjeska 23', '035332312'),
-(6, 'Niko', 'Nikic', 'niko.nikic@gmail.com', 'm', 'niko.nikic', 'niko.nikic', '1111111111111', '2017-05-09', 'Sarajevo', 1, 14, 'Adresa', '062 225 883'),
-(7, 'Mujo', 'Mujić', 'mujo.mujic@gmail.com', 'm', 'mujo.mujic', 'mujo.mujic', '22222222222', '2017-01-10', 'Sarajevo', 2, 13, 'Adresa 123', '062 225 883'),
-(8, 'Fata', 'Fatić', 'fata.fatic@gmail.com', 'ž', 'fata.fatic', 'fata.fatic', '3333333333333', '2017-05-23', 'Sarajevo', 3, 15, 'Adresa 132', '061 232 121'),
-(10, 'Nika', 'Nikolić', 'nika.nikolic@gmail.com', 'ž', 'nika.nikoliv', 'nika.nikolic', '0101010101011', '2016-08-09', 'Tuzla', 5, 11, 'Adresa 321', '061 123 213'),
-(11, 'Emir', 'Baručija', 'emir.barucija@gmail.com', 'm', 'emir.barucija', 'emir.barucija', '0121453234567', '2017-05-24', 'Zenica', 6, 8, 'Adresa 123', '062 345 678'),
-(12, 'Šeila', 'Bećirović', 'seila.becirovic@gmail.com', 'ž', 'seila.becirovic', 'seila.becirovic', '1234567899322', '2017-05-15', 'Sarajevo', 6, 7, 'Adresa 345', '062 345 678'),
-(13, 'Jasmina', 'Bajramović', 'jasmina.bajramovic@gmail.com', 'ž', 'jasmina.bajramovic', 'jasmina.bajramovic', '1234567896432', '2017-05-08', 'Zavidovići', 6, 6, 'Adresa 321', '061 123 123'),
-(14, 'Edin', 'Begić', 'edin.begic@gmail.com', 'm', 'edin.begic', 'edin.begic', '123432345431', '1994-05-14', 'Sarajevo', 6, 5, 'Adresa 3', '062 321 321'),
-(15, 'Ervin', 'Beus', 'ervin.beus@gmail.com', 'm', 'ervin.beus', 'ervin.beus', '223456432345', '1993-05-01', 'Kakanj', 6, 3, 'Adresa 1', '062 456 543'),
-(16, 'Nejra', 'Bahtić', 'nejra.bahtic@gmail.com', 'ž', 'nejra.bahtic', 'nejra.bahtic', '12345532245', '1995-05-08', 'Zenica', 4, 9, 'Adresa 9', '062 343 321'),
-(17, 'Emir ', 'Bećirović', 'emir.doktor@gmail.com', 'm', 'doktor', 'doktor', '1234563212341', '1995-08-01', 'Sarajevo', 6, 8, 'Adresa 8', '062 888 888');
+(1, 'Mehmed', 'Baždarević', 'mbazdarevic@etf.unsa.ba', 'm', 'mesa1', '1a1dc91c907325c69271ddf0c944bc72', '2810995180046', '1995-10-28', 'Višegrad', 2, 1, 'Zvornicka bb', '033256322'),
+(2, 'Silvana', 'Armenulić', 'sarmenulic@etf.unsa.ba', 'ž', 'silvana2', '1a1dc91c907325c69271ddf0c944bc72', '1805994232245', '1994-05-18', 'Doboj', 3, 1, 'Pofalićka 2', '033568984'),
+(3, 'Nihad', 'Alibegović', 'nalibegovic@etf.unsa.ba', 'm', 'nihad1', '1a1dc91c907325c69271ddf0c944bc72', '0101996116432', '1995-01-01', 'Gornji Vakuf', 2, 2, 'Sutjeska 23', '035332312'),
+(4, 'Enes', 'Babić', 'enes.predator@gmail.com', 'm', 'enes.babic', 'enes.babic', '1006996190058', '1996-06-10', 'Zenica', 3, 33, 'Lukovo polje 12', '062225883'),
+(5, 'Nermedin', 'Džeković', 'nermedindz@gmail.com', 'm', 'nermedin.dzekovic', 'nermedin.dzekovic', '1205997190658', '1997-05-12', 'Sarajevo', 2, 13, 'Hrasnička 120', '061584753'),
+(6, 'Nudžeim', 'Selimović', 'nudzeims@hotmail.com', 'm', 'nudzeim.selimovic', 'nudzeim.selimovic', '0811995190065', '1995-11-08', 'Sarajevo', 5, 15, 'Adema Buće 15', '062847596'),
+(7, 'Senad', 'Isaković', 'isakovics@gmail.com', 'm', 'senad.isakovic', 'senad.isakovic', '2207994190008', '1994-07-22', 'Tuzla', 5, 11, 'Mala aleja 12', '061358742'),
+(8, 'Emir', 'Baručija', 'emir.barucija@gmail.com', 'm', 'emir.barucija', 'emir.barucija', '1109995190066', '1995-09-11', 'Zenica', 6, 1, 'Travnička cesta 36', '062554128'),
+(9, 'Šeila', 'Bećirović', 'seila.becirovic@gmail.com', 'ž', 'seila.becirovic', 'seila.becirovic', '0401995100015', '1995-01-04', 'Sarajevo', 6, 7, 'Adresa 345', '062358452'),
+(10, 'Jasmina', 'Bajramović', 'jasmina.bajramovic@gmail.com', 'ž', 'jasmina.bajramovic', 'jasmina.bajramovic', '0805995100033', '1995-05-08', 'Zavidovići', 6, 6, 'Adresa 321', '061123123'),
+(11, 'Edin', 'Begić', 'edin.begic@gmail.com', 'm', 'edin.begic', 'edin.begic', '1405994190056', '1994-05-14', 'Sarajevo', 6, 5, 'Dolac Malta 15', '061874458'),
+(12, 'Ervin', 'Beus', 'ervin.beus@gmail.com', 'm', 'ervin.beus', 'ervin.beus', '0105993190012', '1993-05-01', 'Kakanj', 6, 3, 'Čengić vila 12', '066985214'),
+(13, 'Nejra', 'Bahtić', 'nejra.bahtic@gmail.com', 'ž', 'nejra.bahtic', 'nejra.bahtic', '0808994100135', '1994-08-08', 'Zenica', 4, 9, 'Pofalićka 33', '062458745'),
+(14, 'Emir', 'Bećirović', 'emir.doktor@gmail.com', 'm', 'doktor', 'doktor', '0108995190054', '1995-08-01', 'Sarajevo', 6, 8, 'Trg solidarnosti 16', '062632854'),
+(15, 'Zerina', 'Turković', 'emir.doktor@gmail.com', 'ž', 'doktor', 'doktor', '1204995100013', '1995-04-12', 'Sarajevo', 4, 8, 'Branilaca Dobrinje 13', '061225874');
 
 --
 -- Indexes for dumped tables
