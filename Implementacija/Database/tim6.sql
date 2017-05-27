@@ -7,6 +7,9 @@
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
+CREATE DATABASE tim6;
+USE  tim6;
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 

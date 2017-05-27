@@ -159,7 +159,7 @@ PrikazPoruke() {
 		<div className="form-group profil-form-group">
 			<label  className="col-sm-2 control-label">Spol:</label>
 			<div className="col-sm-2 control-label">
-					<span>{(this.state.user.spol === "M") ? "Muški" : "Ženski"}</span>
+					<span>{(this.state.user.spol === "m") ? "Muški" : "Ženski"}</span>
 			</div>
 	 </div>
 	 <hr className="separator"/>
