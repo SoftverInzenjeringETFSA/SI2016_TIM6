@@ -104,7 +104,6 @@ ISSS - Studentska stranica
 	* pregled predmeta
 	* pregled termina ispita
 	* pregled studentskog profila
-	* povezanost sa dovršenim backend servisima
 	* responzivnost
 	* validacija formi 
 	* parsiranje timestamp
