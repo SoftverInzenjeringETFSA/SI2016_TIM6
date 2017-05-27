@@ -11,9 +11,7 @@ ISSS - Studentska stranica
     
 *   Instalirati MySql (Korištena verzija 5.7.14, druge verzije bi trebale biti kompatibilne)
 
-*   Kreirati bazu podataka pod nazivom "tim6" (collation: utf8_slovenian_ci)
-
-*   U ovu bazu podataka importovati i izvršiti skriptu /Implementacija/Database/tim6.sql
+*  Bazu podataka importovati izvršavanjem skripte /Implementacija/Database/tim6.sql
     * kreirati novog korisnika (username: EtfSI2016, hostname: localhost, password: 2016SIEtf) i dodati mu sve  privilegije na ovu bazu podataka
     
 * Instalirati node.js
@@ -27,6 +25,9 @@ ISSS - Studentska stranica
 ## Wiki
 
 ### Urađeno
+
+* Baza podataka:
+	* Napomena: Username i password za prijavu su jednaki.
 
 * Backend servisi:
 	* /obavjestenja/find?student_id=*

@@ -40,7 +40,7 @@ class Obavjestenja extends Component {
 	render() {
 		const obavijesti = this.state.obavijesti.map((i) => (
 		  <a key={i.id} className="list-group-item">
-		    <h4 className="list-group-item-heading">{i.naslov}</h4>
+		    <h4 className="list-group-item-heading">{i.predmet.naziv}: {i.naslov}</h4>
 				<p className="list-group-item-text"><Timestamp time={i.vrijeme/1000} format='full'/></p>
 		    <p className="list-group-item-text">{i.tekst}</p>
 		  </a>
