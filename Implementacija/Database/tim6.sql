@@ -433,21 +433,21 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `ime`, `prezime`, `email`, `spol`, `username`, `password`, `jmbg`, `datum_rodjenja`, `mjesto_rodjenja`, `semestar`, `odsjek_id`, `adresa`, `telefon`) VALUES
-(1, 'Mehmed', 'Baždarević', 'mbazdarevic@etf.unsa.ba', 'm', 'mesa1', 'd101975f12152ad8aee35ff1c1b48da2', '2810995180046', '1995-10-28', 'Višegrad', 2, 1, 'Zvornicka bb', '033256322'),
-(2, 'Silvana', 'Armenulić', 'sarmenulic@etf.unsa.ba', 'ž', 'silvana2', '1474223e05c801a658c9ff3453c1d6ea', '1805994232245', '1994-05-18', 'Doboj', 3, 1, 'Pofalićka 2', '033568984'),
-(3, 'Nihad', 'Alibegović', 'nalibegovic@etf.unsa.ba', 'm', 'nihad1', '18bdbd4f9a4d74ebea4969c5653b31cb', '0101996116432', '1995-01-01', 'Gornji Vakuf', 2, 2, 'Sutjeska 23', '035332312'),
-(4, 'Enes', 'Babić', 'enes.predator@gmail.com', 'm', 'enes.babic', 'd9905c3d0bc20ec55c51abcaec2271e0', '1006996190058', '1996-06-10', 'Zenica', 3, 33, 'Lukovo polje 12', '062225883'),
-(5, 'Nermedin', 'Džeković', 'nermedindz@gmail.com', 'm', 'nermedin.dzekovic', '3cecd24bfda12e41377494df16866c3f', '1205997190658', '1997-05-12', 'Sarajevo', 2, 13, 'Hrasnička 120', '061584753'),
-(6, 'Nudžeim', 'Selimović', 'nudzeims@hotmail.com', 'm', 'nudzeim.selimovic', '5aa3226bc0e8db970384ed8f7393a092', '0811995190065', '1995-11-08', 'Sarajevo', 5, 15, 'Adema Buće 15', '062847596'),
-(7, 'Senad', 'Isaković', 'isakovics@gmail.com', 'm', 'senad.isakovic', '147aaf1b6ed88a7bab7ed34a2f4e9179', '2207994190008', '1994-07-22', 'Tuzla', 5, 11, 'Mala aleja 12', '061358742'),
-(8, 'Emir', 'Baručija', 'emir.barucija@gmail.com', 'm', 'emir.barucija', '2787f38ac501c2f79496ca96adc6e8a1', '1109995190066', '1995-09-11', 'Zenica', 6, 1, 'Travnička cesta 36', '062554128'),
-(9, 'Šeila', 'Bećirović', 'seila.becirovic@gmail.com', 'ž', 'seila.becirovic', '79cfd09dc39ff4a89c23aee76a52b7ec', '0401995100015', '1995-01-04', 'Sarajevo', 6, 7, 'Adresa 345', '062358452'),
-(10, 'Jasmina', 'Bajramović', 'jasmina.bajramovic@gmail.com', 'ž', 'jasmina.bajramovic', 'eba30a5ebd86e1bfe22e8b1d7e66353e', '0805995100033', '1995-05-08', 'Zavidovići', 6, 6, 'Adresa 321', '061123123'),
-(11, 'Edin', 'Begić', 'edin.begic@gmail.com', 'm', 'edin.begic', '2a3a075e32d0d0054c54eacb4f003483', '1405994190056', '1994-05-14', 'Sarajevo', 6, 5, 'Dolac Malta 15', '061874458'),
-(12, 'Ervin', 'Beus', 'ervin.beus@gmail.com', 'm', 'ervin.beus', 'fb7587134d8061ca2351e61386d4e430', '0105993190012', '1993-05-01', 'Kakanj', 6, 3, 'Čengić vila 12', '066985214'),
-(13, 'Nejra', 'Bahtić', 'nejra.bahtic@gmail.com', 'ž', 'nejra.bahtic', '47a016a1cf1cb8c5274f52d1d21197bf', '0808994100135', '1994-08-08', 'Zenica', 4, 9, 'Pofalićka 33', '062458745'),
-(14, 'Emir', 'Bećirović', 'emir.doktor@gmail.com', 'm', 'doktor', '288d78dd363fb0f4736f8e30c1f663a8', '0108995190054', '1995-08-01', 'Sarajevo', 6, 8, 'Trg solidarnosti 16', '062632854'),
-(15, 'Zerina', 'Turković', 'emir.doktor@gmail.com', 'ž', 'zerina.turkovic', '0f5cff3d17d53eaaef6f82097c0c6821', '1204995100013', '1995-04-12', 'Sarajevo', 4, 8, 'Branilaca Dobrinje 13', '061225874');
+(1, 'Mehmed', 'Baždarević', 'mbazdarevic@etf.unsa.ba', 'm', 'mesa1', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', '2810995180046', '1995-10-28', 'Višegrad', 2, 1, 'Zvornicka bb', '033256322'),
+(2, 'Silvana', 'Armenulić', 'sarmenulic@etf.unsa.ba', 'ž', 'silvana2', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', '1805994232245', '1994-05-18', 'Doboj', 3, 1, 'Pofalićka 2', '033568984'),
+(3, 'Nihad', 'Alibegović', 'nalibegovic@etf.unsa.ba', 'm', 'nihad1', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', '0101996116432', '1995-01-01', 'Gornji Vakuf', 2, 2, 'Sutjeska 23', '035332312'),
+(4, 'Enes', 'Babić', 'enes.predator@gmail.com', 'm', 'enes.babic', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', '1006996190058', '1996-06-10', 'Zenica', 3, 33, 'Lukovo polje 12', '062225883'),
+(5, 'Nermedin', 'Džeković', 'nermedindz@gmail.com', 'm', 'nermedin.dzekovic', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', '1205997190658', '1997-05-12', 'Sarajevo', 2, 13, 'Hrasnička 120', '061584753'),
+(6, 'Nudžeim', 'Selimović', 'nudzeims@hotmail.com', 'm', 'nudzeim.selimovic', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', '0811995190065', '1995-11-08', 'Sarajevo', 5, 15, 'Adema Buće 15', '062847596'),
+(7, 'Senad', 'Isaković', 'isakovics@gmail.com', 'm', 'senad.isakovic', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', '2207994190008', '1994-07-22', 'Tuzla', 5, 11, 'Mala aleja 12', '061358742'),
+(8, 'Emir', 'Baručija', 'emir.barucija@gmail.com', 'm', 'emir.barucija', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', '1109995190066', '1995-09-11', 'Zenica', 6, 1, 'Travnička cesta 36', '062554128'),
+(9, 'Šeila', 'Bećirović', 'seila.becirovic@gmail.com', 'ž', 'seila.becirovic', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', '0401995100015', '1995-01-04', 'Sarajevo', 6, 7, 'Adresa 345', '062358452'),
+(10, 'Jasmina', 'Bajramović', 'jasmina.bajramovic@gmail.com', 'ž', 'jasmina.bajramovic', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', '0805995100033', '1995-05-08', 'Zavidovići', 6, 6, 'Adresa 321', '061123123'),
+(11, 'Edin', 'Begić', 'edin.begic@gmail.com', 'm', 'edin.begic', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', '1405994190056', '1994-05-14', 'Sarajevo', 6, 5, 'Dolac Malta 15', '061874458'),
+(12, 'Ervin', 'Beus', 'ervin.beus@gmail.com', 'm', 'ervin.beus', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', '0105993190012', '1993-05-01', 'Kakanj', 6, 3, 'Čengić vila 12', '066985214'),
+(13, 'Nejra', 'Bahtić', 'nejra.bahtic@gmail.com', 'ž', 'nejra.bahtic', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', '0808994100135', '1994-08-08', 'Zenica', 4, 9, 'Pofalićka 33', '062458745'),
+(14, 'Emir', 'Bećirović', 'emir.doktor@gmail.com', 'm', 'doktor', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', '0108995190054', '1995-08-01', 'Sarajevo', 6, 8, 'Trg solidarnosti 16', '062632854'),
+(15, 'Zerina', 'Turković', 'emir.doktor@gmail.com', 'ž', 'zerina.turkovic', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', '1204995100013', '1995-04-12', 'Sarajevo', 4, 8, 'Branilaca Dobrinje 13', '061225874');
 
 --
 -- Indexes for dumped tables
