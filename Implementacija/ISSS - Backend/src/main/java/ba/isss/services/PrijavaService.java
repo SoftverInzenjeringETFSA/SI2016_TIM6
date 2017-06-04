@@ -38,15 +38,25 @@ public class PrijavaService {
 		
 		Date prijave_do = p.getIspit().getPrijave_do();
 		Date trenutno = new Date(System.currentTimeMillis());
-		
+		Integer brojPrijava = p.getIspit().getBroj_prijava();
 		if(prijave_do.compareTo(trenutno) < 0) 
 			throw new IllegalArgumentException("Rok za prijavu istekao");
+		if(brojPrijava >= p.getIspit().getKapacitet())
+			throw new IllegalArgumentException("Ispitni termin je popunjen");
+		else
+			brojPrijava++;
+		prijavaRepo.updateByBrojPrijavaAndIspitId(brojPrijava,p.getIspit().getId());
 		prijavaRepo.save(p);
 	}
 	
 	public void DeletePrijava(Prijava p, Student s) throws Exception {
         if(!p.getStudent().equals(s))
             throw new Exception("ERROR");
+        Integer brojPrijava = p.getIspit().getBroj_prijava();
+        if(brojPrijava <= 0)
+        	throw new IllegalArgumentException("Došlo je do greške u sistemu");
+        brojPrijava--;
+        prijavaRepo.updateByBrojPrijavaAndIspitId(brojPrijava,p.getIspit().getId());
 		prijavaRepo.deleteByPrijavaStudentIdAndPrijavaIspitId(s.getId(), p.getIspit().getId());;
 	}
 }

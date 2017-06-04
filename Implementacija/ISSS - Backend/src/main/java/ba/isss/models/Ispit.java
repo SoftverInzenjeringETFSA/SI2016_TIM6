@@ -24,7 +24,8 @@ public Ispit() {
 	
 	private Date prijave_do;
 	private Date termin;
-	
+	private Integer broj_prijava;
+	private Integer kapacitet;
 	@ManyToOne(targetEntity=Predmet.class)
     @JoinColumn(name="predmet_id")
     private Predmet predmet;
@@ -56,4 +57,20 @@ public Ispit() {
 	public void setPredmet(Predmet predmet) {
 		this.predmet = predmet;
 	}
+
+    public Integer getBroj_prijava() {
+        return broj_prijava;
+    }
+
+    public void setBroj_prijava(Integer broj_prijava) {
+        this.broj_prijava = broj_prijava;
+    }
+
+    public Integer getKapacitet() {
+        return kapacitet;
+    }
+
+    public void setKapacitet(Integer kapacitet) {
+        this.kapacitet = kapacitet;
+    }
 }

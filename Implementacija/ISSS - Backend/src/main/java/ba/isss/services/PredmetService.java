@@ -54,8 +54,8 @@ public class PredmetService {
 					predmet.getNaziv(),
 					null,
 					predmet.getProfesor().toString(),
-					prosjek
-				);
+					prosjek,
+					predmet.getOpis());
 			
 			ArrayList<PredmetDto> tmp = semestri.get(brojSemestra);
 			tmp.add(predmetA);	
@@ -90,8 +90,8 @@ public class PredmetService {
 					pohadjanje.getPredmet().getNaziv(),
 					pohadjanje.getOcjena(),
 					pohadjanje.getPredmet().getProfesor().toString(),
-					prosjek
-				);
+					prosjek,
+					pohadjanje.getPredmet().getOpis());
 			
 			ArrayList<PredmetDto> tmp = semestri.get(brojSemestra);
 			tmp.add(predmet);	

@@ -6,6 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import ba.isss.dto.PredmetSemestarDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import ba.isss.models.Student;
@@ -51,14 +52,19 @@ public class StudentController {
     	
 
     	Student s = studentService.findOne(studentService.findByUsername(principal.getName()).getId());
-    	
-    	if(!s.getPassword().equals(StudentService.getMD5(pass)))
+        ShaPasswordEncoder encoder = new ShaPasswordEncoder(256);
+        String oldPassHash = encoder.encodePassword(pass, null);
+        String newPassHash = encoder.encodePassword(pass1, null);
+
+        if(pass1.length() < 5)
+            return "Prekratak password";
+        if(!s.getPassword().equals(oldPassHash))
     		return "Pogresan stari password";
     	
     	if(!pass1.equals(pass2)) 
     		return "Passwordi razliciti";
     	
-    	if(studentService.updatePassword(studentService.findByUsername(principal.getName()).getId(), StudentService.getMD5(pass1)) == 0)
+    	if(studentService.updatePassword(studentService.findByUsername(principal.getName()).getId(), newPassHash) == 0)
     		return "ERROR";
     	
     	return "Password promijenjen";

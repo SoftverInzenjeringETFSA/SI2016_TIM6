@@ -25,6 +25,12 @@ const PredmetDetalji = ({predmet}) =>
 					<span>{predmet.prosjek ? predmet.prosjek : "/"}</span>
 				</div>
 			</div>
+			<div className="form-group">
+				<label className="col-sm-4 control-label">Kratki opis predmeta: </label>
+				<div className="col-sm-8 predmet-data">
+					<span>{predmet.opis ? predmet.opis : "Ne postoji opis predmeta"}</span>
+				</div>
+			</div>
 
 		</div>
 	  </div>

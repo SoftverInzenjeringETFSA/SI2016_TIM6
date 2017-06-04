@@ -52,7 +52,7 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
         String password = creds.getPassword().toString();
         StringBuffer sb = new StringBuffer();
         try {
-			MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+			MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
 			messageDigest.update(password.getBytes("UTF-8"));
 			byte[] digest = messageDigest.digest();
 			

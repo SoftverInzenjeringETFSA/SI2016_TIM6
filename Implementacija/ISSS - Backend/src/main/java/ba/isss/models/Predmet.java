@@ -22,7 +22,7 @@ public class Predmet  {
 	
 	private String naziv;
 	private Integer semestar;
-	
+	private String opis;
 	@ManyToOne(targetEntity=Profesor.class)
     @JoinColumn(name="profesor_id")
     private Profesor profesor;
@@ -70,5 +70,13 @@ public class Predmet  {
     
 	public void setProfesor(Profesor profesor) {
 		this.profesor = profesor;
+	}
+
+	public String getOpis() {
+		return opis;
+	}
+
+	public void setOpis(String opis) {
+		this.opis = opis;
 	}
 }

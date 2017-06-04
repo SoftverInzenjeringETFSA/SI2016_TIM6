@@ -7,14 +7,16 @@ public class PredmetDto {
 	private Integer ocjena;
 	private String profesor;
 	private Double prosjek;
+	private String opis;
 	
-	public PredmetDto(Integer ID, String naziv, Integer oc, String prof, Double pros) {
+	public PredmetDto(Integer ID, String naziv, Integer oc, String prof, Double pros, String opis) {
 		this.id = ID;
 		this.naziv = naziv;
 		this.ocjena = oc;
 		this.profesor = prof;
 		this.prosjek = pros;
-	}	
+		this.opis = opis;
+	}
 	
 	// Getters and Setters
 	public Integer getId() {
@@ -47,6 +49,13 @@ public class PredmetDto {
 	public void setProsjek(Double prosjek) {
 		this.prosjek = prosjek;
 	}
-	
-	
+
+
+	public String getOpis() {
+		return opis;
+	}
+
+	public void setOpis(String opis) {
+		this.opis = opis;
+	}
 }
