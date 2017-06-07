@@ -45,7 +45,7 @@ class App extends Component {
 
   logout(){
     reactLocalStorage.clear();
-    this.setState({ulogovan: false, user: {}, token: '', poruka: null});
+    this.setState({ulogovan: false, user: {}, token: '', poruka: "odlogovan"});
   }
 
   login(st){

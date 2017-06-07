@@ -56,10 +56,19 @@ class LoginPage extends Component {
                       <i className="glyphicon glyphicon-lock form-control-feedback pull-left" aria-hidden="true" />
                   </div>
                </div>
-                {this.props.poruka
+                {this.props.poruka==="P"
               ? <div className="v-center">
                 <div>
                   <h5 className="error-login">Prijava nije uspjela.</h5>
+                </div>
+              </div>
+              :
+              null
+              }
+              {this.props.poruka==="odlogovan"
+              ? <div className="v-center">
+                <div>
+                  <h5 className="error-login">Uspješno ste odjavljeni sa sistema.</h5>
                 </div>
               </div>
               :
