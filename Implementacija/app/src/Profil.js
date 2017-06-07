@@ -35,7 +35,7 @@ class Profil extends Component {
 	validacija(){
 		var nextErrorCodes = [];
 
-		if (this.state.sifra1.length < 5){
+		if (this.state.sifra1.length < 6){
 			nextErrorCodes.push("DS");
 		}
 
