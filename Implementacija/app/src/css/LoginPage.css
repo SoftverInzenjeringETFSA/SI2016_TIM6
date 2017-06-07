@@ -48,6 +48,7 @@ strong {
 	border-bottom: 1px solid white;
 	color: white;
 	text-align: center;
+	padding-right: 50px;
 }
 ::-webkit-input-placeholder { 
     color:    white;
