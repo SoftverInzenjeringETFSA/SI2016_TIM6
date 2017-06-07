@@ -56,8 +56,9 @@ public class StudentController {
         String oldPassHash = encoder.encodePassword(pass, null);
         String newPassHash = encoder.encodePassword(pass1, null);
 
-        if(pass1.length() < 5)
+        if(pass1.length() < 6)
             return "Prekratak password";
+        
         if(!s.getPassword().equals(oldPassHash))
     		return "Pogresan stari password";
     	

@@ -7,6 +7,7 @@
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
+DROP DATABASE IF EXISTS tim6;
 CREATE DATABASE tim6;
 USE  tim6;
 
@@ -429,7 +430,7 @@ CREATE TABLE `student` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_slovenian_ci;
 
 --
--- Dumping data for table `student`
+-- Dumping data for table `student` Password je password.
 --
 
 INSERT INTO `student` (`id`, `ime`, `prezime`, `email`, `spol`, `username`, `password`, `jmbg`, `datum_rodjenja`, `mjesto_rodjenja`, `semestar`, `odsjek_id`, `adresa`, `telefon`) VALUES
