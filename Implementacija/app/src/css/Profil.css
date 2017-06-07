@@ -29,9 +29,8 @@
 }
 
 .separator{
-	width: 35%;
-	margin:0!important;
-
+	width:35%;
+	margin-right: 65%;
 	border-color: #73A2A6!important;
 }
 
