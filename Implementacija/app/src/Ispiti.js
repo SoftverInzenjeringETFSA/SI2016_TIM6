@@ -130,7 +130,7 @@ else {
     ));
 
     const prijavljeniIspiti = this.state.prijavljeniIspiti.map((i) => (
-      <tr key={i.id}><td>{i.predmet.naziv}</td><td><Timestamp time={i.prijave_do/1000} format='full'/></td><td><Timestamp time={i.termin/1000} format='full'/></td><td>{<button className="btn btn-primary btn-xs" onClick={() => this.odjavaIspita(i.id)}>Odjavi</button>}</td></tr>
+      <tr key={i.id}><td>{i.predmet.naziv}</td><td><Timestamp time={i.prijave_do/1000} format='full'/></td><td><Timestamp time={i.termin/1000} format='full'/></td><td>{<button className="btn btn-primary btn-xs" onClick={() => {if(confirm("Da li ste sigurni da želite odjaviti ispit?")) this.odjavaIspita(i.id)}}>Odjavi</button>}</td></tr>
     ));
 
     const historijaIspiti= this.state.historijaIspiti.map((i) => (
