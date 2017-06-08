@@ -25,7 +25,7 @@ public interface IspitRepository extends Repository<Ispit, Integer> {
 			+ "where st.id = pr.student.id and pr.ispit.id = isp.id and isp.predmet.id = pre.id and st.id = :id "
 			+ ") "
 			+ "and s.id = :id "
-			+ " and i.termin > current_date() order by i.termin desc")
+			+ " and i.termin > current_date() and i.prijave_do > current_date order by i.termin desc")
 	Iterable<Ispit> findAllNePrijavljeniForStudent(@Param("id") Integer id);
 	
 	@Query("SELECT i FROM Ispit i, Student s, Prijava p "
