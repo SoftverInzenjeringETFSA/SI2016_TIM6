@@ -3,6 +3,14 @@ ISSS - Studentska stranica
 </h1>
 
 
+
+
+## Deployed app
+
+https://isssb7.surge.sh/
+
+
+
 ## Uputstvo za pokretanje
 
 * Instalirati Eclipse Neon.3
